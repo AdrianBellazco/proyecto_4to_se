@@ -5,15 +5,6 @@
 :root {
     --header-height: 3.5rem;
 
-    /*========== Colors ==========*/
-    /*Color mode HSL(hue, saturation, lightness)*/
-    --first-color: hsl(230, 75%, 56%);
-    --title-color: hsl(230, 75%, 15%);
-    --text-color: hsl(230, 12%, 40%);
-    --body-color: hsl(230, 100%, 98%);
-    --container-color: hsl(230, 100%, 97%);
-    --border-color: hsl(230, 25%, 80%);
-
     /*========== Font and typography ==========*/
     /*.5rem = 8px | 1rem = 16px ...*/
     --body-font: "Syne", sans-serif;
