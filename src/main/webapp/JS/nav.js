@@ -42,3 +42,8 @@ loginBtn.addEventListener('click', () =>{
 loginClose.addEventListener('click', () =>{
     login.classList.remove('show-login')
 })
+
+/*=============== RECORD ===============*/
+const registro = document.getElementById('registro'),
+    registroBtn = document.getElementById('registro-btn'),
+    registroClose = document.getElementById('registro-close');
