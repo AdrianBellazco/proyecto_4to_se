@@ -18,7 +18,7 @@ public class UserRepositoriesImpl implements UserRepository{
         try (Connection conn = Conexion_BD.getConnection()){
             assert conn != null;
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM users");
+            ResultSet rs = stmt.executeQuery("SELECT u.* FROM users as u order by u.id ASC");
             while (rs.next()){
                 User user = getUser(rs);
                 users.add(user);
@@ -44,14 +44,6 @@ public class UserRepositoriesImpl implements UserRepository{
         user.setFechar_creacion(rs.getString("fecha de creacion"));
         user.setFechar_actualizacion(rs.getString("fecha de actualizacion"));
         user.setVendedor(rs.getString("vendedor"));
-
-
-
-
-
-
-
-
 
         return user;
     }
