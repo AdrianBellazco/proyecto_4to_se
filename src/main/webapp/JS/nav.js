@@ -44,6 +44,11 @@ loginClose.addEventListener('click', () =>{
 })
 
 /*=============== RECORD ===============*/
+const registro = document.getElementById('record'),
+    registroBtn = document.getElementById('record-btn'),
+    registroClose = document.getElementById('record-close');
+
+/*=============== RECORD ===============*/
 const registro = document.getElementById('registro'),
     registroBtn = document.getElementById('registro-btn'),
     registroClose = document.getElementById('registro-close');
