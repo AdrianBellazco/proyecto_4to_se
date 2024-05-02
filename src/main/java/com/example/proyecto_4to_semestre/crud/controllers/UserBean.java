@@ -18,18 +18,19 @@ public class UserBean implements Serializable {
 
     public UserBean() {
         this.userServide = new UserServiceImlp();
+        this.listUsers = userServide.getAllUsers();
     }
+
     public List<User> getListUsers() {
         return listUsers;
     }
+
     public void setListUsers(List<User> listUsers) {
         this.listUsers = listUsers;
     }
 
-
     public UserService getUserServide() {
         return userServide;
     }
-
 
 }
