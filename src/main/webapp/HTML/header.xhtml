@@ -62,30 +62,123 @@
     <!--==================== LOGIN ====================-->
     <div class="login" id="login">
         <form action="" class="login__form">
-            <h2 class="login__title">Log In</h2>
+            <h2 class="login__title">Iniciar seccion</h2>
 
             <div class="login__group">
                 <div>
                     <label for="email" class="login__label">Email</label>
-                    <input type="email" placeholder="Write your email" id="email" class="login__input"/>
+                    <input type="email" placeholder="Ingresa tu email" id="email" class="login__input"/>
                 </div>
 
                 <div>
-                    <label for="password" class="login__label">Password</label>
-                    <input type="password" placeholder="Enter your password" id="password" class="login__input"/>
+                    <label for="password" class="login__label">Contraseña</label>
+                    <input type="password" placeholder="Ingresa tu contraseña" id="password" class="login__input"/>
                 </div>
             </div>
 
             <div>
                 <p class="login__signup">
-                    You do not have an account? <a href="#">Sign up</a>
+                    ¿No tienes una cuenta?
+                    <button id="registro-btn"> Registrarse</button>
                 </p>
 
+
                 <a href="#" class="login__forgot">
-                    You forgot your password
+                    ¿Olvidaste tu contraseña?
                 </a>
 
-                <button type="submit" class="login__button">Log In</button>
+                <button type="submit" class="login__button">Iniciar seccion</button>
+            </div>
+        </form>
+
+        <i class="ri-close-line login__close" id="login-close"></i>
+    </div>
+    <div class="record" id="record">
+        <form action="" class="record__form">
+            <h2 class="record__title">Registrarse</h2>
+
+            <div class="regcord__group">
+
+                <div>
+                    <label for="nombre" class="record__label">Nombre</label>
+                    <input type="nombre" placeholder="Ingresa tu nombre" id="nombre" class="record__input"/>
+                </div>
+
+                <div>
+                    <label for="apellido" class="record__label">Apellido</label>
+                    <input type="apellido" placeholder="Ingresa tu apellido" id="apellido" class="record__input"/>
+                </div>
+
+                <div>
+                    <label for="cedula" class="record__label">Cedula</label>
+                    <input type="cedula" placeholder="Ingresa tu numero de documento" id="cedula" class="record__input"/>
+                </div>
+
+                <div>
+                    <label for="fecha__nacimiento" class="record__label">Fecha de Nacimiento</label>
+                    <input type="fecha__nacimiento" placeholder="Ingresa tu fecha de nacimimiento" id="fecha__nacimiento" class="record__input"/>
+                </div>
+
+                <div>
+                    <label for="telefono" class="record__label">Telefono</label>
+                    <input type="telefono" placeholder="Ingresa tu numero de telefono" id="telefono" class="record__input"/>
+                </div>
+
+                <div>
+                    <label for="telefono2" class="record__label">Telefono</label>
+                    <input type="telefono2" placeholder="Ingresa un segundo numero de telefono" id="telefono2" class="record__input"/>
+                </div>
+
+                <div>
+                    <label for="email" class="record__label">Email</label>
+                    <input type="email" placeholder="Ingresa tu email" id="email__record" class="login__input"/>
+                </div>
+
+                <div>
+                    <label for="persona__contacto" class="record__label">Persona de emergencia</label>
+                    <input type="persona__contacto" placeholder="Ingresa el nombre" id="persona__contacto" class="record__input"/>
+                </div>
+
+                <div>
+                    <label for="telefono__contacto" class="record__label">Telefono de emergencia</label>
+                    <input type="telefono__contacto" placeholder="Ingresa el numero de emergencia" id="telefono__contacto" class="record__input"/>
+                </div>
+
+                <div>
+                    <label for="cod__asesor" class="record__label">Ingresa el codigo del asesor </label>
+                    <input type="cod__asesor" placeholder="Ingresa el numero del asesor que te atiende" id="cod__asesor" class="record__input"/>
+                </div>
+
+
+                <div>
+                    <p>
+                        Estas a un paso:
+
+                        Ingresa una contraseña de minimo 8 caracteres y debe contar con un caracter especial @!¡'¿.;,
+                    </p>
+                    <label for="password" class="record__label">Ingresa tu contraseña</label>
+                    <input type="password" placeholder="Ingresa una contraseña" id="password__record" class="login__input"/>
+                    <label for="confirm__password" class="record__label">Ingresa tu contraseña</label>
+                    <input type="confirm__password" placeholder="Ingresa una contraseña" id="confirm__password__record" class="login__input"/>
+                </div>
+
+
+
+
+            </div>
+
+            <div>
+                <p class="login__signup">
+                    ¿No tienes una cuenta?
+                    <button id="registro-btn"> Registrarse</button>
+                </p>
+
+
+                <a href="#" class="login__forgot">
+                    ¿Olvidaste tu contraseña?
+                </a>
+
+                <button type="submit" class="login__button">Iniciar seccion</button>
             </div>
         </form>
 
