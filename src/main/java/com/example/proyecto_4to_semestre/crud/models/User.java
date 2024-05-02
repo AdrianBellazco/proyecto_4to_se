@@ -3,6 +3,7 @@ package com.example.proyecto_4to_semestre.crud.models;
 public class User {
     private String cedula;
     private String nombre;
+    private String contraseña;
     private String correo;
     private String telefono_1;
     private String telefono_2;
@@ -33,7 +34,7 @@ public class User {
         this.vendedor = vendedor;
     }
 
-    public String getCedula() {
+    public String getCedula(String id) {
         return cedula;
     }
 
