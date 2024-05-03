@@ -8,34 +8,78 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-    <!--REMIXICONS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css"/>
-    <!-- Enlace opcional para los íconos de Bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <!-- Agrega los enlaces a Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+
+    <!--=============== REMIXICONS ===============-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
+      <!-- Enlace opcional para los íconos de Bootstrap -->
+    <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>-->
+      <!-- Agrega los enlaces a Bootstrap CSS -->
+    <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>-->
 
 
-    <title>TURISMO</title>
-    <link rel="stylesheet" type="text/css" href="CSS/1_style.css" />
+     <title>TURISMO S.A</title>
+     <link rel="stylesheet" type="text/css" href="" />
 
 
-</h:head>
+ </h:head>
 
-<h:body>
-    <div id="header">
+ <h:body>
+
+     <!--==================== HEADER ====================-->
+    <div class="header" id="header_1">
+        <div class="nav container">
+            <a href="#" class="nav__logo">Turismo</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Inicio</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">Paquetes</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#popular" class="nav__link">Destinos</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#explore" class="nav__link">Explorar</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#explore" class="nav__link"><i class="ri-user-line"></i></a>
+                    </li>
+                </ul>
+
+                <!-- Close button -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+    </div>
+
+    <div id="home">
         <ui:include src="HTML/header.xhtml"></ui:include>
     </div>
-    <div id="nav">
-        <ui:include src="HTML/nav.xhtml"></ui:include>
+    <div id="about">
+        <ui:include src="HTML/about.xhtml"></ui:include>
     </div>
-    <div id="conten">
-        <ui:include src="HTML/sesion.xhtml"></ui:include>
+    <div id="popular">
+        <ui:include src="HTML/popular.xhtml"></ui:include>
     </div>
-    <div id="footer">
-        <ui:include src="HTML/footer.xhtml"></ui:include>
+    <div id="explore">
+        <ui:include src=""></ui:include>
     </div>
 </h:body>
-<script src="JS/nav.js" type=""></script>
+
+<script src="" type=""></script>
 
 </html>

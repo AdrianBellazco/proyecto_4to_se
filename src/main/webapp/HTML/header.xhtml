@@ -1,195 +1,58 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets">
     <!--==================== HEADER ====================-->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo">EL LOGO ADRI POR FAVOR</a>
+    <!--==================== HEADER ====================-->
+    <section class="home section" id="home">
+        <img src="imagenes/home.jpg" alt="home image" class="home__bg"/>
+        <div class="home__shadow"></div>
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">.</a>
-                    </li>
+        <div class="home__container container grid">
+            <div class="home__data">
+                <h3 class="home__subtitle">
+                    Welcome To Travel
+                </h3>
 
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">INICIO</a>
-                    </li>
+                <h1 class="home__title">
+                    Explore <br/>
+                    The World
+                </h1>
 
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">VIAJES</a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">CALENDARIO</a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">ACERCA DE</a>
-                    </li>
-                </ul>
-
-                <!-- Close button -->
-                <div class="nav__close" id="nav-close">
-                    <i class="ri-close-line"></i>
-                </div>
-            </div>
-
-            <div class="nav__actions">
-                <!-- Search button -->
-                <i class="ri-search-line nav__search" id="search-btn"></i>
-
-                <!-- Login button -->
-                <i class="ri-user-line nav__login" id="login-btn"></i>
-
-                <!-- Toggle button -->
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class="ri-menu-line"></i>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!--==================== SEARCH ====================-->
-    <div class="search" id="search">
-        <form action="" class="search__form">
-            <i class="ri-search-line search__icon"></i>
-            <input type="search" placeholder="What are you looking for?" class="search__input"/>
-        </form>
-
-        <i class="ri-close-line search__close" id="search-close"></i>
-    </div>
-
-    <!--==================== LOGIN ====================-->
-    <div class="login" id="login">
-        <form action="" class="login__form">
-            <h2 class="login__title">Iniciar seccion</h2>
-
-            <div class="login__group">
-                <div>
-                    <label for="email" class="login__label">Email</label>
-                    <input type="email" placeholder="Ingresa tu email" id="email" class="login__input"/>
-                </div>
-
-                <div>
-                    <label for="password" class="login__label">Contraseña</label>
-                    <input type="password" placeholder="Ingresa tu contraseña" id="password" class="login__input"/>
-                </div>
-            </div>
-
-            <div>
-                <p class="login__signup">
-                    ¿No tienes una cuenta?
-                    <button id="registro-btn"> Registrarse</button>
+                <p class="home__description">
+                    Live the trips exploring the world, discover
+                    paradises, islands, mountains and much
+                    more, get your trip now.
                 </p>
 
-
-                <a href="#" class="login__forgot">
-                    ¿Olvidaste tu contraseña?
+                <a href="#" class="button">
+                    Start Your Journey <i class="ri-arrow-right-line"></i>
                 </a>
-
-                <button type="submit" class="login__button">Iniciar seccion</button>
-            </div>
-        </form>
-
-        <i class="ri-close-line login__close" id="login-close"></i>
-    </div>
-    <div class="record" id="record">
-        <form action="" class="record__form">
-            <h2 class="record__title">Registrarse</h2>
-
-            <div class="regcord__group">
-
-                <div>
-                    <label for="nombre" class="record__label">Nombre</label>
-                    <input type="nombre" placeholder="Ingresa tu nombre" id="nombre" class="record__input"/>
-                </div>
-
-                <div>
-                    <label for="apellido" class="record__label">Apellido</label>
-                    <input type="apellido" placeholder="Ingresa tu apellido" id="apellido" class="record__input"/>
-                </div>
-
-                <div>
-                    <label for="cedula" class="record__label">Cedula</label>
-                    <input type="cedula" placeholder="Ingresa tu numero de documento" id="cedula" class="record__input"/>
-                </div>
-
-                <div>
-                    <label for="fecha__nacimiento" class="record__label">Fecha de Nacimiento</label>
-                    <input type="fecha__nacimiento" placeholder="Ingresa tu fecha de nacimimiento" id="fecha__nacimiento" class="record__input"/>
-                </div>
-
-                <div>
-                    <label for="telefono" class="record__label">Telefono</label>
-                    <input type="telefono" placeholder="Ingresa tu numero de telefono" id="telefono" class="record__input"/>
-                </div>
-
-                <div>
-                    <label for="telefono2" class="record__label">Telefono</label>
-                    <input type="telefono2" placeholder="Ingresa un segundo numero de telefono" id="telefono2" class="record__input"/>
-                </div>
-
-                <div>
-                    <label for="email" class="record__label">Email</label>
-                    <input type="email" placeholder="Ingresa tu email" id="email__record" class="login__input"/>
-                </div>
-
-                <div>
-                    <label for="persona__contacto" class="record__label">Persona de emergencia</label>
-                    <input type="persona__contacto" placeholder="Ingresa el nombre" id="persona__contacto" class="record__input"/>
-                </div>
-
-                <div>
-                    <label for="telefono__contacto" class="record__label">Telefono de emergencia</label>
-                    <input type="telefono__contacto" placeholder="Ingresa el numero de emergencia" id="telefono__contacto" class="record__input"/>
-                </div>
-
-                <div>
-                    <label for="cod__asesor" class="record__label">Ingresa el codigo del asesor </label>
-                    <input type="cod__asesor" placeholder="Ingresa el numero del asesor que te atiende" id="cod__asesor" class="record__input"/>
-                </div>
-
-
-                <div>
-                    <p>
-                        Estas a un paso:
-
-                        Ingresa una contraseña de minimo 8 caracteres y debe contar con un caracter especial @!¡'¿.;,
-                    </p>
-                    <label for="password" class="record__label">Ingresa tu contraseña</label>
-                    <input type="password" placeholder="Ingresa una contraseña" id="password__record" class="login__input"/>
-                    <label for="confirm__password" class="record__label">Ingresa tu contraseña</label>
-                    <input type="confirm__password" placeholder="Ingresa una contraseña" id="confirm__password__record" class="login__input"/>
-                </div>
-
-
-
-
             </div>
 
-            <div>
-                <p class="login__signup">
-                    ¿No tienes una cuenta?
-                    <button id="registro-btn"> Registrarse</button>
-                </p>
+            <div class="home__cards grid">
+                <article class="home__card">
+                    <img src="imagenes/home.jpg" alt="home image" class="home__card-img"/>
+                    <h3 class="home__card-title">Croatia</h3>
+                    <div class="home__card-shadow"></div>
+                </article>
 
+                <article class="home__card">
+                    <img src="" alt="home image" class="home__card-img"/>
+                    <h3 class="home__card-title">Iceland</h3>
+                    <div class="home__card-shadow"></div>
+                </article>
 
-                <a href="#" class="login__forgot">
-                    ¿Olvidaste tu contraseña?
-                </a>
+                <article class="home__card">
+                    <img src="assets/img/home-mountain.jpg" alt="home image" class="home__card-img"/>
+                    <h3 class="home__card-title">Italy</h3>
+                    <div class="home__card-shadow"></div>
+                </article>
 
-                <button type="submit" class="login__button">Iniciar seccion</button>
+                <article class="home__card">
+                    <img src="assets/img/home-beach.jpg" alt="home image" class="home__card-img"/>
+                    <h3 class="home__card-title">Spain</h3>
+                    <div class="home__card-shadow"></div>
+                </article>
             </div>
-        </form>
-
-        <i class="ri-close-line login__close" id="login-close"></i>
-    </div>
-
-    <!--==================== MAIN ====================-->
-    <main class="main">
-        <img src="assets/img/bg-image.png" alt="image" class="main__bg"/>
-    </main>
-
-    <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
+        </div>
+    </section>
 </ui:composition>
