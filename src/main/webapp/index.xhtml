@@ -8,29 +8,27 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-
+    <link rel="shortcut icon" href="HTML/imagenes/pasaporte.png" type="image/x-icon"/>
     <!--=============== REMIXICONS ===============-->
+
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
       <!-- Enlace opcional para los íconos de Bootstrap -->
-    <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <!-- Agrega los enlaces a Bootstrap CSS -->
-    <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>-->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="CSS"/>
+    <link rel="stylesheet" href="CSS/1_style.css"/>
 
 
      <title>TURISMO S.A</title>
-
-
-
 
  </h:head>
 
  <h:body>
 
      <!--==================== HEADER ====================-->
-    <div class="header" id="header_1">
+    <div class="header" id="header1">
         <div class="nav container">
             <a href="#" class="nav__logo">Turismo</a>
 
@@ -53,7 +51,7 @@
                     </li>
 
                     <li class="nav__item">
-                        <a href="#explore" class="nav__link"><i class="ri-user-line"></i></a>
+                        <a href="#user" class="nav__link"><i class="ri-user-line"></i></a>
                     </li>
                 </ul>
 
@@ -71,7 +69,7 @@
     </div>
 
     <div id="home">
-        <ui:include src="HTML/header.xhtml"></ui:include>
+        <ui:include src="HTML/home.xhtml"></ui:include>
     </div>
     <div id="about">
         <ui:include src="HTML/about.xhtml"></ui:include>
@@ -80,10 +78,25 @@
         <ui:include src="HTML/popular.xhtml"></ui:include>
     </div>
     <div id="explore">
-        <ui:include src=""></ui:include>
+        <ui:include src="HTML/explore.xhtml"></ui:include>
     </div>
+     <div id="user">
+         <ui:include src="HTML/user.xhtml"></ui:include>
+     </div>
+     <div id="footer">
+         <ui:include src="HTML/footer.xhtml"></ui:include>
+     </div>
 </h:body>
 
-<script src="" type=""></script>
+<!--========== SCROLL UP ==========-->
+<a href="#" class="scrollup" id="scroll-up">
+    <i class="ri-arrow-up-line"></i>
+</a>
+
+<!--=============== SCROLLREVEAL ===============-->
+<script src="JS/scrollreveal.min.js" type=""></script>
+
+<!--=============== MAIN JS ===============-->
+<script src="JS/main.js" type=""></script>
 
 </html>

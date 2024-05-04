@@ -1,5 +1,4 @@
 :root {
-    --header-height: 3.5rem;
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
     --title-color: hsl(0, 0%, 95%);
@@ -9,5 +8,6 @@
     --container-color: hsl(0, 0%, 8%);
     --shadow-gradient: linear-gradient(180deg,
     hsla(0, 0%, 0%, 0) 50%,
-    hsl(0, 0%, 0%) 125%)
+    hsl(0, 0%, 0%) 125%);
+
 }
