@@ -1,10 +1,13 @@
 :root {
+    --header-height: 3.5rem;
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
-    --first-color: hsl(230, 75%, 56%);
-    --title-color: hsl(230, 75%, 15%);
-    --text-color: hsl(230, 12%, 40%);
-    --body-color: hsl(230, 100%, 98%);
-    --container-color: hsl(230, 100%, 97%);
-    --border-color: hsl(230, 25%, 80%);
+    --title-color: hsl(0, 0%, 95%);
+    --text-color: hsl(0, 0%, 70%);
+    --text-color-light: hsl(0, 0%, 60%);
+    --body-color: hsl(0, 0%, 0%);
+    --container-color: hsl(0, 0%, 8%);
+    --shadow-gradient: linear-gradient(180deg,
+    hsla(0, 0%, 0%, 0) 50%,
+    hsl(0, 0%, 0%) 125%)
 }
