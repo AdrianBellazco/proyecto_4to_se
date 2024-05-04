@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface  UserRepository {
     List<User> list();
+    boolean create(User user);
+    boolean update(User user);
 }
