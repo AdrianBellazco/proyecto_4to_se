@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface UserService {
     List<User> getAllUsers();
-
+    User getUserById(String cedula);
     boolean createUser(User user);
     boolean updateUser(User user);
-
+    void deleteUser(String cedula);
 }

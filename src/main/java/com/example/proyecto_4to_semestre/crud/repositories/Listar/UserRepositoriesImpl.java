@@ -132,6 +132,38 @@ public class UserRepositoriesImpl implements UserRepository {
         return false;
     }
 
+    @Override
+    public void delete(String cedula){
+        try (Connection conn = Conexion_BD.getConnection()){
+            assert conn != null;
+            PreparedStatement pst = conn.prepareStatement("DELETE FROM cliente WHERE cedula = ?");
+            pst.setString(1, cedula);
+            pst.executeUpdate();
+            pst.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public User getUserById(String cedula){
+        User user = null;
+        try (Connection conn = Conexion_BD.getConnection()){
+            assert conn != null;
+            PreparedStatement pst = conn.prepareStatement("SELECT u.* FROM cliente as u WHERE u.cedula = ?");
+            pst.setString(1, cedula);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()){
+                user = getUser(rs);
+            }
+            rs.close();
+            pst.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
 
 
 }

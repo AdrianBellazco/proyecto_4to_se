@@ -42,8 +42,8 @@
             <tr>
                 <td>
                     <h:form>
-                        <h:commandLink class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
-                        <h:commandLink style="margin-left: 5px;" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
+                        <h:commandLink action="#{userBean.userDetail(user.cedula)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
+                        <h:commandLink style="margin-left: 5px;" action="#{userBean.deleteUser(user.cedula)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
                     </h:form>
                 </td>
                 <td>${user.cedula}</td>

@@ -57,6 +57,16 @@ public class UserBean implements Serializable {
         return "index?faces-redirect=true";
     }
 
+    public void deleteUser(String cedula){
+        userServide.deleteUser(cedula);
+        this.setListUsers(userServide.getAllUsers());
+    }
+
+    public String userDetail(String cedula){
+        user = userServide.getUserById(cedula);
+        return "form?faces-redirect=true";
+    }
+
 
     public User getUser() {
         return user;

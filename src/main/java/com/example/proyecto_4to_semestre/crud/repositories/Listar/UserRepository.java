@@ -8,4 +8,6 @@ public interface  UserRepository {
     List<User> list();
     boolean create(User user);
     boolean update(User user);
+    void delete(String cedula);
+    User getUserById(String cedula);
 }
