@@ -46,7 +46,6 @@ public class UserBean implements Serializable {
         this.setUser(new User());
         this.setListUsers(userServide.getAllUsers());
         return "index?faces-redirect=true";
-
     }
 
     public String updateUser() {

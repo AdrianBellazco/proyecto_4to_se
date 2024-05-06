@@ -82,6 +82,7 @@ public class UserRepositoriesImpl implements UserRepository {
     public boolean create(User user) {
         try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
+            java.util.Date date = new java.util.Date();
             PreparedStatement pst = conn.prepareStatement("INSERT INTO cliente(cedula, nombre, correo, telefono1, telefono2, fecha_nacimiento, contacto_emergencia, telefono_contacto_emergencia, fecha_creacion, fecha_modificacion, creador) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             pst.setString(1, user.getCedula());
             pst.setString(2, user.getNombre());
@@ -91,9 +92,11 @@ public class UserRepositoriesImpl implements UserRepository {
             pst.setDate(6, new java.sql.Date(user.getFechaNacimiento().getTime()));
             pst.setString(7, user.getContactoEmergencia());
             pst.setString(8, user.getTelefonoContactoEmergencia());
-            java.util.Date currentDate = new java.util.Date();
-            pst.setDate(9, new java.sql.Date(currentDate.getTime()));
-            pst.setDate(10, new java.sql.Date(currentDate.getTime()));
+
+
+            pst.setDate(9, new java.sql.Date(date.getTime()));
+
+            pst.setDate(10, new java.sql.Date(date.getTime()));
             pst.setString(11, user.getCreador());
 
             pst.executeUpdate();
