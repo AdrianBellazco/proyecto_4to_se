@@ -8,6 +8,7 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Named("userBean")
@@ -20,7 +21,7 @@ public class UserBean implements Serializable {
     public UserBean() {
         this.setUser(new User());
         this.userServide = new UserServiceImlp();
-        this.listUsers = userServide.getAllUsers();
+        this.setListUsers(userServide.getAllUsers());
 
     }
 
@@ -37,15 +38,20 @@ public class UserBean implements Serializable {
     }
 
     public String createUser() {
+        if (user.getFechaNacimiento() == null) {
+
+            user.setFechaNacimiento(new Date());
+        }
         userServide.createUser(user);
-        this.setUser(new User()); // Aquí deberías crear un nuevo objeto User
+        this.setUser(new User());
         this.setListUsers(userServide.getAllUsers());
         return "index?faces-redirect=true";
+
     }
 
     public String updateUser() {
         userServide.updateUser(user);
-        this.setUser(new User()); // Aquí también deberías crear un nuevo objeto User
+        this.setUser(new User());
         this.setListUsers(userServide.getAllUsers());
 
         return "index?faces-redirect=true";

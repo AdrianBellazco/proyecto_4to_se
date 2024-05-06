@@ -1,25 +1,27 @@
 package com.example.proyecto_4to_semestre.crud.models;
 
+import java.util.Date;
+
 public class User {
 
-        private int cedula;
+        private String cedula;
         private String nombre;
         private String correo;
         private String telefono1;
         private String telefono2;
-        private String fechaNacimiento;
+        private Date fechaNacimiento;
         private String contactoEmergencia;
         private String telefonoContactoEmergencia;
-        private String fechaCreacion;
-        private String fechaModificacion;
+        private Date fechaCreacion;
+        private Date fechaModificacion;
         private String creador;
         private String contrasena;
 
         public User(){}
 
-        public User(int cedula, String nombre, String correo, String telefono1, String telefono2, String fechaNacimiento,
-                       String contactoEmergencia, String telefonoContactoEmergencia, String fechaCreacion,
-                       String fechaModificacion, String creador, String contrasena) {
+        public User(String cedula, String nombre, String correo, String telefono1, String telefono2, Date fechaNacimiento,
+                    String contactoEmergencia, String telefonoContactoEmergencia, Date fechaCreacion,
+                    Date fechaModificacion, String creador, String contrasena) {
             this.cedula = cedula;
             this.nombre = nombre;
             this.correo = correo;
@@ -34,11 +36,11 @@ public class User {
             this.contrasena = contrasena;
         }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
@@ -74,11 +76,11 @@ public class User {
         this.telefono2 = telefono2;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -98,19 +100,19 @@ public class User {
         this.telefonoContactoEmergencia = telefonoContactoEmergencia;
     }
 
-    public String getFechaCreacion() {
+    public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(String fechaCreacion) {
+    public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public String getFechaModificacion() {
+    public Date getFechaModificacion() {
         return fechaModificacion;
     }
 
-    public void setFechaModificacion(String fechaModificacion) {
+    public void setFechaModificacion(Date fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
     }
 
