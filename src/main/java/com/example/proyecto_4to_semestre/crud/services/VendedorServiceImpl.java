@@ -18,4 +18,24 @@ public class VendedorServiceImpl implements VendedorService {
     public List<Vendedor> getVendedors() {
         return vendedorRepository.list();
     }
+
+    @Override
+    public boolean createVendedor(Vendedor vendedor) {
+        return vendedorRepository.create(vendedor);
+    }
+
+    @Override
+    public boolean updateVendedor(Vendedor vendedor) {
+        return vendedorRepository.update(vendedor);
+    }
+
+    @Override
+    public Vendedor getVendedorById(String cedula) {
+        return vendedorRepository.getVendedorById(cedula);
+    }
+
+    @Override
+    public void deleteVendedor(String cedula) {
+        vendedorRepository.delete(cedula);
+    }
 }

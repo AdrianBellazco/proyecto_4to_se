@@ -18,7 +18,7 @@
 </h:head>
 <h:body>
     <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form">
-        Añadir <i class="fa-solid fa-plus" />
+        Añadir cliente  <i class="fa-solid fa-plus" />
     </h:link>
 
     <!-- CLIENTES -->
@@ -67,7 +67,9 @@
 
 
     <!-- Tabla vendedor -->
-
+    <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_vendedor">
+        Añadir vendedor  <i class="fa-solid fa-plus" />
+    </h:link>
     <h1>Vendedor</h1>
 
     <table class="table table-striped">
@@ -93,7 +95,7 @@
                 <td>
                     <h:form>
                         <h:commandLink  class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
-                        <h:commandLink style="margin-left: 5px;"  class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
+                        <h:commandLink style="margin-left: 5px;" action="#{vendedorBean.delatevendedor(vendedor.cedula)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
                     </h:form>
                 </td>
                 <td>${vendedor.cedula}</td>

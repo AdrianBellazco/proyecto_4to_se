@@ -93,10 +93,10 @@ public class UserRepositoriesImpl implements UserRepository {
             pst.setString(7, user.getContactoEmergencia());
             pst.setString(8, user.getTelefonoContactoEmergencia());
 
+            java.util.Date currentDate = new java.util.Date();
+            pst.setDate(9, new java.sql.Date(currentDate.getTime()));
 
-            pst.setDate(9, new java.sql.Date(date.getTime()));
-
-            pst.setDate(10, new java.sql.Date(date.getTime()));
+            pst.setDate(10, new java.sql.Date(currentDate.getTime()));
             pst.setString(11, user.getCreador());
 
             pst.executeUpdate();
