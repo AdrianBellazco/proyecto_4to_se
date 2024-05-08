@@ -25,17 +25,6 @@ public class UserBean implements Serializable {
 
     }
 
-    public List<User> getListUsers() {
-        return listUsers;
-    }
-
-    public void setListUsers(List<User> listUsers) {
-        this.listUsers = listUsers;
-    }
-
-    public UserService getUserServide() {
-        return userServide;
-    }
 
     public String createUser() {
         if (user.getFechaNacimiento() == null) {
@@ -66,6 +55,11 @@ public class UserBean implements Serializable {
         return "form?faces-redirect=true";
     }
 
+    //SETTERS AND GETTERS
+
+    public UserService getUserServide() {
+        return userServide;
+    }
 
     public User getUser() {
         return user;
@@ -73,5 +67,13 @@ public class UserBean implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<User> getListUsers() {
+        return listUsers;
+    }
+
+    public void setListUsers(List<User> listUsers) {
+        this.listUsers = listUsers;
     }
 }

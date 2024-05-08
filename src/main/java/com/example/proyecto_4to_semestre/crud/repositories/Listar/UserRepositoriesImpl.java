@@ -47,35 +47,6 @@ public class UserRepositoriesImpl implements UserRepository {
         return user;
     }
 
-/*
-    @Override
-    public boolean create(User user) {
-        try (Connection conn = Conexion_BD.getConnection()) {
-            assert conn != null;
-            PreparedStatement pst = conn.prepareStatement("INSERT INTO cliente(cedula, nombre, correo, telefono1, telefono2, fecha_nacimiento, contacto_emergencia, telefono_contacto_emergencia, fecha_creacion, fecha_modificacion, creador, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            pst.setString(1, user.getCedula());
-            pst.setString(2, user.getNombre());
-            pst.setString(3, user.getCorreo());
-            pst.setString(4, user.getTelefono1());
-            pst.setString(5, user.getTelefono2());
-            pst.setDate(6, new Date(user.getFechaNacimiento().getTime())); // Convertir String a Date
-            pst.setString(7, user.getContactoEmergencia());
-            pst.setString(8, user.getTelefonoContactoEmergencia());
-            pst.setDate(9, new Date(user.getFechaCreacion().getTime())); // Convertir String a Date
-            pst.setDate(10, new Date(user.getFechaModificacion().getTime())); // Convertir String a Date
-            pst.setString(11, user.getCreador());
-            pst.setString(12, user.getContrasena());
-            pst.executeUpdate();
-            pst.close();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
- */
-
 
 
     @Override

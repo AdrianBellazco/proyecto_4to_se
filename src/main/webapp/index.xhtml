@@ -94,7 +94,7 @@
             <tr>
                 <td>
                     <h:form>
-                        <h:commandLink  class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
+                        <h:commandLink action="#{vendedorBean.vendedorDetail(vendedor.cedula)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
                         <h:commandLink style="margin-left: 5px;" action="#{vendedorBean.delatevendedor(vendedor.cedula)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
                     </h:form>
                 </td>
@@ -113,6 +113,49 @@
         </c:forEach>
         </tbody>
     </table>
+
+    <!-- Tabla PLANES TURISTICOS -->
+    <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
+        Añadir plan turistico  <i class="fa-solid fa-plus" />
+    </h:link>
+    <h1>PLANES TURISTICOS</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th />
+            <th scope="col">Titulo</th>
+            <th scope="col">Descricion</th>
+            <th scope="col">Dias de duracion</th>
+            <th scope="col">Incluye desayuno/Almuerzo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Fecha de creación</th>
+            <th scope="col">Fecha de modificación</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="#{planBean.listPlanes}" var="planes">
+            <tr>
+                <td>
+                    <h:form>
+                        <h:commandLink action="#{planBean.planDetails(planes.titulo)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
+                        <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(planes.titulo)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
+                    </h:form>
+                </td>
+                <td>${planes.titulo}</td>
+                <td>${planes.descripcion}</td>
+                <td>${planes.duracionDias}</td>
+                <td>${planes.incluyeDesayuno}</td>
+                <td>${planes.estado}</td>
+                <td>${planes.fechaCreacion}</td>
+                <td>${planes.fechaModificacion}</td>
+
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" type="text/javascript" />
 

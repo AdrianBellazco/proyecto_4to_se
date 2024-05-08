@@ -55,7 +55,7 @@ public class VendedorBean implements Serializable {
 
     public String vendedorDetail(String cedula){
         vendedor = vendedorService.getVendedorById(cedula);
-        return "form?faces-redirect=true";
+        return "form_vendedor?faces-redirect=true";
 
     }
 

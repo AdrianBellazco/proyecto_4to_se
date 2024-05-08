@@ -6,9 +6,8 @@ import java.util.List;
 
 public interface VendedorRepository {
     List<Vendedor> list();
-
-    void delete(String cedula);
     boolean create(Vendedor vendedor);
     boolean update(Vendedor vendedor);
+    void delete(String cedula);
     Vendedor getVendedorById(String cedula);
 }

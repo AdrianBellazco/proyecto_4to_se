@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VendedorRepositoryImpl implements VendedorRepository {
+
     @Override
     public List<Vendedor> list() {
         List<Vendedor> vendedores = new ArrayList<Vendedor>();
@@ -27,6 +28,7 @@ public class VendedorRepositoryImpl implements VendedorRepository {
         }
         return vendedores;
     }
+
 
     private Vendedor getVendedor(ResultSet rs) throws SQLException {
         Vendedor vendedor = new Vendedor();

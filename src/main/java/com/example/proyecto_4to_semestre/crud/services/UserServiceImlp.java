@@ -25,7 +25,9 @@ public class UserServiceImlp implements UserService {
         return userRepository.update(user);
     }
 
-    public void deleteUser(String cedula) {userRepository.delete(cedula);}
+    public void deleteUser(String cedula) {
+        userRepository.delete(cedula);
+    }
 
     public User getUserById(String cedula) {
         return userRepository.getUserById(cedula);
