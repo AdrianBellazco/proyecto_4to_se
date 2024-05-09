@@ -26,9 +26,10 @@
                   <h:inputTextarea id="name" value="#{planBean.plane.descripcion}" class="form-control" />
                </div>
                <div class="col-12">
-                  <label for="cantdias" class="form-label">Dias de duracion:</label>
-                  <input type="number" id="cantdias" name="fechaNacimiento" value="#{planBean.plane.duracionDias}" class="form-control"/>
+                  <label for="duracion" class="form-label">Dias de duracion:</label>
+                  <h:inputText id="duracion" value="#{planBean.plane.duracionDias}" class="form-control" type="number"/>
                </div>
+
                <div class="col-12">
                   <label for="incluyeDesayuno" class="form-label">Incluye desayuno:</label>
                   <h:selectOneMenu id="incluyeDesayuno" value="#{planBean.plane.incluyeDesayuno}" class="form-control">

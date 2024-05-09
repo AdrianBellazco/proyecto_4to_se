@@ -15,7 +15,7 @@ public class PlanRepositoriesImpl implements PlanRepositories {
         try(Connection conn = Conexion_BD.getConnection()){
             assert conn != null;
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM planesTuristicos");
+            ResultSet rs = st.executeQuery("SELECT * FROM PlanesTuristicos");
             while (rs.next()){
                 PlanesTuristicos planesTuristico = getPlanTuristico(rs);
                 planesTuristicos.add(planesTuristico);
@@ -119,22 +119,35 @@ public class PlanRepositoriesImpl implements PlanRepositories {
     }
 
     @Override
-    public PlanesTuristicos getplandById(String Titulo){
-        PlanesTuristicos planes = null;
-        try (Connection conn = Conexion_BD.getConnection()){
+    public PlanesTuristicos getplandById(String Titulo) {
+        PlanesTuristicos plan = null;
+        try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
-            PreparedStatement pst = conn.prepareStatement("SELECT u.* FROM PlanesTuristicos as u WHERE u.Titulo = ?");
+            PreparedStatement pst = conn.prepareStatement("SELECT * FROM PlanesTuristicos WHERE Titulo = ?");
             pst.setString(1, Titulo);
             ResultSet rs = pst.executeQuery();
-            if (rs.next()){
-                planes = new PlanesTuristicos();
+            if (rs.next()) {
+                plan = new PlanesTuristicos();
+                plan.setTitulo(rs.getString("Titulo"));
+                plan.setDescripcion(rs.getString("Descripcion"));
+                plan.setDuracionDias(rs.getInt("DuracionDias"));
+                plan.setIncluyeDesayuno(rs.getBoolean("IncluyeDesayuno"));
+                plan.setIncluyeAlmuerzo(rs.getBoolean("IncluyeAlmuerzo"));
+                plan.setPagarAdicionalAlimentacion(rs.getBoolean("PagarAdicionalAlimentacion"));
+                plan.setCostoDesayuno(rs.getDouble("CostoDesayuno"));
+                plan.setCostoAlmuerzo(rs.getDouble("CostoAlmuerzo"));
+                plan.setCostoComida(rs.getDouble("CostoComida"));
+                plan.setEstado(rs.getString("Estado"));
+                plan.setFechaCreacion(rs.getDate("FechaCreacion"));
+                plan.setFechaModificacion(rs.getDate("FechaModificacion"));
             }
             rs.close();
             pst.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return planes;
+        return plan;
     }
+
 
 }
