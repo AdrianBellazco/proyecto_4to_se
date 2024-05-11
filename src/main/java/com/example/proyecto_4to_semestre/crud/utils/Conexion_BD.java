@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class Conexion_BD {
 
-    private static final String url = "jdbc:postgresql://localhost:5432/javaee";
-    private static final String user = "postgres";
+    private static final String url = "jdbc:postgresql://localhost:5432/tourism";
+    private static final String username = "postgres";
 
     private Conexion_BD(){}
 
@@ -18,7 +18,7 @@ public class Conexion_BD {
             e.printStackTrace();
         }
         try {
-            return DriverManager.getConnection(url, user, "Katherin2512");
+            return DriverManager.getConnection(url, username, "3187140146");
         }catch (SQLException e){
             e.printStackTrace();
         }

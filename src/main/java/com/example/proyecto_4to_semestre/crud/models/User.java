@@ -1,37 +1,40 @@
 package com.example.proyecto_4to_semestre.crud.models;
 
+import java.util.Date;
+
 public class User {
-    private String cedula;
-    private String nombre;
-    private String correo;
-    private String telefono_1;
-    private String telefono_2;
-    private String fecha_nacimiento;
-    private String persona_contacto;
-    private String telefono_contacto;
-    private String fechar_creacion;
-    private String fechar_actualizacion;
-    private String vendedor;
 
-    public User(){}
+        private String cedula;
+        private String nombre;
+        private String correo;
+        private String telefono1;
+        private String telefono2;
+        private Date fechaNacimiento;
+        private String contactoEmergencia;
+        private String telefonoContactoEmergencia;
+        private Date fechaCreacion;
+        private Date fechaModificacion;
+        private String creador;
+        private String contrasena;
 
-    public User(String cedula, String nombre,
-                String correo, String telefono_1,
-                String telefono_2, String fecha_nacimiento,
-                String persona_contacto, String telefono_contacto,
-                String fechar_creacion, String fechar_actualizacion, String vendedor) {
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.telefono_1 = telefono_1;
-        this.telefono_2 = telefono_2;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.persona_contacto = persona_contacto;
-        this.telefono_contacto = telefono_contacto;
-        this.fechar_creacion = fechar_creacion;
-        this.fechar_actualizacion = fechar_actualizacion;
-        this.vendedor = vendedor;
-    }
+        public User(){}
+
+        public User(String cedula, String nombre, String correo, String telefono1, String telefono2, Date fechaNacimiento,
+                    String contactoEmergencia, String telefonoContactoEmergencia, Date fechaCreacion,
+                    Date fechaModificacion, String creador, String contrasena) {
+            this.cedula = cedula;
+            this.nombre = nombre;
+            this.correo = correo;
+            this.telefono1 = telefono1;
+            this.telefono2 = telefono2;
+            this.fechaNacimiento = fechaNacimiento;
+            this.contactoEmergencia = contactoEmergencia;
+            this.telefonoContactoEmergencia = telefonoContactoEmergencia;
+            this.fechaCreacion = fechaCreacion;
+            this.fechaModificacion = fechaModificacion;
+            this.creador = creador;
+            this.contrasena = contrasena;
+        }
 
     public String getCedula() {
         return cedula;
@@ -57,67 +60,75 @@ public class User {
         this.correo = correo;
     }
 
-    public String getTelefono_1() {
-        return telefono_1;
+    public String getTelefono1() {
+        return telefono1;
     }
 
-    public void setTelefono_1(String telefono_1) {
-        this.telefono_1 = telefono_1;
+    public void setTelefono1(String telefono1) {
+        this.telefono1 = telefono1;
     }
 
-    public String getTelefono_2() {
-        return telefono_2;
+    public String getTelefono2() {
+        return telefono2;
     }
 
-    public void setTelefono_2(String telefono_2) {
-        this.telefono_2 = telefono_2;
+    public void setTelefono2(String telefono2) {
+        this.telefono2 = telefono2;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getPersona_contacto() {
-        return persona_contacto;
+    public String getContactoEmergencia() {
+        return contactoEmergencia;
     }
 
-    public void setPersona_contacto(String persona_contacto) {
-        this.persona_contacto = persona_contacto;
+    public void setContactoEmergencia(String contactoEmergencia) {
+        this.contactoEmergencia = contactoEmergencia;
     }
 
-    public String getTelefono_contacto() {
-        return telefono_contacto;
+    public String getTelefonoContactoEmergencia() {
+        return telefonoContactoEmergencia;
     }
 
-    public void setTelefono_contacto(String telefono_contacto) {
-        this.telefono_contacto = telefono_contacto;
+    public void setTelefonoContactoEmergencia(String telefonoContactoEmergencia) {
+        this.telefonoContactoEmergencia = telefonoContactoEmergencia;
     }
 
-    public String getFechar_creacion() {
-        return fechar_creacion;
+    public Date getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setFechar_creacion(String fechar_creacion) {
-        this.fechar_creacion = fechar_creacion;
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
-    public String getFechar_actualizacion() {
-        return fechar_actualizacion;
+    public Date getFechaModificacion() {
+        return fechaModificacion;
     }
 
-    public void setFechar_actualizacion(String fechar_actualizacion) {
-        this.fechar_actualizacion = fechar_actualizacion;
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
     }
 
-    public String getVendedor() {
-        return vendedor;
+    public String getCreador() {
+        return creador;
     }
 
-    public void setVendedor(String vendedor) {
-        this.vendedor = vendedor;
+    public void setCreador(String creador) {
+        this.creador = creador;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 }
