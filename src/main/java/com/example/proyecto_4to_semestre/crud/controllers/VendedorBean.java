@@ -32,7 +32,7 @@ public class VendedorBean implements Serializable {
         vendedorService.createVendedor(vendedor);
         this.setVendedor(new Vendedor());
         this.setListvendedors(vendedorService.getVendedors());
-        return "index?faces-redirect=true";
+        return "system?faces-redirect=true";
     }
 
     public void delatevendedor(String cedula){
@@ -45,7 +45,7 @@ public class VendedorBean implements Serializable {
         vendedorService.updateVendedor(vendedor);
         this.setVendedor(new Vendedor());
         this.setListvendedors(vendedorService.getVendedors());
-        return "index?faces-redirect=true";
+        return "system?faces-redirect=true";
     }
 
 

@@ -29,7 +29,7 @@ public class PlanBean implements Serializable {
         planService.createPlan(Plane);
         this.setPlane(new PlanesTuristicos());
         this.setListPlanes(planService.getAllPlanes());
-        return "index?faces-redirect=true";
+        return "system?faces-redirect=true";
     }
 
     public String updatePlane(){
@@ -37,7 +37,7 @@ public class PlanBean implements Serializable {
         this.setPlane(new PlanesTuristicos());
         this.setListPlanes(planService.getAllPlanes());
 
-        return "index?faces-redirect=true";
+        return "system?faces-redirect=true";
     }
 
     public void deletePlane(String Titulo){

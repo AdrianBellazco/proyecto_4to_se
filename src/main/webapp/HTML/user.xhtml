@@ -13,14 +13,17 @@
                     travel and information from us.
                 </p>
 
-                <form action="login" method="post" class="join__form">
-                    <h:inputText  id="user" placeholder="Ingresar tu usuario" class="join__input"/>
-                    <h:inputText type="password" id="password" placeholder="Ingresar tu contraseña" class="join__input"/>
+                <h:form>
+                    <h:outputLabel for="username" value="Usuario:" />
+                    <h:inputText id="username" value="#{loginBean.username}" />
 
-                    <button type="submit" class="join__button button">
-                        Ingresar <i class="ri-arrow-right-line"></i>
-                    </button>
-                </form>
+                    <h:outputLabel for="password" value="Contraseña:" />
+                    <h:inputSecret id="password" value="#{loginBean.password}" />
+
+                    <h:commandButton value="Iniciar sesión" action="#{loginBean.login}" />
+                    <h:messages />
+                </h:form>
+
             </div>
 
             <div class="join__image">
