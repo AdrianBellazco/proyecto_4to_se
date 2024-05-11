@@ -34,7 +34,7 @@ public class UserBean implements Serializable {
         userServide.createUser(user);
         this.setUser(new User());
         this.setListUsers(userServide.getAllUsers());
-        return "index?faces-redirect=true";
+        return "system?faces-redirect=true";
     }
 
     public String updateUser() {
@@ -42,7 +42,7 @@ public class UserBean implements Serializable {
         this.setUser(new User());
         this.setListUsers(userServide.getAllUsers());
 
-        return "index?faces-redirect=true";
+        return "system?faces-redirect=true";
     }
 
     public void deleteUser(String cedula){

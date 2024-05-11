@@ -1,5 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html">
     <section class="join section">
         <div class="join__container container grid">
             <div class="join__data">
@@ -13,14 +13,17 @@
                     travel and information from us.
                 </p>
 
-                <form action="" class="join__form">
-                    <input type="email" placeholder="Ingresar tu usuario" class="join__input"/>
-                    <input type="password" placeholder="Ingresar tu contraseña" class="join__input"/>
+                <h:form>
+                    <h:outputLabel for="username" value="Usuario:" />
+                    <h:inputText id="username" value="#{loginBean.username}" />
 
-                    <button class="join__button button">
-                        Subscribe Our Newsletter <i class="ri-arrow-right-line"></i>
-                    </button>
-                </form>
+                    <h:outputLabel for="password" value="Contraseña:" />
+                    <h:inputSecret id="password" value="#{loginBean.password}" />
+
+                    <h:commandButton value="Iniciar sesión" action="#{loginBean.login}" />
+                    <h:messages />
+                </h:form>
+
             </div>
 
             <div class="join__image">
