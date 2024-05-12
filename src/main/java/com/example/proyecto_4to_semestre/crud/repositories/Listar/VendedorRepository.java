@@ -10,4 +10,5 @@ public interface VendedorRepository {
     boolean update(Vendedor vendedor);
     void delete(String cedula);
     Vendedor getVendedorById(String cedula);
+    Vendedor getVendedorByUser(String nombre);
 }

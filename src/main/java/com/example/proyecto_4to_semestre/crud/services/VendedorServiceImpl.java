@@ -38,4 +38,8 @@ public class VendedorServiceImpl implements VendedorService {
     public void deleteVendedor(String cedula) {
         vendedorRepository.delete(cedula);
     }
+
+    @Override
+    public Vendedor getVendedorByUser(String nombre) {return vendedorRepository.getVendedorByUser(nombre);}
 }
+

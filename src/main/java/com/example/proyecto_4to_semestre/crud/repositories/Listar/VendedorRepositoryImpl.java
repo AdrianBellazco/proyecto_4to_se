@@ -112,6 +112,25 @@ public class VendedorRepositoryImpl implements VendedorRepository {
     }
 
     @Override
+    public Vendedor getVendedorByUser(String nombre){
+        Vendedor vendedor = null;
+        try (Connection conn = Conexion_BD.getConnection()){
+            assert conn != null;
+            PreparedStatement pst = conn.prepareStatement("SELECT u.* FROM vendedor as u WHERE u.username = ?");
+            pst.setString(1, nombre);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()){
+                vendedor = getVendedor(rs);
+            }
+            rs.close();
+            pst.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return vendedor;
+    }
+
+    @Override
     public void delete(String cedula){
         try (Connection conn = Conexion_BD.getConnection()){
             assert conn != null;
