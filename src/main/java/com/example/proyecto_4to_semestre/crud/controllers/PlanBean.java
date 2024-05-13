@@ -16,7 +16,7 @@ import java.util.List;
 public class PlanBean implements Serializable {
     private final PlanService planService;
     private List<PlanesTuristicos> listPlanes;
-    private PlanesTuristicos Plane;
+    private PlanesTuristicos plane; // Cambiado de Plane a plane
 
     public PlanBean(){
         this.setPlane(new PlanesTuristicos());
@@ -25,18 +25,16 @@ public class PlanBean implements Serializable {
     }
 
     public String createPlane(){
-
-        planService.createPlan(Plane);
+        planService.createPlan(plane);
         this.setPlane(new PlanesTuristicos());
         this.setListPlanes(planService.getAllPlanes());
         return "system?faces-redirect=true";
     }
 
     public String updatePlane(){
-        planService.updatePlan(Plane);
+        planService.updatePlan(plane);
         this.setPlane(new PlanesTuristicos());
         this.setListPlanes(planService.getAllPlanes());
-
         return "system?faces-redirect=true";
     }
 
@@ -46,7 +44,7 @@ public class PlanBean implements Serializable {
     }
 
     public String planDetails(String Titulo){
-        Plane = planService.getPlanById(Titulo);
+        plane = planService.getPlanById(Titulo);
         return "form_planesTuristicos?faces-redirect=true";
     }
 
@@ -60,16 +58,16 @@ public class PlanBean implements Serializable {
         this.listPlanes = listPlanes;
     }
 
+    // Cambiados de getPlane y setPlane
     public PlanesTuristicos getPlane() {
-        return Plane;
+        return plane;
     }
 
     public void setPlane(PlanesTuristicos plane) {
-        this.Plane = plane;
+        this.plane = plane;
     }
 
     public PlanService getPlanService() {
         return planService;
     }
 }
-

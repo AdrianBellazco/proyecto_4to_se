@@ -42,6 +42,7 @@ public class PlanRepositoriesImpl implements PlanRepositories {
         plan.setEstado(rs.getString("Estado"));
         plan.setFechaCreacion(rs.getDate("FechaCreacion"));
         plan.setFechaModificacion(rs.getDate("FechaModificacion"));
+        plan.setUrl(rs.getString("Url"));
         return plan;
     }
 
@@ -51,7 +52,7 @@ public class PlanRepositoriesImpl implements PlanRepositories {
         try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
             java.util.Date currentDate = new java.util.Date();
-            PreparedStatement pst = conn.prepareStatement("INSERT INTO PlanesTuristicos (Titulo, Descripcion, DuracionDias, IncluyeDesayuno, IncluyeAlmuerzo, PagarAdicionalAlimentacion, CostoDesayuno, CostoAlmuerzo, CostoComida, Estado, FechaCreacion, FechaModificacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement pst = conn.prepareStatement("INSERT INTO planesturisticos (Titulo, Descripcion, DuracionDias, IncluyeDesayuno, IncluyeAlmuerzo, PagarAdicionalAlimentacion, CostoDesayuno, CostoAlmuerzo, CostoComida, Estado, FechaCreacion, FechaModificacion, Url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             pst.setString(1, planesTuristico.getTitulo());
             pst.setString(2, planesTuristico.getDescripcion());
             pst.setInt(3, planesTuristico.getDuracionDias());
@@ -67,6 +68,8 @@ public class PlanRepositoriesImpl implements PlanRepositories {
             pst.setDate(11, new java.sql.Date(currentDate.getTime()));
             pst.setDate(12, new java.sql.Date(currentDate.getTime()));
 
+            pst.setString(13, planesTuristico.getUrl());
+
             pst.executeUpdate();
             pst.close();
             return true;
@@ -81,7 +84,7 @@ public class PlanRepositoriesImpl implements PlanRepositories {
         try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
             java.util.Date currentDate = new java.util.Date();
-            PreparedStatement pst = conn.prepareStatement("UPDATE PlanesTuristicos SET Descripcion = ?, DuracionDias = ?, IncluyeDesayuno = ?, IncluyeAlmuerzo = ?, PagarAdicionalAlimentacion = ?, CostoDesayuno = ?, CostoAlmuerzo = ?, CostoComida = ?, Estado = ?, FechaModificacion = ? WHERE Titulo = ?");
+            PreparedStatement pst = conn.prepareStatement("UPDATE planesturisticos SET Descripcion = ?, DuracionDias = ?, IncluyeDesayuno = ?, IncluyeAlmuerzo = ?, PagarAdicionalAlimentacion = ?, CostoDesayuno = ?, CostoAlmuerzo = ?, CostoComida = ?, Estado = ?, FechaModificacion = ?, Url = ? WHERE Titulo = ?");
 
             pst.setString(1, planesTuristico.getDescripcion());
             pst.setInt(2, planesTuristico.getDuracionDias());
@@ -93,7 +96,8 @@ public class PlanRepositoriesImpl implements PlanRepositories {
             pst.setDouble(8, planesTuristico.getCostoComida());
             pst.setString(9, planesTuristico.getEstado());
             pst.setDate(10, new java.sql.Date(currentDate.getTime()));
-            pst.setString(11, planesTuristico.getTitulo());
+            pst.setString(11, planesTuristico.getUrl());
+            pst.setString(12, planesTuristico.getTitulo());
 
             int rowsUpdated = pst.executeUpdate();
             pst.close();
@@ -109,7 +113,7 @@ public class PlanRepositoriesImpl implements PlanRepositories {
     public void delete(String Titulo){
         try (Connection conn = Conexion_BD.getConnection()){
             assert conn != null;
-            PreparedStatement pst = conn.prepareStatement("DELETE FROM PlanesTuristicos WHERE Titulo = ?");
+            PreparedStatement pst = conn.prepareStatement("DELETE FROM planesturisticos WHERE Titulo = ?");
             pst.setString(1, Titulo);
             pst.executeUpdate();
             pst.close();
@@ -123,7 +127,7 @@ public class PlanRepositoriesImpl implements PlanRepositories {
         PlanesTuristicos plan = null;
         try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
-            PreparedStatement pst = conn.prepareStatement("SELECT * FROM PlanesTuristicos WHERE Titulo = ?");
+            PreparedStatement pst = conn.prepareStatement("SELECT * FROM planesturisticos WHERE Titulo = ?");
             pst.setString(1, Titulo);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
@@ -140,6 +144,7 @@ public class PlanRepositoriesImpl implements PlanRepositories {
                 plan.setEstado(rs.getString("Estado"));
                 plan.setFechaCreacion(rs.getDate("FechaCreacion"));
                 plan.setFechaModificacion(rs.getDate("FechaModificacion"));
+                plan.setUrl(rs.getString("Url"));
             }
             rs.close();
             pst.close();

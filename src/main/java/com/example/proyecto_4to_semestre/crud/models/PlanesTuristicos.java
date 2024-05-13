@@ -16,22 +16,24 @@ public class PlanesTuristicos {
     private String Estado;
     private Date FechaCreacion;
     private Date FechaModificacion;
+    private String Url;
 
     public PlanesTuristicos(){}
 
-    public PlanesTuristicos(String titulo, String descripcion, int duracionDias, boolean incluyeDesayuno, boolean incluyeAlmuerzo, boolean pagarAdicionalAlimentacion, double costoDesayuno, double costoAlmuerzo, double costoComida, String estado, Date fechaCreacion, Date fechaModificacion) {
-        Titulo = titulo;
-        Descripcion = descripcion;
-        DuracionDias = duracionDias;
-        IncluyeDesayuno = incluyeDesayuno;
-        IncluyeAlmuerzo = incluyeAlmuerzo;
-        PagarAdicionalAlimentacion = pagarAdicionalAlimentacion;
-        CostoDesayuno = costoDesayuno;
-        CostoAlmuerzo = costoAlmuerzo;
-        CostoComida = costoComida;
-        Estado = estado;
-        FechaCreacion = fechaCreacion;
-        FechaModificacion = fechaModificacion;
+    public PlanesTuristicos(String titulo, String descripcion, int duracionDias, boolean incluyeDesayuno, boolean incluyeAlmuerzo, boolean pagarAdicionalAlimentacion, double costoDesayuno, double costoAlmuerzo, double costoComida, String estado, Date fechaCreacion, Date fechaModificacion, String Url) {
+        this.Titulo = titulo;
+        this.Descripcion = descripcion;
+        this.DuracionDias = duracionDias;
+        this.IncluyeDesayuno = incluyeDesayuno;
+        this.IncluyeAlmuerzo = incluyeAlmuerzo;
+        this.PagarAdicionalAlimentacion = pagarAdicionalAlimentacion;
+        this.CostoDesayuno = costoDesayuno;
+        this.CostoAlmuerzo = costoAlmuerzo;
+        this.CostoComida = costoComida;
+        this.Estado = estado;
+        this.FechaCreacion = fechaCreacion;
+        this.FechaModificacion = fechaModificacion;
+        this.Url = Url;
     }
 
     public String getTitulo() {
@@ -128,6 +130,14 @@ public class PlanesTuristicos {
 
     public void setFechaModificacion(Date fechaModificacion) {
         FechaModificacion = fechaModificacion;
+    }
+
+    public String getUrl() {
+        return Url;
+    }
+
+    public void setUrl(String url) {
+        Url = url;
     }
 }
 

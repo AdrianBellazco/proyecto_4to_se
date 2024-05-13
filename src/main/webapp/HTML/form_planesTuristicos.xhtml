@@ -12,6 +12,7 @@
 </h:head>
 
 <h:body>
+
    <div class="container mt-5">
       <div class="card p-4" style="max-width: 500px; margin: 0 auto;">
          <h2 class="mb-4">Añadir plan turistico</h2>
@@ -51,19 +52,19 @@
                      <f:selectItem itemValue="false" itemLabel="No" />
                   </h:selectOneMenu>
                </div>
-               <!-- Otros campos de entrada aquí -->
+
             </div>
             <div class="col-12">
                <label for="conemergencia" class="form-label">costo del desayuno:</label>
-               <input type="number" id="conemergencia" name="fechaNacimiento" value="#{planBean.plane.costoDesayuno}" class="form-control" required="required"/>
+               <input type="number" id="conemergencia" name="fechaNacimiento" value="#{planBean.plane.costoDesayuno}" class="form-control" />
             </div>
             <div class="col-12">
                <label for="telconemergencia" class="form-label">Costo del almuerzo:</label>
-               <input type="number" id="telconemergencia" name="fechaNacimiento" value="#{planBean.plane.costoAlmuerzo}" class="form-control" required="required"/>
+               <input type="number" id="telconemergencia" name="fechaNacimiento" value="#{planBean.plane.costoAlmuerzo}" class="form-control"/>
             </div>
             <div class="col-12">
                <label for="costocomida" class="form-label">Costo de la comida:</label>
-               <input type="number" id="costocomida" name="fechaNacimiento" value="#{planBean.plane.costoComida}" class="form-control" required="required"/>
+               <input type="number" id="costocomida" name="fechaNacimiento" value="#{planBean.plane.costoComida}" class="form-control" />
             </div>
             <div class="col-12">
                <label for="estado" class="form-label">Estado:</label>
@@ -71,6 +72,10 @@
                   <f:selectItem itemValue="Activo" itemLabel="Activo" />
                   <f:selectItem itemValue="Inactivo" itemLabel="Inactivo" />
                </h:selectOneMenu>
+               <div class="col-12">
+                  <label for="url" class="form-label">Ingresa una imagen URL:</label>
+                  <h:inputText id="url" value="#{planBean.plane.url}" class="form-control"/>
+               </div>
             </div>
 
             <div class="mt-3">
