@@ -59,10 +59,18 @@
                     <h:panelGrid rendered="#{empty userBean.user.cedula}">
                         <h:commandLink value="Guardar" action="#{userBean.createUser()}" class="btn btn-primary" />
                     </h:panelGrid>
+
                     <h:panelGrid rendered="#{not empty userBean.user.cedula}">
                         <h:commandLink value="Actualizar" action="#{userBean.updateUser()}" class="btn btn-primary" />
                     </h:panelGrid>
-                    <h:link value="Cancelar" outcome="system" class="btn btn-secondary" />
+
+                    <h:panelGrid rendered="#{not empty userBean.user.cedula}">
+                        <h:commandButton value="Cancelar" action="#{userBean.cancelarEdicion()}" />
+                    </h:panelGrid>
+
+                    <h:panelGrid rendered="#{empty userBean.user.cedula}">
+                        <h:link value="Cancelar" outcome="system" class="btn btn-secondary" />
+                    </h:panelGrid>
                 </div>
             </h:form>
         </div>

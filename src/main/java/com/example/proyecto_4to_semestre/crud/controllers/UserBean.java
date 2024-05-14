@@ -1,5 +1,6 @@
 package com.example.proyecto_4to_semestre.crud.controllers;
 
+import com.example.proyecto_4to_semestre.crud.models.PlanesTuristicos;
 import com.example.proyecto_4to_semestre.crud.models.User;
 import com.example.proyecto_4to_semestre.crud.services.UserService;
 import com.example.proyecto_4to_semestre.crud.services.UserServiceImlp;
@@ -27,13 +28,18 @@ public class UserBean implements Serializable {
 
 
     public String createUser() {
-        if (user.getFechaNacimiento() == null) {
+ if (user.getFechaNacimiento() == null) {
 
             user.setFechaNacimiento(new Date());
         }
         userServide.createUser(user);
         this.setUser(new User());
         this.setListUsers(userServide.getAllUsers());
+        return "system?faces-redirect=true";
+    }
+
+    public String cancelarEdicion() {
+        this.user = new User();
         return "system?faces-redirect=true";
     }
 

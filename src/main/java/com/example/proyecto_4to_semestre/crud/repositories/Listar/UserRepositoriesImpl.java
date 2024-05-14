@@ -37,7 +37,7 @@ public class UserRepositoriesImpl implements UserRepository {
         user.setCorreo(rs.getString("correo"));
         user.setTelefono1(rs.getString("telefono1"));
         user.setTelefono2(rs.getString("telefono2"));
-        user.setFechaNacimiento(rs.getDate("fecha_nacimiento")); // Cambio aquí
+        user.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
         user.setContactoEmergencia(rs.getString("contacto_emergencia"));
         user.setTelefonoContactoEmergencia(rs.getString("telefono_contacto_emergencia"));
         user.setFechaCreacion(rs.getDate("fecha_creacion")); // Cambio aquí
@@ -53,21 +53,23 @@ public class UserRepositoriesImpl implements UserRepository {
     public boolean create(User user) {
         try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
-            java.util.Date date = new java.util.Date();
-            PreparedStatement pst = conn.prepareStatement("INSERT INTO cliente(cedula, nombre, correo, telefono1, telefono2, fecha_nacimiento, contacto_emergencia, telefono_contacto_emergencia, fecha_creacion, fecha_modificacion, creador) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            java.util.Date currentDate = new java.util.Date();
+
+            PreparedStatement pst = conn.prepareStatement(
+                    "INSERT INTO cliente(cedula, nombre, correo, telefono1, telefono2, fecha_nacimiento, contacto_emergencia, telefono_contacto_emergencia, fecha_creacion, fecha_modificacion, creador) " +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            );
+
             pst.setString(1, user.getCedula());
             pst.setString(2, user.getNombre());
             pst.setString(3, user.getCorreo());
             pst.setString(4, user.getTelefono1());
             pst.setString(5, user.getTelefono2());
-            pst.setDate(6, new java.sql.Date(user.getFechaNacimiento().getTime()));
+            pst.setDate(6, new java.sql.Date(user.getFechaNacimiento().getTime())); // Fecha de nacimiento
             pst.setString(7, user.getContactoEmergencia());
             pst.setString(8, user.getTelefonoContactoEmergencia());
-
-            java.util.Date currentDate = new java.util.Date();
-            pst.setDate(9, new java.sql.Date(currentDate.getTime()));
-
-            pst.setDate(10, new java.sql.Date(currentDate.getTime()));
+            pst.setDate(9, new java.sql.Date(currentDate.getTime())); // Fecha de creación
+            pst.setDate(10, new java.sql.Date(currentDate.getTime())); // Fecha de modificación
             pst.setString(11, user.getCreador());
 
             pst.executeUpdate();
@@ -78,6 +80,7 @@ public class UserRepositoriesImpl implements UserRepository {
         }
         return false;
     }
+
 
 
     @Override

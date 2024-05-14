@@ -22,7 +22,7 @@
         Añadir plan turistico  <i class="fa-solid fa-plus" />
     </h:link>
     <div class="container grid text-center">
-        <div class="container g-col-4  text-center">
+        <div class="container grid g-col-4  text-center">
     <c:forEach items="#{planBean.listPlanes}" var="cardplanes">
         <div class="card" style="width: 18rem;">
             <img src="${cardplanes.url}" class="card-img-top" alt="..."/>
@@ -141,7 +141,7 @@
     </div>
 
      Tabla PLANES TURISTICOS
-    <div class="planes_turisticos">
+    <div class="planes_turisticos d-none">
         <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
             Añadir plan turistico  <i class="fa-solid fa-plus" />
         </h:link>
@@ -187,7 +187,7 @@
     </div>
 
     <!-- Tabla puntos de visita -->
-    <div class="planes_turisticos">
+    <div class="planes_turisticos d-none">
         <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
             Añadir punto de visita  <i class="fa-solid fa-plus" />
         </h:link>

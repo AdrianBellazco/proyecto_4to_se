@@ -82,10 +82,18 @@
                <h:panelGrid rendered="#{empty planBean.plane.titulo}">
                   <h:commandLink value="Guardar" action="#{planBean.createPlane()}" class="btn btn-primary" />
                </h:panelGrid>
+
                <h:panelGrid rendered="#{not empty planBean.plane.titulo}">
                   <h:commandLink value="Actualizar" action="#{planBean.updatePlane()}" class="btn btn-primary" />
                </h:panelGrid>
+
+               <h:panelGrid rendered="#{not empty planBean.plane.titulo}">
+               <h:commandButton value="Cancelar" action="#{planBean.cancelarEdicion()}" />
+              </h:panelGrid>
+
+               <h:panelGrid rendered="#{empty planBean.plane.titulo}">
                <h:link value="Cancelar" outcome="system" class="btn btn-secondary" />
+               </h:panelGrid>
             </div>
          </h:form>
       </div>

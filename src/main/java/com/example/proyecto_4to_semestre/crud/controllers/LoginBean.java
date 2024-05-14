@@ -1,5 +1,6 @@
 package com.example.proyecto_4to_semestre.crud.controllers;
 
+import com.example.proyecto_4to_semestre.crud.models.PlanesTuristicos;
 import com.example.proyecto_4to_semestre.crud.models.Vendedor;
 import com.example.proyecto_4to_semestre.crud.services.VendedorService;
 import com.example.proyecto_4to_semestre.crud.services.VendedorServiceImpl;
@@ -38,6 +39,7 @@ public class LoginBean {
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Credenciales inválidas", null));
         return null;
     }
+
 
     // Getters y setters
 

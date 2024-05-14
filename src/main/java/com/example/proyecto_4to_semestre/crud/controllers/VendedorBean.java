@@ -1,9 +1,11 @@
 package com.example.proyecto_4to_semestre.crud.controllers;
 
+import com.example.proyecto_4to_semestre.crud.models.PlanesTuristicos;
 import com.example.proyecto_4to_semestre.crud.models.User;
 import com.example.proyecto_4to_semestre.crud.models.Vendedor;
 import com.example.proyecto_4to_semestre.crud.services.VendedorService;
 import com.example.proyecto_4to_semestre.crud.services.VendedorServiceImpl;
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -14,7 +16,7 @@ import java.util.List;
 @Named("vendedorBean")
 @SessionScoped
 public class VendedorBean implements Serializable {
-    private final VendedorService vendedorService;
+    private VendedorService vendedorService;
     private List<Vendedor> listvendedors;
     private Vendedor vendedor;
 
@@ -24,6 +26,10 @@ public class VendedorBean implements Serializable {
         this.vendedor = new Vendedor(); // Inicializar el objeto vendedor
     }
 
+    public String cancelarEdicion() {
+        this.vendedor = new Vendedor();
+        return "system?faces-redirect=true";
+    }
 
     public String createVendedor(){
         if (vendedor.getFecha_nacimiento() == null) {

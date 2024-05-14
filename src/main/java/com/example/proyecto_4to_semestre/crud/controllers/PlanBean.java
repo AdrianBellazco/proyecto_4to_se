@@ -2,6 +2,7 @@ package com.example.proyecto_4to_semestre.crud.controllers;
 
 import com.example.proyecto_4to_semestre.crud.models.PlanesTuristicos;
 import com.example.proyecto_4to_semestre.crud.models.User;
+import com.example.proyecto_4to_semestre.crud.models.Vendedor;
 import com.example.proyecto_4to_semestre.crud.services.PlanService;
 import com.example.proyecto_4to_semestre.crud.services.PlanServiceImpl;
 import jakarta.enterprise.context.SessionScoped;
@@ -17,6 +18,13 @@ public class PlanBean implements Serializable {
     private final PlanService planService;
     private List<PlanesTuristicos> listPlanes;
     private PlanesTuristicos plane; // Cambiado de Plane a plane
+
+
+    public String cancelarEdicion() {
+        this.plane = new PlanesTuristicos();
+        return "system?faces-redirect=true";
+    }
+
 
     public PlanBean(){
         this.setPlane(new PlanesTuristicos());
