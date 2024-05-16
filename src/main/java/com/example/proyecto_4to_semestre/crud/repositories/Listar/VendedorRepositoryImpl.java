@@ -35,7 +35,7 @@ public class VendedorRepositoryImpl implements VendedorRepository {
         vendedor.setCedula(rs.getString("cedula"));
         vendedor.setNombre(rs.getString("nombre"));
         vendedor.setCorreo(rs.getString("correo"));
-        vendedor.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+        vendedor.setFecha_nacimiento(rs.getString("fecha_nacimiento"));
         vendedor.setTelefono1(rs.getString("telefono1"));
         vendedor.setTelefono2(rs.getString("telefono2"));
         vendedor.setUsername(rs.getString("username"));
@@ -50,17 +50,21 @@ public class VendedorRepositoryImpl implements VendedorRepository {
     public boolean create(Vendedor vendedor) {
         try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
+
+            java.util.Date currentDate = new java.util.Date();
+            java.sql.Date sqlCurrentDate = new java.sql.Date(currentDate.getTime());
+
             PreparedStatement pst = conn.prepareStatement("INSERT INTO vendedor(cedula, nombre, correo, fecha_nacimiento, telefono1, telefono2, username, password, fecha_creacion, fecha_modificacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             pst.setString(1, vendedor.getCedula());
             pst.setString(2, vendedor.getNombre());
             pst.setString(3, vendedor.getCorreo());
-            pst.setDate(4,  new java.sql.Date(vendedor.getFecha_nacimiento().getTime())); // Convertir java.util.Date a java.sql.Date
+            pst.setString(4, vendedor.getFecha_nacimiento()); // Convertir java.util.Date a java.sql.Date
             pst.setString(5, vendedor.getTelefono1());
             pst.setString(6, vendedor.getTelefono2());
             pst.setString(7, vendedor.getUsername());
             pst.setString(8, vendedor.getPassword());
-            pst.setTimestamp(9, new java.sql.Timestamp(new java.util.Date().getTime())); // Establecer fecha de creación como fecha actual
-            pst.setTimestamp(10, new java.sql.Timestamp(new java.util.Date().getTime())); // Establecer fecha de modificación como fecha actual
+            pst.setDate(9,sqlCurrentDate); // Establecer fecha de creación como fecha actual
+            pst.setDate(10, sqlCurrentDate); // Establecer fecha de modificación como fecha actual
             pst.executeUpdate();
             pst.close();
             return true;
@@ -75,14 +79,16 @@ public class VendedorRepositoryImpl implements VendedorRepository {
     public boolean update(Vendedor vendedor) {
         try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
-            PreparedStatement pst = conn.prepareStatement("UPDATE vendedor SET nombre = ?, correo = ?, fecha_nacimiento = ?, telefono1 = ?, telefono2 = ?, fecha_modificacion = ? WHERE cedula = ?");
+            PreparedStatement pst = conn.prepareStatement("UPDATE vendedor SET nombre = ?, correo = ?, fecha_nacimiento = ?, telefono1 = ?, telefono2 = ?, username = ?, password = ?, fecha_modificacion = ? WHERE cedula = ?");
             pst.setString(1, vendedor.getNombre());
             pst.setString(2, vendedor.getCorreo());
-            pst.setDate(3, new java.sql.Date(vendedor.getFecha_nacimiento().getTime()));
+            pst.setString(3, vendedor.getFecha_nacimiento());
             pst.setString(4, vendedor.getTelefono1());
             pst.setString(5, vendedor.getTelefono2());
-            pst.setTimestamp(6, new java.sql.Timestamp(new java.util.Date().getTime()));
-            pst.setString(7, vendedor.getCedula());
+            pst.setString(6 , vendedor.getUsername());
+            pst.setString(7, vendedor.getPassword());
+            pst.setDate(8, new java.sql.Date(vendedor.getFechaModificacion().getTime()));
+            pst.setString(9, vendedor.getCedula());
             pst.executeUpdate();
             pst.close();
             return true;

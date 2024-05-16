@@ -32,9 +32,6 @@ public class VendedorBean implements Serializable {
     }
 
     public String createVendedor(){
-        if (vendedor.getFecha_nacimiento() == null) {
-            vendedor.setFecha_nacimiento(new Date());
-        }
         vendedorService.createVendedor(vendedor);
         this.setVendedor(new Vendedor());
         this.setListvendedors(vendedorService.getVendedors());
@@ -48,9 +45,11 @@ public class VendedorBean implements Serializable {
 
 
     public String updateVendedor(){
+        vendedor.setFechaModificacion(new Date());
         vendedorService.updateVendedor(vendedor);
         this.setVendedor(new Vendedor());
         this.setListvendedors(vendedorService.getVendedors());
+
         return "system?faces-redirect=true";
     }
 

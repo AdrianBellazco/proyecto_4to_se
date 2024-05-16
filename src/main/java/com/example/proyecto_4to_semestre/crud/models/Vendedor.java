@@ -6,7 +6,7 @@ public class Vendedor {
     private  String cedula;
     private String nombre;
     private String correo;
-    private Date fecha_nacimiento;
+    private String fecha_nacimiento;
     private String telefono1;
     private String telefono2;
     private String username;
@@ -16,7 +16,7 @@ public class Vendedor {
 
     public Vendedor(){}
 
-    public Vendedor(String cedula, String nombre, String correo, Date fecha_nacimiento, String telefono1, String telefono2, String username, String password, Date fechaCreacion, Date fechaModificacion) {
+    public Vendedor(String cedula, String nombre, String correo, String fecha_nacimiento, String telefono1, String telefono2, String username, String password, Date fechaCreacion, Date fechaModificacion) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.correo = correo;
@@ -53,11 +53,11 @@ public class Vendedor {
         this.correo = correo;
     }
 
-    public Date getFecha_nacimiento() {
+    public String getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
