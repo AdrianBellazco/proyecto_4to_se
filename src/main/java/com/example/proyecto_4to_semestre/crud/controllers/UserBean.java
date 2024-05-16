@@ -28,10 +28,10 @@ public class UserBean implements Serializable {
 
 
     public String createUser() {
- if (user.getFechaNacimiento() == null) {
+ /*if (user.getFechaNacimiento() == null) {
 
             user.setFechaNacimiento(new Date());
-        }
+        }*/
         userServide.createUser(user);
         this.setUser(new User());
         this.setListUsers(userServide.getAllUsers());
@@ -44,6 +44,7 @@ public class UserBean implements Serializable {
     }
 
     public String updateUser() {
+        user.setFechaModificacion(new Date());
         userServide.updateUser(user);
         this.setUser(new User());
         this.setListUsers(userServide.getAllUsers());

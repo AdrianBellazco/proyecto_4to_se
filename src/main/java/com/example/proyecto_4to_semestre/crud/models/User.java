@@ -9,7 +9,7 @@ public class User {
         private String correo;
         private String telefono1;
         private String telefono2;
-        private Date fechaNacimiento;
+        private String fechaNacimiento;
         private String contactoEmergencia;
         private String telefonoContactoEmergencia;
         private Date fechaCreacion;
@@ -19,7 +19,7 @@ public class User {
 
         public User(){}
 
-        public User(String cedula, String nombre, String correo, String telefono1, String telefono2, Date fechaNacimiento,
+        public User(String cedula, String nombre, String correo, String telefono1, String telefono2, String fechaNacimiento,
                     String contactoEmergencia, String telefonoContactoEmergencia, Date fechaCreacion,
                     Date fechaModificacion, String creador, String contrasena) {
             this.cedula = cedula;
@@ -76,11 +76,11 @@ public class User {
         this.telefono2 = telefono2;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

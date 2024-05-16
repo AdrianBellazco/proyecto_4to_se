@@ -37,15 +37,16 @@ public class UserRepositoriesImpl implements UserRepository {
         user.setCorreo(rs.getString("correo"));
         user.setTelefono1(rs.getString("telefono1"));
         user.setTelefono2(rs.getString("telefono2"));
-        user.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+        user.setFechaNacimiento(rs.getString("fecha_nacimiento")); // Fecha de nacimiento como String
         user.setContactoEmergencia(rs.getString("contacto_emergencia"));
         user.setTelefonoContactoEmergencia(rs.getString("telefono_contacto_emergencia"));
-        user.setFechaCreacion(rs.getDate("fecha_creacion")); // Cambio aquí
-        user.setFechaModificacion(rs.getDate("fecha_modificacion")); // Cambio aquí
+        user.setFechaCreacion(rs.getDate("fecha_creacion")); // Fecha de creación como Date
+        user.setFechaModificacion(rs.getDate("fecha_modificacion")); // Fecha de modificación como Date
         user.setCreador(rs.getString("creador"));
         user.setContrasena(rs.getString("contrasena"));
         return user;
     }
+
 
 
 
@@ -54,6 +55,7 @@ public class UserRepositoriesImpl implements UserRepository {
         try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
             java.util.Date currentDate = new java.util.Date();
+            java.sql.Date sqlCurrentDate = new java.sql.Date(currentDate.getTime());
 
             PreparedStatement pst = conn.prepareStatement(
                     "INSERT INTO cliente(cedula, nombre, correo, telefono1, telefono2, fecha_nacimiento, contacto_emergencia, telefono_contacto_emergencia, fecha_creacion, fecha_modificacion, creador) " +
@@ -65,11 +67,11 @@ public class UserRepositoriesImpl implements UserRepository {
             pst.setString(3, user.getCorreo());
             pst.setString(4, user.getTelefono1());
             pst.setString(5, user.getTelefono2());
-            pst.setDate(6, new java.sql.Date(user.getFechaNacimiento().getTime())); // Fecha de nacimiento
+            pst.setString(6, user.getFechaNacimiento()); // Fecha de nacimiento como String
             pst.setString(7, user.getContactoEmergencia());
             pst.setString(8, user.getTelefonoContactoEmergencia());
-            pst.setDate(9, new java.sql.Date(currentDate.getTime())); // Fecha de creación
-            pst.setDate(10, new java.sql.Date(currentDate.getTime())); // Fecha de modificación
+            pst.setDate(9, sqlCurrentDate); // Fecha de creación
+            pst.setDate(10, sqlCurrentDate); // Fecha de modificación
             pst.setString(11, user.getCreador());
 
             pst.executeUpdate();
@@ -83,23 +85,24 @@ public class UserRepositoriesImpl implements UserRepository {
 
 
 
+
+
     @Override
     public boolean update(User user){
         try (Connection conn = Conexion_BD.getConnection()){
             assert conn != null;
-            PreparedStatement pst = conn.prepareStatement("UPDATE cliente SET nombre = ?, correo = ?, telefono1 = ?, telefono2 = ?, fecha_nacimiento = ?, contacto_emergencia = ?, telefono_contacto_emergencia = ?, fecha_creacion = ?, fecha_modificacion = ?, creador = ?, contrasena = ? WHERE cedula = ?");
+            PreparedStatement pst = conn.prepareStatement("UPDATE cliente SET nombre = ?, correo = ?, telefono1 = ?, telefono2 = ?, fecha_nacimiento = ?, contacto_emergencia = ?, telefono_contacto_emergencia = ?, fecha_modificacion = ?, creador = ?, contrasena = ? WHERE cedula = ?");
             pst.setString(1, user.getNombre());
             pst.setString(2, user.getCorreo());
             pst.setString(3, user.getTelefono1());
             pst.setString(4, user.getTelefono2());
-            pst.setDate(5, new java.sql.Date(user.getFechaNacimiento().getTime())); // Convertir String a Date
+            pst.setString(5, user.getFechaNacimiento()); // Convertir String a Date
             pst.setString(6, user.getContactoEmergencia());
             pst.setString(7, user.getTelefonoContactoEmergencia());
-            pst.setDate(8, new java.sql.Date(user.getFechaCreacion().getTime())); // Convertir String a Date
-            pst.setDate(9, new java.sql.Date(user.getFechaModificacion().getTime())); // Convertir String a Date
-            pst.setString(10, user.getCreador());
-            pst.setString(11, user.getContrasena());
-            pst.setString(12, user.getCedula());
+            pst.setDate(8, new java.sql.Date(user.getFechaModificacion().getTime())); // Convertir String a Date
+            pst.setString(9, user.getCreador());
+            pst.setString(10, user.getContrasena());
+            pst.setString(11, user.getCedula());
             pst.executeUpdate();
             pst.close();
             return true;
