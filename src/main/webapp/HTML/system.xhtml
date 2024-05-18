@@ -140,7 +140,7 @@
         </table>
     </div>
 
-     Tabla PLANES TURISTICOS
+    <!--Tabla PLANES TURISTICOS -->
     <div class="planes_turisticos d-none">
         <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
             Añadir plan turistico  <i class="fa-solid fa-plus" />
@@ -187,8 +187,8 @@
     </div>
 
     <!-- Tabla puntos de visita -->
-    <div class="planes_turisticos d-none">
-        <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
+    <div class="planes_turisticos ">
+        <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_punto">
             Añadir punto de visita  <i class="fa-solid fa-plus" />
         </h:link>
 
@@ -198,6 +198,7 @@
             <thead>
             <tr>
                 <th />
+                <th scope="col">id de la actividad</th>
                 <th scope="col">Titulo de la actividad</th>
                 <th scope="col">Descricion</th>
                 <th scope="col">Estado</th>
@@ -209,21 +210,22 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="#{planBean.listPlanes}" var="planes">
+            <c:forEach items="#{puntoBean.listPuntos}" var="puntos">
                 <tr>
                     <td>
                         <h:form>
-                            <h:commandLink action="#{planBean.planDetails(planes.titulo)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
-                            <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(planes.titulo)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
+                            <h:commandLink action="#{puntoBean.puntoDetail(puntos.idpunto)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
+                            <h:commandLink style="margin-left: 5px;" action="#{puntoBean.puntoDetail(puntos.idpunto)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
                         </h:form>
                     </td>
-                    <td>${planes.titulo}</td>
-                    <td>${planes.descripcion}</td>
-                    <td>${planes.duracionDias}</td>
-                    <td>${planes.incluyeDesayuno}</td>
-                    <td>${planes.estado}</td>
-                    <td>${planes.fechaCreacion}</td>
-                    <td>${planes.fechaModificacion}</td>
+                    <td>${puntos.idpunto}</td>
+                    <td>${puntos.nombre}</td>
+                    <td>${puntos.descripcion}</td>
+                    <td>${puntos.estado}</td>
+                    <td>${puntos.departamento}</td>
+                    <td>${puntos.ciudad}</td>
+                    <td>${puntos.fechaCreacion}</td>
+                    <td>${puntos.fechaModificacion}</td>
 
                 </tr>
             </c:forEach>

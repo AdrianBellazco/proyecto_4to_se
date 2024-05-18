@@ -8,6 +8,6 @@ public interface puntosVisitaRepositories {
     List<puntosVisitas> list();
     boolean create(puntosVisitas puntos);
     boolean update(puntosVisitas puntos);
-    void delete(String titulo);
-    puntosVisitas getUserById(String titulo);
+    void delete(String id);
+    puntosVisitas getById(String id);
 }

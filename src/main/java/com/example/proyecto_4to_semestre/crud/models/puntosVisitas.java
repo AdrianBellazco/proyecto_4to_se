@@ -3,6 +3,7 @@ package com.example.proyecto_4to_semestre.crud.models;
 import java.util.Date;
 
 public class puntosVisitas {
+        private String idpunto;
         private String nombre;
         private String descripcion;
         private Boolean estado;
@@ -14,7 +15,7 @@ public class puntosVisitas {
 
         public puntosVisitas() {}
 
-        public puntosVisitas(String nombre, String descripcion, Boolean estado, String departamento, String ciudad, Date fechaCreacion, Date fechaModificacion) {
+        public puntosVisitas(String nombre, String descripcion, Boolean estado, String departamento, String ciudad, Date fechaCreacion, Date fechaModificacion, String idpunto) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
@@ -22,6 +23,7 @@ public class puntosVisitas {
         this.ciudad = ciudad;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
+        this.idpunto = idpunto;
     }
 
     public String getNombre() {
@@ -78,6 +80,14 @@ public class puntosVisitas {
 
     public void setFechaModificacion(Date fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
+    }
+
+    public String getIdpunto() {
+        return idpunto;
+    }
+
+    public void setIdpunto(String idpunto) {
+        this.idpunto = idpunto;
     }
 }
 

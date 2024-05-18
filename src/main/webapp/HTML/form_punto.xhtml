@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</h:head>
+
+<h:body>
+
+    <div class="container mt-5">
+        <div class="card p-4" style="max-width: 500px; margin: 0 auto;">
+            <h2 class="mb-4">Añadir punto de visita </h2>
+            <h:form>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label for="id" class="form-label">ID del punto:</label>
+                        <h:inputText id="id" value="#{puntoBean.puntoVisitas.idpunto}" class="form-control" readonly="#{not empty puntoBean.puntoVisitas.idpunto}" required="true"/>
+                    </div>
+                    <div class="col-12">
+                        <label for="titulo" class="form-label">Titulo de la actividad:</label>
+                        <h:inputTextarea id="titulo" value="#{puntoBean.puntoVisitas.nombre}" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <label for="name" class="form-label">Descripcion:</label>
+                        <h:inputTextarea id="name" value="#{puntoBean.puntoVisitas.descripcion}" class="form-control" />
+                    </div>
+                <div class="col-12">
+                    <label for="estado" class="form-label">Estado:</label>
+                    <h:selectOneMenu id="estado" value="#{puntoBean.puntoVisitas.estado}" class="form-control">
+                        <f:selectItem itemValue="Activo" itemLabel="Activo" />
+                        <f:selectItem itemValue="Inactivo" itemLabel="Inactivo" />
+                    </h:selectOneMenu>
+
+                </div>
+                </div>
+                <div class="mt-3">
+                    <h:panelGrid rendered="#{empty puntoBean.puntoVisitas.idpunto}">
+                        <h:commandLink value="Guardar" action="#{puntoBean.createPunto()}" class="btn btn-primary" />
+                    </h:panelGrid>
+
+                    <h:panelGrid rendered="#{not empty puntoBean.puntoVisitas.idpunto}">
+                        <h:commandLink value="Actualizar" action="#{puntoBean.updatePunto()}" class="btn btn-primary" />
+                    </h:panelGrid>
+
+                    <h:panelGrid rendered="#{not empty puntoBean.puntoVisitas.idpunto}">
+                        <h:commandButton value="Cancelar" action="#{planBean.cancelarEdicion()}" />
+                    </h:panelGrid>
+
+                    <h:panelGrid rendered="#{empty puntoBean.puntoVisitas.idpunto}">
+                        <h:link value="Cancelar" outcome="system" class="btn btn-secondary" />
+                    </h:panelGrid>
+                </div>
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>
