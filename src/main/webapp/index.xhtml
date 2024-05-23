@@ -8,15 +8,19 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-    <link rel="stylesheet" href="HTML/css/styles.css" type="text/css"/>
 
-    <link rel="shortcut icon" href="HTML/imagenes/medium.svg" type="image/x-icon"/>
-    <!--REMIXICONS -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
-    <!-- Enlace opcional para los íconos de Bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <!-- Bootstrap CSS -->
-    <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css"/>
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"/>
+
+    <!--=============== BOXICONS ===============-->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'/>
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="HTML/css/swiper-bundle.min.css"/>
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="HTML/css/styles.css"/>
 
     <!--sisas -->
     <title>TURISMO S.A</title>
@@ -26,54 +30,56 @@
 
 <h:body>
 
+
+
     <!--==================== HEADER ====================-->
-    <div class="header" id="header1">
+    <div class="header" id="header">
         <div class="nav container">
-            <a href="#" class="nav__logo">Turismo <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-medium nav__logo" viewBox="0 0 16 16">
-                <path d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8m4.95 0c0 2.34-1.01 4.236-2.256 4.236S9.463 10.339 9.463 8c0-2.34 1.01-4.236 2.256-4.236S13.975 5.661 13.975 8M16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795"/>
-            </svg></a>
+            <a href="#" class="nav__logo">
+                Holux <i class='bx bxs-home-alt-2'></i>
+            </a>
 
-
-            <div class="nav__menu" id="nav-menu">
+            <div class="nav__menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="#home" class="nav__link active-link">Inicio</a>
+                        <a href="#home" class="nav__link active-link">
+                            <i class='bx bx-home-alt-2' ></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#popular" class="nav__link">
+                            <i class='bx bx-building-house' ></i>
+                            <span>Residences</span>
+                        </a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="#about" class="nav__link">Paquetes</a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#popular" class="nav__link">Destinos</a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#explore" class="nav__link">Explorar</a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#user" class="nav__link"><i class="ri-user-line"></i></a>
+                        <a href="#contact" class="nav__link">
+                            <span>Contact</span>
+                            <i class='bx bx-phone' ></i>
+                        </a>
                     </li>
                 </ul>
-
-                <!-- Close button -->
-                <div class="nav__close" id="nav-close">
-                    <i class="ri-close-line"></i>
-                </div>
             </div>
 
-            <!-- Toggle button -->
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="ri-menu-line"></i>
-            </div>
+            <!-- Theme change button -->
+            <i class='bx bx-moon change-theme' id="theme-button"></i>
+
+               <!-- Login button -->
+                <a href="#user"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                </svg></a>
         </div>
     </div>
+
 
     <div id="home">
         <ui:include src="HTML/home.xhtml"></ui:include>
     </div>
-    <div id="about">
+    
+     <div id="about">
         <ui:include src="HTML/about.xhtml"></ui:include>
     </div>
     <div id="popular">
@@ -91,17 +97,20 @@
 
 
 
-    <!--=============== SCROLLREVEAL ===============-->
-    <script type="text/javascript" src="js/scrollreveal.min.js"><![CDATA[
+
+    <script type="text/javascript" src="HTML/js/swiper-bundle.min.js"><![CDATA[
      ]]></script>
 
 
     <!--=============== MAIN JS ===============-->
-
-    <script type="text/javascript" src="js/main.js"><![CDATA[
+    <script type="text/javascript" src="HTML/js/swiperPopular.js"><![CDATA[
      ]]></script>
 
+    <script type="text/javascript" src="HTML/js/scrollreveal.min.js"><![CDATA[
+     ]]></script>
 
+    <script type="text/javascript" src="HTML/js/main.js"><![CDATA[
+     ]]></script>
 
 
 </h:body>

@@ -1,35 +1,46 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html">
-    <section class="join section">
-        <div class="join__container container grid">
-            <div class="join__data">
-                <h2 class="section__title">
-                    Your Journey <br/>
-                    Starts Here
-                </h2>
 
-                <p class="join__description">
-                    Get up to date with the latest
-                    travel and information from us.
-                </p>
+<h:head>
+  <!--  <link rel="stylesheet" href="css/login.css"/> -->
 
-                <h:form>
-                    <h:outputLabel for="username" value="Usuario:" />
-                    <h:inputText id="username" value="#{loginBean.username}" />
+</h:head>
 
-                    <h:outputLabel for="password" value="Contraseña:" />
-                    <h:inputSecret id="password" value="#{loginBean.password}" />
 
-                    <h:commandButton value="Iniciar sesión" action="#{loginBean.login}" />
-                    <h:messages />
-                </h:form>
+
+    <!--==================== SUBSCRIBE ====================-->
+    <section class="subscribe section">
+        <div class="subscribe__container container">
+            <div>
+                <div class="login__inputs">
+
+
+
+
+
+                    <div class="login__box" >
+                        <h:outputLabel  for="username"  value = "usuario"/>
+                        <h:inputText id="username" required="true" class="login__input" value="#{loginBean.username}" />
+                    </div>
+
+
+
+                        <div class="login__box">
+                            <h:outputLabel for="password" value="Contraseña:" />
+                            <h:inputSecret id="password" required="true" class="login__input" value="#{loginBean.password}" />
+                        </div>
+
+
+
+
+
+                </div>
 
             </div>
-            <div class="join__image">
-                <img src="https://images.pexels.com/photos/15847154/pexels-photo-15847154/free-photo-of-panorama-urbano-skyline-verano-rascacielos.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="join image" class="join__img"/>
-                <div class="join__shadow"></div>
-            </div>
+
         </div>
     </section>
 
+    <h:commandButton value="Iniciar sesión"  action="#{loginBean.login}" />
+    <h:messages />
 </ui:composition>
