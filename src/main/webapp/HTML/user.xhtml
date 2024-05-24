@@ -2,7 +2,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-  <!--  <link rel="stylesheet" href="css/login.css"/> -->
+    <link rel="stylesheet" href="css/styles.css"/>
 
 </h:head>
 
@@ -17,30 +17,37 @@
 
 
 
+                    <h:form>
 
                     <div class="login__box" >
-                        <h:outputLabel  for="username"  value = "usuario"/>
+                        <h:outputLabel  for="username"   class="login__label" value = "usuario"/>
                         <h:inputText id="username" required="true" class="login__input" value="#{loginBean.username}" />
                     </div>
 
 
 
                         <div class="login__box">
-                            <h:outputLabel for="password" value="Contraseña:" />
+                            <h:outputLabel for="password" class="login__label" value="Contraseña:" />
                             <h:inputSecret id="password" required="true" class="login__input" value="#{loginBean.password}" />
+                        </div>
+                        <div class="login__buttons">
+
+                    <h:commandButton value="Iniciar sesión" class="login__button" action="#{loginBean.login}" />
+                    <h:messages />
+
                         </div>
 
 
-
-
+                    </h:form>
 
                 </div>
+
+
 
             </div>
 
         </div>
     </section>
 
-    <h:commandButton value="Iniciar sesión"  action="#{loginBean.login}" />
-    <h:messages />
+
 </ui:composition>

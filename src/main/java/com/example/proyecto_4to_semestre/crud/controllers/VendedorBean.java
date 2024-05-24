@@ -28,7 +28,7 @@ public class VendedorBean implements Serializable {
 
     public String cancelarEdicion() {
         this.vendedor = new Vendedor();
-        return "system?faces-redirect=true";
+        return "Adminpag?faces-redirect=true";
     }
 
     public String createVendedor(){

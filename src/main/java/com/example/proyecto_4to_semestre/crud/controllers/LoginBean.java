@@ -31,7 +31,7 @@ public class LoginBean {
             return "HTML/ParaVendedor?faces-redirect=true";
         } else {
             if ("admin".equals(username) && "123".equals(password)) {
-                return "HTML/system?faces-redirect=true";
+                return "HTML/ParaAdministrador?faces-redirect=true";
             }
         }
         // Credenciales inválidas, mostrar mensaje de error
@@ -40,6 +40,9 @@ public class LoginBean {
         return null;
     }
 
+    public String close(){
+        return "../index?faces-redirect=true";
+    }
 
     // Getters y setters
 
