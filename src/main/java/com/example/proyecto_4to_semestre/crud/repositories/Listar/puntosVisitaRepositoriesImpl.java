@@ -16,7 +16,7 @@ public class puntosVisitaRepositoriesImpl implements puntosVisitaRepositories {
         try (Connection conn = Conexion_BD.getConnection()){
             assert conn != null;
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM puntovisita");
+            ResultSet rs = st.executeQuery("SELECT * FROM punto_visitas");
             while (rs.next()){
                 puntosVisitas user = getpunto(rs);
                 users.add(user);
@@ -32,13 +32,13 @@ public class puntosVisitaRepositoriesImpl implements puntosVisitaRepositories {
     private puntosVisitas getpunto(ResultSet rs) throws SQLException {
         puntosVisitas punto = new puntosVisitas();
         punto.setIdpunto(rs.getString("idpunto"));
-        punto.setNombre(rs.getString("titulo"));
+        punto.setNombre(rs.getString("titulo_actividad"));
         punto.setDescripcion(rs.getString("descripcion"));
         punto.setEstado(rs.getBoolean("estado"));
         punto.setDepartamento(rs.getString("departamento"));
         punto.setCiudad(rs.getString("ciudad"));
-        punto.setFechaCreacion(rs.getDate("fechacreacion"));
-        punto.setFechaModificacion(rs.getDate("fechamodificacion"));
+        punto.setFechaCreacion(rs.getDate("fecha_creacion"));
+        punto.setFechaModificacion(rs.getDate("fecha_modificacion"));
        return punto;
     }
 
@@ -50,7 +50,7 @@ public class puntosVisitaRepositoriesImpl implements puntosVisitaRepositories {
             java.sql.Date sqlCurrentDate = new java.sql.Date(currentDate.getTime());
 
             PreparedStatement pst = conn.prepareStatement(
-                    "INSERT INTO puntovisita(idpunto, titulo, descripcion, estado, departamento, ciudad, fechacreacion, fechamodificacion) " +
+                    "INSERT INTO punto_visitas(idpunto, titulo_actividad, descripcion, estado, departamento, ciudad, fecha_creacion, fecha_modificacion) " +
                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
             );
 
@@ -76,7 +76,7 @@ public class puntosVisitaRepositoriesImpl implements puntosVisitaRepositories {
     public boolean update(puntosVisitas puntos){
         try (Connection conn = Conexion_BD.getConnection()){
             assert conn != null;
-            PreparedStatement pst = conn.prepareStatement("UPDATE puntovisita SET titulo = ?, descripcion = ?, estado = ?, departamento = ?, ciudad = ?, fechamodificacion = ? WHERE idpunto = ?");
+            PreparedStatement pst = conn.prepareStatement("UPDATE punto_visitas SET titulo_actividad = ?, descripcion = ?, estado = ?, departamento = ?, ciudad = ?, fecha_modificacion = ? WHERE idpunto = ?");
             pst.setString(1, puntos.getNombre());
             pst.setString(2, puntos.getDescripcion());
             pst.setBoolean(3, puntos.getEstado());
@@ -97,7 +97,7 @@ public class puntosVisitaRepositoriesImpl implements puntosVisitaRepositories {
     public void delete(String id) {
         try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
-            PreparedStatement pst = conn.prepareStatement("DELETE FROM puntovisita WHERE idpunto = ?");
+            PreparedStatement pst = conn.prepareStatement("DELETE FROM punto_visitas WHERE idpunto = ?");
             pst.setString(1, id);
             pst.executeUpdate();
             pst.close();
@@ -111,7 +111,7 @@ public class puntosVisitaRepositoriesImpl implements puntosVisitaRepositories {
             puntosVisitas punto = null;
             try (Connection conn = Conexion_BD.getConnection()){
                 assert conn != null;
-                PreparedStatement pst = conn.prepareStatement("SELECT u.* FROM puntovisita as u WHERE u.idpunto = ?");
+                PreparedStatement pst = conn.prepareStatement("SELECT u.* FROM punto_visitas as u WHERE u.idpunto = ?");
                 pst.setString(1, id);
                 ResultSet rs = pst.executeQuery();
                 if (rs.next()){

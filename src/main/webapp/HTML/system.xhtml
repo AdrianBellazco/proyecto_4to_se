@@ -18,78 +18,79 @@
 </h:head>
 <h:body>
 
-    <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
-        Añadir plan turistico  <i class="fa-solid fa-plus" />
-    </h:link>
-    <div class="container grid text-center">
-        <div class="container grid g-col-4  text-center">
-    <c:forEach items="#{planBean.listPlanes}" var="cardplanes">
-        <div class="card" style="width: 18rem;">
-            <img src="${cardplanes.url}" class="card-img-top" alt="..."/>
-            <div class="card-body">
-                <h5 class="card-title">${cardplanes.titulo}</h5>
-                <p class="card-text">${cardplanes.descripcion}.</p>
-                <h:form>
-                    <h:commandLink action="#{planBean.planDetails(cardplanes.titulo)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
-                    <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(cardplanes.titulo)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
-                </h:form>
+        <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
+            Añadir plan turistico  <i class="fa-solid fa-plus" />
+        </h:link>
+        <div class="container grid text-center">
+            <div class="container grid g-col-4  text-center">
+        <c:forEach items="#{planBean.listPlanes}" var="cardplanes">
+            <div class="card" style="width: 18rem;">
+                <img src="${cardplanes.url}" class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <h5 class="card-title">${cardplanes.titulo}</h5>
+                    <p class="card-text">${cardplanes.descripcion}</p>
+                    <h:form>
+                        <h:commandLink action="#{planBean.planDetails(cardplanes.ID)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
+                        <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(cardplanes.ID)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
+                    </h:form>
+                </div>
+            </div>
+        </c:forEach>
             </div>
         </div>
-    </c:forEach>
-        </div>
-    </div>
 
     <!-- CLIENTES -->
-    <div class="clientes">
-        <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form">
-            Añadir cliente  <i class="fa-solid fa-plus" />
-        </h:link>
+     <div class="clientes">
+         <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form">
+             Añadir cliente  <i class="fa-solid fa-plus" />
+         </h:link>
 
-        <h1>Tabla clientes</h1>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th />
-                <th scope="col">Código</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Telefono opcional</th>
-                <th scope="col">Fecha de nacimiento</th>
-                <th scope="col">Nombre de contacto de emergencia</th>
-                <th scope="col">Telefono de contacto de emergencia</th>
-                <th scope="col">Fecha de creacion</th>
-                <th scope="col">Fecha de modificacion</th>
-                <th scope="col">Creador</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="#{userBean.listUsers}" var="user">
-                <tr>
-                    <td>
-                        <h:form>
-                            <h:commandLink action="#{userBean.userDetail(user.cedula)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
-                            <h:commandLink style="margin-left: 5px;" action="#{userBean.deleteUser(user.cedula)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
-                        </h:form>
-                    </td>
-                    <td>${user.cedula}</td>
-                    <td>${user.nombre}</td>
-                    <td>${user.correo}</td>
-                    <td>${user.telefono1}</td>
-                    <td>${user.telefono2}</td>
-                    <td>${user.fechaNacimiento}</td>
-                    <td>${user.contactoEmergencia}</td>
-                    <td>${user.telefonoContactoEmergencia}</td>
-                    <td>${user.fechaCreacion}</td>
-                    <td>${user.fechaModificacion}</td>
-                    <td>${user.creador}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
+         <h1>Tabla clientes</h1>
+         <table class="table table-striped">
+             <thead>
+             <tr>
+                 <th />
+                 <th scope="col">Código</th>
+                 <th scope="col">Nombre</th>
+                 <th scope="col">Correo</th>
+                 <th scope="col">Telefono</th>
+                 <th scope="col">Telefono opcional</th>
+                 <th scope="col">Fecha de nacimiento</th>
+                 <th scope="col">Nombre de contacto de emergencia</th>
+                 <th scope="col">Telefono de contacto de emergencia</th>
+                 <th scope="col">Fecha de creacion</th>
+                 <th scope="col">Fecha de modificacion</th>
+                 <th scope="col">Creador</th>
+             </tr>
+             </thead>
+             <tbody>
+             <c:forEach items="#{userBean.listUsers}" var="user">
+                 <tr>
+                     <td>
+                         <h:form>
+                             <h:commandLink action="#{userBean.userDetail(user.cedula)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
+                             <h:commandLink style="margin-left: 5px;" action="#{userBean.deleteUser(user.cedula)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
+                         </h:form>
+                     </td>
+                     <td>${user.cedula}</td>
+                     <td>${user.nombre}</td>
+                     <td>${user.correo}</td>
+                     <td>${user.telefono1}</td>
+                     <td>${user.telefono2}</td>
+                     <td>${user.fechaNacimiento}</td>
+                     <td>${user.contactoEmergencia}</td>
+                     <td>${user.telefonoContactoEmergencia}</td>
+                     <td>${user.fechaCreacion}</td>
+                     <td>${user.fechaModificacion}</td>
+                     <td>${user.creador}</td>
+                 </tr>
+             </c:forEach>
+             </tbody>
+         </table>
+     </div>
 
-    <!-- Tabla vendedor -->
+    <!-- Tabla vendedor-->
+
     <div class="vendedores">
         <h1>Vendedor</h1>
         <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_vendedor">
@@ -141,7 +142,7 @@
     </div>
 
     <!--Tabla PLANES TURISTICOS -->
-    <div class="planes_turisticos d-none">
+    <div class="planes_turisticos">
         <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
             Añadir plan turistico  <i class="fa-solid fa-plus" />
         </h:link>
@@ -151,6 +152,7 @@
             <thead>
             <tr>
                 <th />
+                <th scope="col">ID</th>
                 <th scope="col">Titulo</th>
                 <th scope="col">Descricion</th>
                 <th scope="col">Dias de duracion</th>
@@ -158,7 +160,6 @@
                 <th scope="col">Estado</th>
                 <th scope="col">Fecha de creación</th>
                 <th scope="col">Fecha de modificación</th>
-                <th scope="col">url</th>
 
             </tr>
             </thead>
@@ -167,10 +168,11 @@
                 <tr>
                     <td>
                         <h:form>
-                            <h:commandLink action="#{planBean.planDetails(planes.titulo)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
-                            <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(planes.titulo)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
+                            <h:commandLink action="#{planBean.planDetails(planes.ID)}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square" /></h:commandLink>
+                            <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(planes.ID)}" class="btn btn-outline-danger"><i class="fa-solid fa-trash" /></h:commandLink>
                         </h:form>
                     </td>
+                    <td>${planes.ID}</td>
                     <td>${planes.titulo}</td>
                     <td>${planes.descripcion}</td>
                     <td>${planes.duracionDias}</td>
@@ -178,7 +180,6 @@
                     <td>${planes.estado}</td>
                     <td>${planes.fechaCreacion}</td>
                     <td>${planes.fechaModificacion}</td>
-                    <td>${planes.url}</td>
 
                 </tr>
             </c:forEach>
@@ -186,7 +187,9 @@
         </table>
     </div>
 
+
     <!-- Tabla puntos de visita -->
+
     <div class="planes_turisticos ">
         <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_punto">
             Añadir punto de visita  <i class="fa-solid fa-plus" />

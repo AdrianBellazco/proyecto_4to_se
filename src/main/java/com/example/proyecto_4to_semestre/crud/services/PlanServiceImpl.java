@@ -1,7 +1,8 @@
 package com.example.proyecto_4to_semestre.crud.services;
 
-
+import com.example.proyecto_4to_semestre.crud.models.Activity;
 import com.example.proyecto_4to_semestre.crud.models.PlanesTuristicos;
+import com.example.proyecto_4to_semestre.crud.models.Tarifa;
 import com.example.proyecto_4to_semestre.crud.repositories.Listar.PlanRepositories;
 import com.example.proyecto_4to_semestre.crud.repositories.Listar.PlanRepositoriesImpl;
 
@@ -18,12 +19,12 @@ public class PlanServiceImpl implements PlanService {
         return planRepositories.list();
     }
 
-    public boolean createPlan(PlanesTuristicos plan) {
-        return planRepositories.create(plan);
+    public boolean createPlan(PlanesTuristicos plan, List<Activity> selectedActivities, List<Tarifa> tariffs) {
+        return planRepositories.create(plan, selectedActivities, tariffs);
     }
 
-    public boolean updatePlan(PlanesTuristicos plan) {
-        return planRepositories.update(plan);
+    public boolean updatePlan(PlanesTuristicos plan, List<Activity> selectedActivities, List<Tarifa> tariffsToInsert, List<Tarifa> tariffsToUpdate, List<String> tariffsToDeleteId) {
+        return planRepositories.update(plan, selectedActivities, tariffsToInsert, tariffsToUpdate, tariffsToDeleteId);
     }
 
     public void deletePlan(String Titulo) {
@@ -33,5 +34,5 @@ public class PlanServiceImpl implements PlanService {
     public PlanesTuristicos getPlanById(String Titulo) {
         return planRepositories.getplandById(Titulo);
     }
-
 }
+

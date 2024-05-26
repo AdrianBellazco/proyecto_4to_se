@@ -23,8 +23,6 @@ public class puntoBean implements Serializable {
     }
 
     public String createPunto(){
-
-
         puntoVisitas.setIdpunto(generarCodigoUnico());
         puntoService.createpunto(puntoVisitas);
         this.setPuntoVisitas(new puntosVisitas());
