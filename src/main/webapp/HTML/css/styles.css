@@ -394,7 +394,7 @@ body.dark-theme {
 .home__img {
   position: absolute;
   width: 250px;
-  height: 300px;
+  height: 330px;
   overflow: hidden;
   border-radius: 125px 125px 12px 12px;
   display: inline-flex;
@@ -921,7 +921,7 @@ body.dark-theme {
   }
   .home__img {
     width: 220px;
-    height: 280px;
+    height: 20px;
   }
   .home__orbe {
     width: 240px;
@@ -1092,13 +1092,13 @@ body.dark-theme {
   }
   .home__orbe {
     width: 504px;
-    height: 611px;
+    height: 570px;
     border-radius: 256px 256px 0 0;
   }
   .home__img {
     width: 472px;
-    height: 634px;
-    border-radius: 236px 236px 12px 12px;
+    height: 590px;
+    border-radius: 256px 256px 12px 12px;
     bottom: -2.5rem;
   }
 
@@ -1311,6 +1311,7 @@ button {
 
 .login__label{
   color: #f4f4f4;
+  font-size: var(--small-font-size);
 }
 
 @media screen and (max-width: 360px) {

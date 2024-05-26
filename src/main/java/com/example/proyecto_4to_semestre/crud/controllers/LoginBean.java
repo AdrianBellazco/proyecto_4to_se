@@ -8,6 +8,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
+import jakarta.servlet.http.HttpSession;
 
 import java.sql.SQLOutput;
 
@@ -41,8 +42,15 @@ public class LoginBean {
     }
 
     public String close(){
-        return "../index?faces-redirect=true";
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+
+        if (session != null) {
+            session.invalidate(); // Invalida la sesión
+        }
+        return "form?faces-redirect=true";
     }
+
 
     // Getters y setters
 
