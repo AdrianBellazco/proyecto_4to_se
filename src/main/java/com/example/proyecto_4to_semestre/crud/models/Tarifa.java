@@ -1,27 +1,30 @@
 package com.example.proyecto_4to_semestre.crud.models;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Tarifa{
 
     private String temporada;
-    private String tituloPlanTuristico;
+    private String id_planturistico;
     private boolean estado;
-    private Date iniciotemporada;
-    private Date fintemporada;
+    private String iniciotemporada;
+    private String fintemporada;
     private Date fechaCreacion;
     private Date fechaModificacion;
+    private double precio;
 
     public Tarifa(){}
 
-    public Tarifa(String temporada, String tituloPlanTuristico, boolean estado, Date iniciotemporada, Date fintemporada, Date fechaCreacion, Date fechaModificacion) {
+    public Tarifa(String temporada, String id_planturistico, boolean estado, String iniciotemporada, String fintemporada, Date fechaCreacion, Date fechaModificacion, double precio) {
         this.temporada = temporada;
-        this.tituloPlanTuristico = tituloPlanTuristico;
+        this.id_planturistico = id_planturistico;
         this.estado = estado;
         this.iniciotemporada = iniciotemporada;
         this.fintemporada = fintemporada;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
+        this.precio = precio;
     }
 
     public String getTemporada() {
@@ -32,12 +35,12 @@ public class Tarifa{
         this.temporada = temporada;
     }
 
-    public String getTituloPlanTuristico() {
-        return tituloPlanTuristico;
+    public String getId_planturistico() {
+        return id_planturistico;
     }
 
-    public void setTituloPlanTuristico(String tituloPlanTuristico) {
-        this.tituloPlanTuristico = tituloPlanTuristico;
+    public void setId_planturistico(String id_planturistico) {
+        this.id_planturistico = id_planturistico;
     }
 
     public boolean isEstado() {
@@ -48,19 +51,19 @@ public class Tarifa{
         this.estado = estado;
     }
 
-    public Date getIniciotemporada() {
+    public String getIniciotemporada() {
         return iniciotemporada;
     }
 
-    public void setIniciotemporada(Date iniciotemporada) {
+    public void setIniciotemporada(String iniciotemporada) {
         this.iniciotemporada = iniciotemporada;
     }
 
-    public Date getFintemporada() {
+    public String getFintemporada() {
         return fintemporada;
     }
 
-    public void setFintemporada(Date fintemporada) {
+    public void setFintemporada(String fintemporada) {
         this.fintemporada = fintemporada;
     }
 
@@ -78,5 +81,30 @@ public class Tarifa{
 
     public void setFechaModificacion(Date fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tarifa tarifa = (Tarifa) o;
+        return estado == tarifa.estado &&
+                Double.compare(tarifa.precio, precio) == 0 &&
+                Objects.equals(temporada, tarifa.temporada) &&
+                Objects.equals(iniciotemporada, tarifa.iniciotemporada) &&
+                Objects.equals(fintemporada, tarifa.fintemporada);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(temporada, estado, precio, iniciotemporada, fintemporada);
     }
 }

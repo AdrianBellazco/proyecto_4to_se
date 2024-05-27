@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class PlanesTuristicos {
 
+    private String ID;
     private String Titulo;
     private String Descripcion;
     private int DuracionDias;
@@ -20,7 +21,8 @@ public class PlanesTuristicos {
 
     public PlanesTuristicos(){}
 
-    public PlanesTuristicos(String titulo, String descripcion, int duracionDias, boolean incluyeDesayuno, boolean incluyeAlmuerzo, boolean pagarAdicionalAlimentacion, double costoDesayuno, double costoAlmuerzo, double costoComida, String estado, Date fechaCreacion, Date fechaModificacion, String Url) {
+    public PlanesTuristicos(String ID, String titulo, String descripcion, int duracionDias, boolean incluyeDesayuno, boolean incluyeAlmuerzo, boolean pagarAdicionalAlimentacion, double costoDesayuno, double costoAlmuerzo, double costoComida, String estado, Date fechaCreacion, Date fechaModificacion, String Url) {
+        this.ID = ID;
         this.Titulo = titulo;
         this.Descripcion = descripcion;
         this.DuracionDias = duracionDias;
@@ -34,6 +36,14 @@ public class PlanesTuristicos {
         this.FechaCreacion = fechaCreacion;
         this.FechaModificacion = fechaModificacion;
         this.Url = Url;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getTitulo() {
