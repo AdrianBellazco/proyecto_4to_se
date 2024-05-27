@@ -83,27 +83,28 @@
             </div>
 
 
-            <fieldset>
-               <legend><br></br><br></br>Asociar punto de visita</legend>
-               <div class="col-12">
-                  <label for="activities" class="form-label">Valor adicional:</label>
-                  <p:selectManyMenu id="activities" value="#{planBean.selectedActivities}"
-                                    var="c" filter="true" filterMatchMode="contains" filterNormalize="true"
-                                    showCheckbox="true" styleClass="manymenu-advanced">
+            <h:form id="activitiesForm">
+               <fieldset>
+                  <legend><br></br><br></br>Asociar punto de visita</legend>
+                  <div class="col-12">
+                     <p:selectManyMenu id="activities" value="#{planBean.selectedActivities}"
+                                       var="c" filter="true" filterMatchMode="contains" filterNormalize="true"
+                                       showCheckbox="true" styleClass="manymenu-advanced">
 
+                        <f:selectItems value="#{planBean.listActivities}" var="activity"
+                                       itemLabel="#{activity.nombre}"
+                                       itemValue="#{activity}"/>
+                        <p:column>
+                           <h:outputText value="#{c.nombre}"/>
+                        </p:column>
+                        <p:column>
+                           <h:outputText value="#{c.descripcion}"/>
+                        </p:column>
+                     </p:selectManyMenu>
+                  </div>
+               </fieldset>
+            </h:form>
 
-                     <f:selectItems value="#{planBean.listActivities}" var="activity"
-                                    itemLabel="#{activity.nombre}"
-                                    itemValue="#{activity}"/>
-                     <p:column>
-                        <h:outputText value="#{c.nombre}"/>
-                     </p:column>
-                     <p:column>
-                        <h:outputText value="#{c.descripcion}"/>
-                     </p:column>
-                  </p:selectManyMenu>
-               </div>
-            </fieldset>
             <fieldset>
                <legend><br></br><br></br>Tarifa</legend>
                <h:panelGrid>

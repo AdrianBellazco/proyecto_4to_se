@@ -2,11 +2,13 @@ package com.example.proyecto_4to_semestre.crud.controllers;
 
 import com.example.proyecto_4to_semestre.crud.models.Ciudades;
 import com.example.proyecto_4to_semestre.crud.models.Departamentos;
+import com.example.proyecto_4to_semestre.crud.models.puntosVisitas;
 import com.example.proyecto_4to_semestre.crud.services.DepartamentoService;
 import com.example.proyecto_4to_semestre.crud.services.DepartamentoServiceImpl;
+import com.example.proyecto_4to_semestre.crud.services.PuntoService;
+import com.example.proyecto_4to_semestre.crud.services.PuntoServiceImpl;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,15 +18,12 @@ public class DepartamentosBean implements Serializable {
     private final DepartamentoService departamentoService;
     private List<Departamentos> listDepartamentos;
     private List<Ciudades> listCiudades;
-    private Departamentos departamentos;
     private int selectedDepartamentoId;
-
+    private PuntoService puntoService;
 
     public DepartamentosBean() {
         this.departamentoService = new DepartamentoServiceImpl();
-
         this.listDepartamentos = departamentoService.getAllDepar();
-        this.listCiudades = departamentoService.getAllCiudades();
     }
 
     public List<Departamentos> getListDepartamentos() {
@@ -43,20 +42,6 @@ public class DepartamentosBean implements Serializable {
         this.listCiudades = listCiudades;
     }
 
-    public Departamentos getDepartamentos() {
-        return departamentos;
-    }
-
-    public void setDepartamentos(Departamentos departamentos) {
-        this.departamentos = departamentos;
-    }
-
-    public void updateCiudades() {
-        if (selectedDepartamentoId != 0) {
-            this.listCiudades = departamentoService.getCiudadesByDepartamento(selectedDepartamentoId);
-        }
-    }
-
     public int getSelectedDepartamentoId() {
         return selectedDepartamentoId;
     }
@@ -65,6 +50,10 @@ public class DepartamentosBean implements Serializable {
         this.selectedDepartamentoId = selectedDepartamentoId;
     }
 
-
-
+    public void updateCiudades() {
+        if (selectedDepartamentoId != 0) {
+            this.listCiudades = departamentoService.getCiudadesByDepartamento(selectedDepartamentoId);
+            puntosVisitas puntos = new puntosVisitas();
+        }
+    }
 }

@@ -22,13 +22,17 @@ public class puntoBean implements Serializable {
         this.setListPuntos(puntoService.getAllpuntos());
     }
 
-    public String createPunto(){
+    public String createPunto() {
         puntoVisitas.setIdpunto(generarCodigoUnico());
+        departamento(puntoVisitas.getDepartamento());
+        ciudad(puntoVisitas.getCiudad());
+
         puntoService.createpunto(puntoVisitas);
         this.setPuntoVisitas(new puntosVisitas());
         this.setListPuntos(puntoService.getAllpuntos());
         return "system?faces-redirect=true";
     }
+
 
     public String cancelarEdicion(){
         this.puntoVisitas = new puntosVisitas();
@@ -41,6 +45,13 @@ public class puntoBean implements Serializable {
         this.setPuntoVisitas(new puntosVisitas());
         this.setListPuntos(puntoService.getAllpuntos());
         return "system?faces-redirect=true";
+    }
+
+    public void departamento(String depar){
+        puntoVisitas.setDepartamento(depar);
+    }
+    public  void ciudad (String ciudad){
+        puntoVisitas.setCiudad(ciudad);
     }
 
     public void deletepunto(String id){

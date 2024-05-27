@@ -37,20 +37,27 @@
                             <f:selectItem itemValue="false" itemLabel="Inactivo" />
                         </h:selectOneMenu>
                     </div>
-                    <div class="col-12">
-                        <label for="departamento" class="form-label">Departamento:</label>
-                        <h:selectOneMenu id="departamento" value="#{deparBean.selectedDepartamentoId}" class="form-control">
-                            <f:selectItems value="#{deparBean.listDepartamentos}" var="depar" itemValue="#{depar.idDepartamento}" itemLabel="#{depar.departamento}" />
-                            <f:ajax render="ciudades" listener="#{deparBean.updateCiudades}" />
-                        </h:selectOneMenu>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <!-- Otros campos del formulario -->
+                        </div>
+                        <div class="col-12">
+                            <!-- Campo para seleccionar el departamento -->
+                            <label for="departamento" class="form-label">Departamento:</label>
+                            <h:selectOneMenu id="departamento" value="#{deparBean.selectedDepartamentoId}" class="form-control">
+                                <f:selectItems value="#{deparBean.listDepartamentos}" var="depar" itemValue="#{depar.idDepartamento}" itemLabel="#{depar.departamento}" />
+                                <f:ajax render="ciudades" listener="#{deparBean.updateCiudades}" />
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="col-12">
+                            <!-- Campo para seleccionar la ciudad -->
+                            <label for="ciudades" class="form-label">Ciudades:</label>
+                            <h:selectOneMenu id="ciudades" value="#{puntoBean.puntoVisitas.ciudad}" class="form-control">
+                                <f:selectItems value="#{deparBean.listCiudades}" var="ciudad" itemValue="#{ciudad.idCiudad}" itemLabel="#{ciudad.nombreCiudad}" />
+                            </h:selectOneMenu>
+                        </div>
                     </div>
 
-                    <div class="col-12">
-                        <label for="ciudades" class="form-label">Ciudades:</label>
-                        <h:selectOneMenu id="ciudades" value="#{puntoBean.puntoVisitas.ciudad}" class="form-control">
-                            <f:selectItems value="#{deparBean.listCiudades}" var="ciudad" itemValue="#{ciudad.idCiudad}" itemLabel="#{ciudad.nombreCiudad}" />
-                        </h:selectOneMenu>
-                    </div>
 
 
                 </div>

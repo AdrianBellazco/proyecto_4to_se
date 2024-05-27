@@ -91,6 +91,9 @@ public class PlanBean implements Serializable {
 
         }
     }
+    public void refreshListActivities() {
+        this.setListActivities(this.puntoService.getAllpuntos());
+    }
 
 
 
