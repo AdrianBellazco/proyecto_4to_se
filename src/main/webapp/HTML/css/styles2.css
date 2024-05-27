@@ -173,7 +173,6 @@ a {
     margin-right: 1.2rem;
 }
 .tamIcons{
-    color: white;
     margin-right: 1.2rem;
 }
 .nav__link:hover {
@@ -215,3 +214,6 @@ a {
     -webkit-transition: .5s;
     transition: .5s;
 }
+
+
+

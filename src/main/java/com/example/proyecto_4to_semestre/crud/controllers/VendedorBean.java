@@ -28,14 +28,14 @@ public class VendedorBean implements Serializable {
 
     public String cancelarEdicion() {
         this.vendedor = new Vendedor();
-        return "Adminpag?faces-redirect=true";
+        return "ParaAdministrador?faces-redirect=true";
     }
 
     public String createVendedor(){
         vendedorService.createVendedor(vendedor);
         this.setVendedor(new Vendedor());
         this.setListvendedors(vendedorService.getVendedors());
-        return "system?faces-redirect=true";
+        return "ParaAdministrador?faces-redirect=true";
     }
 
     public void delatevendedor(String cedula){
@@ -50,7 +50,7 @@ public class VendedorBean implements Serializable {
         this.setVendedor(new Vendedor());
         this.setListvendedors(vendedorService.getVendedors());
 
-        return "system?faces-redirect=true";
+        return "ParaAdministrador?faces-redirect=true";
     }
 
 

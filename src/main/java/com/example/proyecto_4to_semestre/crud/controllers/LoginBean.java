@@ -6,6 +6,7 @@ import com.example.proyecto_4to_semestre.crud.services.VendedorService;
 import com.example.proyecto_4to_semestre.crud.services.VendedorServiceImpl;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
+import jakarta.faces.application.NavigationHandler;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 import jakarta.servlet.http.HttpSession;
@@ -41,14 +42,10 @@ public class LoginBean {
         return null;
     }
 
-    public String close(){
+    public void close(){
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-
-        if (session != null) {
-            session.invalidate(); // Invalida la sesión
-        }
-        return "form?faces-redirect=true";
+        NavigationHandler handler = facesContext.getApplication().getNavigationHandler();
+        handler.handleNavigation(facesContext, null, "/index.xhtml");
     }
 
 

@@ -59,10 +59,15 @@
                     </li>
                 </ul>
             </div>
-            <a href="#" class="nav__link">
-                <i class='bx bx-log-out-circle nav__icon'></i>
-                <span class="nav__text">Close</span>
-            </a>
+            <h:form>
+
+                <h:commandLink action="#{loginBean.close()}" styleClass="nav__link"  >
+                    <h:panelGroup>
+                        <i class="bx bx-log-out-circle nav__icon"></i>
+                        <h:outputText value="Logout"/>
+                    </h:panelGroup>
+                </h:commandLink>
+            </h:form>
         </div>
     </div>
     <h2>TURISMO S.A</h2>
