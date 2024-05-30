@@ -215,5 +215,37 @@ a {
     transition: .5s;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px; /* Ajusta el espacio entre las cartas según sea necesario */
+    justify-content: center;
+    text-align: center;
+    margin: 50px 240px 50px 240px;
 
+}
+
+.card {
+    width: 290px;
+    background-color: var(--container-color);
+    padding: .5rem .5rem 1.5rem;
+    border-radius: 1rem;
+    margin: 0 auto;
+    transition: .4s;
+}
+
+img {
+    width: 220px; /* Ancho fijo */
+    height: 170px; /* Alto fijo */
+    object-fit: cover; /* Para que la imagen se ajuste y mantenga su proporción */
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-title, card__data {
+    font-size: var(--h2-font-size);
+    color: black;
+    margin-bottom: .25rem;
+    padding: 0 1rem 0 .5rem;
+}
 
