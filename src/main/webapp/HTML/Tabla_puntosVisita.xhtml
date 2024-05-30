@@ -10,8 +10,8 @@
     <h:body>
 
         <div class="container">
-            <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="">
-                Añadir Cliente  <i class="fa-solid fa-plus" />
+            <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_punto.xhtml">
+                Añadir Punto de visita  <i class="fa-solid fa-plus" />
             </h:link>
 
 
@@ -19,39 +19,42 @@
                 <thead>
                 <tr>
                     <th />
-                    <th scope="col">Cedula</th>
+                    <th scope="col">Id Punto</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Usurname</th>
-                    <th scope="col">Password</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Departamento</th>
+                    <th scope="col">Ciudad</th>
 
 
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="#{vendedorBean.listvendedors}" var="vendedor">
+                <c:forEach items="#{puntoBean.listPuntos}" var="puntos">
                     <tr>
                         <td>
                             <h:form>
-                                <h:commandLink action="#{vendedorBean.vendedorDetail(vendedor.cedula)}" class="btn btn-outline-primary">
+                                <h:commandLink action="#{puntoBean.puntoDetail(puntos.idpunto)}" class="btn btn-outline-primary">
                                     <h:panelGroup>
-                                        <i class='bx bx-upload bx-sm'></i>
+                                        <i class='bx bx-show bx-sm'></i>
                                     </h:panelGroup>
                                 </h:commandLink>
-                                <h:commandLink style="margin-left: 10px;" action="#{vendedorBean.delatevendedor(vendedor.cedula)}" class="btn btn-outline-danger">
+                                <h:commandLink style="margin-left: 10px;" action="#{puntoBean.deletepunto(puntos.idpunto)}" class="btn btn-outline-danger">
                                     <h:panelGroup>
                                         <i class='bx bx-user-minus bx-sm '></i>
                                     </h:panelGroup>
                                 </h:commandLink>
                             </h:form>
                         </td>
-                        <td>${vendedor.cedula}</td>
-                        <td>${vendedor.nombre}</td>
-                        <td>${vendedor.correo}</td>
-                        <td>${vendedor.telefono1}</td>
-                        <td>${vendedor.username}</td>
-                        <td>${vendedor.password}</td>
+                        <td>${puntos.idpunto}</td>
+                        <td>${puntos.nombre}</td>
+                        <td>${puntos.descripcion}</td>
+                        <td>${puntos.estado}</td>
+                        <td>${puntos.departamento}</td>
+                        <td>${puntos.ciudad}</td>
+                        <td>${puntos.fechaCreacion}</td>
+                        <td>${puntos.fechaModificacion}</td>
+
 
                     </tr>
                 </c:forEach>

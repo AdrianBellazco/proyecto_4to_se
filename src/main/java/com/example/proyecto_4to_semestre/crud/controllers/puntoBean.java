@@ -30,13 +30,13 @@ public class puntoBean implements Serializable {
         puntoService.createpunto(puntoVisitas);
         this.setPuntoVisitas(new puntosVisitas());
         this.setListPuntos(puntoService.getAllpuntos());
-        return "system?faces-redirect=true";
+        return "ParaAdministrador?faces-redirect=true";
     }
 
 
     public String cancelarEdicion(){
         this.puntoVisitas = new puntosVisitas();
-        return "system?faces-redirect=true";
+        return "ParaAdministrador?faces-redirect=true";
     }
 
     public String updatePunto(){
@@ -44,7 +44,7 @@ public class puntoBean implements Serializable {
         puntoService.updatepunto(puntoVisitas);
         this.setPuntoVisitas(new puntosVisitas());
         this.setListPuntos(puntoService.getAllpuntos());
-        return "system?faces-redirect=true";
+        return "ParaAdministrador?faces-redirect=true";
     }
 
     public void departamento(String depar){

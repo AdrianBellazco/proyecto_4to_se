@@ -53,7 +53,7 @@
                             <!-- Campo para seleccionar la ciudad -->
                             <label for="ciudades" class="form-label">Ciudades:</label>
                             <h:selectOneMenu id="ciudades" value="#{puntoBean.puntoVisitas.ciudad}" class="form-control">
-                                <f:selectItems value="#{deparBean.listCiudades}" var="ciudad" itemValue="#{ciudad.idCiudad}" itemLabel="#{ciudad.nombreCiudad}" />
+                                <f:selectItems value="#{deparBean.listCiudades}" var="ciudad" itemValue="#{ciudad.nombreCiudad}" itemLabel="#{ciudad.nombreCiudad}" />
                             </h:selectOneMenu>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <h:commandButton value="Cancelar" action="#{puntoBean.cancelarEdicion()}" />
                     </h:panelGrid>
                     <h:panelGrid rendered="#{empty puntoBean.puntoVisitas.idpunto}">
-                        <h:link value="Cancelar" outcome="system" class="btn btn-secondary" />
+                        <h:link value="Cancelar" outcome="ParaAdministrador" class="btn btn-secondary" />
                     </h:panelGrid>
                 </div>
             </h:form>
