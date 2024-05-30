@@ -8,18 +8,22 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Named("puntoBean")
 @SessionScoped
 public class puntoBean implements Serializable {
     private final PuntoService puntoService;
     private List<puntosVisitas> ListPuntos;
+    private List<puntosVisitas> filteredPuntos;
     private puntosVisitas puntoVisitas;
+    private String searchID;
 
     public puntoBean() {
         this.setPuntoVisitas(new puntosVisitas());
         this.puntoService = new PuntoServiceImpl();
         this.setListPuntos(puntoService.getAllpuntos());
+        this.filteredPuntos = ListPuntos;
     }
 
     public String createPunto() {
@@ -30,9 +34,10 @@ public class puntoBean implements Serializable {
         puntoService.createpunto(puntoVisitas);
         this.setPuntoVisitas(new puntosVisitas());
         this.setListPuntos(puntoService.getAllpuntos());
+
+        this.filterPuntos();
         return "ParaAdministrador?faces-redirect=true";
     }
-
 
     public String cancelarEdicion(){
         this.puntoVisitas = new puntosVisitas();
@@ -44,19 +49,21 @@ public class puntoBean implements Serializable {
         puntoService.updatepunto(puntoVisitas);
         this.setPuntoVisitas(new puntosVisitas());
         this.setListPuntos(puntoService.getAllpuntos());
+        this.filterPuntos();
         return "ParaAdministrador?faces-redirect=true";
     }
 
     public void departamento(String depar){
         puntoVisitas.setDepartamento(depar);
     }
-    public  void ciudad (String ciudad){
+    public void ciudad (String ciudad){
         puntoVisitas.setCiudad(ciudad);
     }
 
     public void deletepunto(String id){
         puntoService.deletepunto(id);
         this.setListPuntos(puntoService.getAllpuntos());
+        this.filterPuntos();
     }
 
     public String puntoDetail(String id){
@@ -64,18 +71,31 @@ public class puntoBean implements Serializable {
         return "form_punto?faces-redirect=true";
     }
 
-
-    //SETTERS AND GETTERS
-    public PuntoService getPuntoService() {
-        return puntoService;
+    public void filterPuntos() {
+        if (searchID == null || searchID.isEmpty()) {
+            filteredPuntos = ListPuntos;
+        } else {
+            filteredPuntos = ListPuntos.stream()
+                    .filter(punto -> punto.getIdpunto().toLowerCase().contains(searchID.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
     }
 
+    // SETTERS AND GETTERS
     public List<puntosVisitas> getListPuntos() {
         return ListPuntos;
     }
 
     public void setListPuntos(List<puntosVisitas> listPuntos) {
         ListPuntos = listPuntos;
+    }
+
+    public List<puntosVisitas> getFilteredPuntos() {
+        return filteredPuntos;
+    }
+
+    public void setFilteredPuntos(List<puntosVisitas> filteredPuntos) {
+        this.filteredPuntos = filteredPuntos;
     }
 
     public puntosVisitas getPuntoVisitas() {
@@ -85,6 +105,15 @@ public class puntoBean implements Serializable {
     public void setPuntoVisitas(puntosVisitas puntoVisitas) {
         this.puntoVisitas = puntoVisitas;
     }
+
+    public String getSearchID() {
+        return searchID;
+    }
+
+    public void setSearchID(String searchID) {
+        this.searchID = searchID;
+    }
+
     public String generarCodigoUnico() {
         Set<String> codigosExistentes = new HashSet<>();
         for (puntosVisitas punto : ListPuntos) {

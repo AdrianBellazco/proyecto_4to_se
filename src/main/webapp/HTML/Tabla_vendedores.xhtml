@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <f:view>
 
     <h:body>
@@ -14,49 +15,55 @@
                 Añadir vendedor  <i class="fa-solid fa-plus" />
             </h:link>
 
+            <!-- Formulario de búsqueda -->
+            <h:form id="searchForm">
+                <h:outputLabel for="searchCedula" value="Buscar por cédula: " />
+                <h:inputText id="searchCedula" value="#{vendedorBean.searchCedula}">
+                    <f:ajax event="keyup" render="vendedorTable" listener="#{vendedorBean.filterVendedores}"/>
+                </h:inputText>
+            </h:form>
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th />
-                    <th scope="col">Cedula</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Usurname</th>
-                    <th scope="col">Password</th>
-
-
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="#{vendedorBean.listvendedors}" var="vendedor">
+            <!-- Tabla de vendedores -->
+            <h:form id="vendedorTable">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
-                        <td>
-                                <h:form>
-                                    <h:commandLink action="#{vendedorBean.vendedorDetail(vendedor.cedula)}" class="btn btn-outline-primary">
-                                        <h:panelGroup>
-                                            <i class='bx bxs-show bx-sm'></i>
-                                        </h:panelGroup>
-                                    </h:commandLink>
-                                    <h:commandLink style="margin-left: 10px;" action="#{vendedorBean.delatevendedor(vendedor.cedula)}" class="btn btn-outline-danger">
-                                        <h:panelGroup>
-                                            <i class='bx bx-user-minus bx-sm '></i>
-                                        </h:panelGroup>
-                                    </h:commandLink>
-                                </h:form>
-                        </td>
-                        <td>${vendedor.cedula}</td>
-                        <td>${vendedor.nombre}</td>
-                        <td>${vendedor.correo}</td>
-                        <td>${vendedor.telefono1}</td>
-                        <td>${vendedor.username}</td>
-                        <td>${vendedor.password}</td>
-
+                        <th></th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Usurname</th>
+                        <th scope="col">Password</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <ui:repeat value="#{vendedorBean.filteredVendedores}" var="vendedor">
+                        <tr>
+                            <td>
+                                <h:commandLink action="#{vendedorBean.vendedorDetail(vendedor.cedula)}" class="btn btn-outline-primary">
+                                    <h:panelGroup>
+                                        <i class='bx bxs-show bx-sm'></i>
+                                    </h:panelGroup>
+                                </h:commandLink>
+                                <h:commandLink style="margin-left: 10px;" action="#{vendedorBean.deleteVendedor(vendedor.cedula)}" class="btn btn-outline-danger">
+                                    <f:ajax render="@form" />
+                                    <h:panelGroup>
+                                        <i class='bx bx-user-minus bx-sm'></i>
+                                    </h:panelGroup>
+                                </h:commandLink>
+                            </td>
+                            <td>#{vendedor.cedula}</td>
+                            <td>#{vendedor.nombre}</td>
+                            <td>#{vendedor.correo}</td>
+                            <td>#{vendedor.telefono1}</td>
+                            <td>#{vendedor.username}</td>
+                            <td>#{vendedor.password}</td>
+                        </tr>
+                    </ui:repeat>
+                    </tbody>
+                </table>
+            </h:form>
         </div>
     </h:body>
 </f:view>

@@ -3,6 +3,7 @@ package com.example.proyecto_4to_semestre.crud.repositories.Listar;
 import com.example.proyecto_4to_semestre.crud.models.Activity;
 import com.example.proyecto_4to_semestre.crud.models.PlanesTuristicos;
 import com.example.proyecto_4to_semestre.crud.models.Tarifa;
+import com.example.proyecto_4to_semestre.crud.models.puntosVisitas;
 import com.example.proyecto_4to_semestre.crud.utils.Conexion_BD;
 import com.example.proyecto_4to_semestre.crud.utils.generadorID;
 
@@ -130,7 +131,7 @@ public class PlanRepositoriesImpl implements PlanRepositories {
 
 
     @Override
-    public boolean create(PlanesTuristicos touristPlan, List<Activity> selectedActivities, List<Tarifa> tariffs) {
+    public boolean create(PlanesTuristicos touristPlan, List<puntosVisitas> selectedActivities, List<Tarifa> tariffs) {
         try (Connection conn = Conexion_BD.getConnection()) {
             assert conn != null;
             java.util.Date currentDate = new java.util.Date();
@@ -161,16 +162,16 @@ public class PlanRepositoriesImpl implements PlanRepositories {
 
             PreparedStatement pst2 = conn.prepareStatement(
                     "INSERT INTO planTiene_PuntosVisita (id_plan, idpunto) VALUES (?, ?)");
-            for (Activity activity : selectedActivities) {
+            for (puntosVisitas activity : selectedActivities) {
                 pst2.setString(1, touristPlan.getID());
-                pst2.setString(2, activity.getIdPuntosVisita());
+                pst2.setString(2, activity.getIdpunto());
                 pst2.addBatch();
             }
             pst2.executeBatch();
             pst2.close();
 
             PreparedStatement pst3 = conn.prepareStatement(
-                    "INSERT INTO Tarifa_vigente (temporada, id_plan_turistico, costo, estado, inicio_temporada, fin_temporada, fecha_creacion, fecha_modificacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                    "INSERT INTO tarifa_vigente (temporada, id_plan_turistico, costo, estado, inicio_temporada, fin_temporada, fecha_creacion, fecha_modificacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             for (Tarifa tariff : tariffs) {
                 pst3.setString(1, tariff.getTemporada());
                 pst3.setString(2, touristPlan.getID());
@@ -193,7 +194,7 @@ public class PlanRepositoriesImpl implements PlanRepositories {
     }
 
     @Override
-    public boolean update(PlanesTuristicos touristPlan, List<Activity> selectedActivities, List<Tarifa> tariffsToInsert, List<Tarifa> tariffsToUpdate, List<String> tariffsToDeleteId) {
+    public boolean update(PlanesTuristicos touristPlan, List<puntosVisitas> selectedActivities, List<Tarifa> tariffsToInsert, List<Tarifa> tariffsToUpdate, List<String> tariffsToDeleteId) {
         try (Connection conn =Conexion_BD.getConnection()) {
             java.util.Date currentDate = new java.util.Date();
             PreparedStatement pst = conn.prepareStatement("UPDATE Plan_turistico SET Descripcion = ?, cantidad_dias_duracion = ?, incluyedesayuno = ?, incluyealmuerzo = ?, pagaradicionalalimentacion = ?, costodesayuno = ?, costoalmuerzo = ?, costocomida = ?, estado = ?, fechamodificacion = ?, Url = ?, Titulo = ? WHERE id_plan = ?");
@@ -224,9 +225,9 @@ public class PlanRepositoriesImpl implements PlanRepositories {
 
             PreparedStatement pst3 = conn.prepareStatement(
                     "INSERT INTO planTiene_PuntosVisita (id_plan, idpunto) VALUES (?, ?)");
-            for (Activity activity : selectedActivities) {
+            for (puntosVisitas activity : selectedActivities) {
                 pst3.setString(1, touristPlan.getID());
-                pst3.setString(2, activity.getIdPuntosVisita());
+                pst3.setString(2, activity.getIdpunto());
                 pst3.addBatch();
             }
             pst3.executeBatch();

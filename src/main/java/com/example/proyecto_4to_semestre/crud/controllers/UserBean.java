@@ -1,6 +1,5 @@
 package com.example.proyecto_4to_semestre.crud.controllers;
 
-import com.example.proyecto_4to_semestre.crud.models.PlanesTuristicos;
 import com.example.proyecto_4to_semestre.crud.models.User;
 import com.example.proyecto_4to_semestre.crud.services.UserService;
 import com.example.proyecto_4to_semestre.crud.services.UserServiceImlp;
@@ -15,57 +14,69 @@ import java.util.List;
 @Named("userBean")
 @SessionScoped
 public class UserBean implements Serializable {
-    private final UserService userServide;
+    private final UserService userService;
     private List<User> listUsers;
+    private List<User> filteredUsers; // Nueva lista para usuarios filtrados
+    private String searchID; // Nueva propiedad para el ID de búsqueda
     private User user;
 
     public UserBean() {
         this.setUser(new User());
-        this.userServide = new UserServiceImlp();
-        this.setListUsers(userServide.getAllUsers());
-
+        this.userService = new UserServiceImlp();
+        this.setListUsers(userService.getAllUsers());
+        this.filteredUsers = new ArrayList<>(listUsers); // Inicializar la lista filtrada
     }
 
-
     public String createUser() {
- /*if (user.getFechaNacimiento() == null) {
-
-            user.setFechaNacimiento(new Date());
-        }*/
-        userServide.createUser(user);
+        userService.createUser(user);
         this.setUser(new User());
-        this.setListUsers(userServide.getAllUsers());
-        return "system?faces-redirect=true";
+        this.setListUsers(userService.getAllUsers());
+        this.filteredUsers = new ArrayList<>(listUsers); // Actualizar la lista filtrada
+        return "ParaVendedor?faces-redirect=true";
     }
 
     public String cancelarEdicion() {
         this.user = new User();
-        return "system?faces-redirect=true";
+        return "ParaVendedor?faces-redirect=true";
     }
 
     public String updateUser() {
         user.setFechaModificacion(new Date());
-        userServide.updateUser(user);
+        userService.updateUser(user);
         this.setUser(new User());
-        this.setListUsers(userServide.getAllUsers());
-
-        return "system?faces-redirect=true";
+        this.setListUsers(userService.getAllUsers());
+        this.filteredUsers = new ArrayList<>(listUsers); // Actualizar la lista filtrada
+        return "ParaVendedor?faces-redirect=true";
     }
 
-    public void deleteUser(String cedula){
-        userServide.deleteUser(cedula);
-        this.setListUsers(userServide.getAllUsers());
+    public void deleteUser(String cedula) {
+        userService.deleteUser(cedula);
+        this.setListUsers(userService.getAllUsers());
+        this.filteredUsers = new ArrayList<>(listUsers); // Actualizar la lista filtrada
     }
 
-    public String userDetail(String cedula){
-        user = userServide.getUserById(cedula);
+    public String userDetail(String cedula) {
+        user = userService.getUserById(cedula);
         return "form?faces-redirect=true";
     }
 
-    //SETTERS AND GETTERS
+    public void filterUsers() {
+        if (searchID == null || searchID.isEmpty()) {
+            filteredUsers = new ArrayList<>(listUsers);
+        } else {
+            filteredUsers = new ArrayList<>();
+            for (User user : listUsers) {
+                if (user.getCedula().contains(searchID)) {
+                    filteredUsers.add(user);
+                }
+            }
+        }
+    }
 
-    public UserService getUserServide() {
-        return userServide;
+    // SETTERS AND GETTERS
+
+    public UserService getUserService() {
+        return userService;
     }
 
     public User getUser() {
@@ -82,5 +93,21 @@ public class UserBean implements Serializable {
 
     public void setListUsers(List<User> listUsers) {
         this.listUsers = listUsers;
+    }
+
+    public List<User> getFilteredUsers() {
+        return filteredUsers;
+    }
+
+    public void setFilteredUsers(List<User> filteredUsers) {
+        this.filteredUsers = filteredUsers;
+    }
+
+    public String getSearchID() {
+        return searchID;
+    }
+
+    public void setSearchID(String searchID) {
+        this.searchID = searchID;
     }
 }

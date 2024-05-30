@@ -4,8 +4,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <f:view>
-    <h:outputLabel value="Hello, world"/>
+    <div class="container">
+        <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
+            Añadir plan turistico  <i class="fa-solid fa-plus" />
+        </h:link>
+        <div class="container grid text-center">
+            <!-- Formulario de búsqueda -->
+            <h:form id="searchFormPlanes3">
+                <h:outputLabel for="buscarIDPlanes" value="Buscar por ID: " />
+                <h:inputText id="buscarIDPlanes" value="#{planBean.searchID}">
+                    <f:ajax event="keyup" render="planesTable" listener="#{planBean.filterPlanes}"/>
+                </h:inputText>
+            </h:form>
+
+            <!-- Estructura de los planes turísticos -->
+            <h:form id="planesTable">
+                <div class="container grid g-col-4  text-center">
+                    <ui:repeat value="#{planBean.filteredPlanes}" var="cardplanes">
+                        <div class="card" style="width: 18rem;">
+                            <img src="#{cardplanes.url}" class="card-img-top" alt="..."/>
+                            <div class="card-body">
+                                <h5 class="card-title">#{cardplanes.titulo}</h5>
+                                <p class="card-text">#{cardplanes.ID}</p>
+                                <h:commandLink action="#{planBean.planDetails(cardplanes.ID)}" class="btn btn-outline-primary">
+                                    <i class="fa-solid fa-pen-to-square" />
+                                </h:commandLink>
+                                <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(cardplanes.ID)}" class="btn btn-outline-danger">
+                                    <f:ajax render="@form" />
+                                    <i class="fa-solid fa-trash" />
+                                </h:commandLink>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                </div>
+            </h:form>
+        </div>
+    </div>
 </f:view>
 </html>

@@ -59,23 +59,32 @@
                     <h:panelGrid rendered="#{empty vendedorBean.vendedor.cedula}">
                         <h:commandLink action="#{vendedorBean.createVendedor()}" styleClass="btn btn-primary">
                             <h:panelGroup layout="block">
-                                <i class="bx bx-upload"></i>
+                                <i class="bx bx-upload bx-sm"></i>
                             </h:panelGroup>
                         </h:commandLink>
                     </h:panelGrid>
 
                     <h:panelGrid rendered="#{not empty vendedorBean.vendedor.cedula}">
-                        <h:commandLink value="Actualizar" action="#{vendedorBean.updateVendedor()}" class="btn btn-primary" />
+                        <h:commandLink action="#{vendedorBean.updateVendedor()}" class="btn btn-primary" >
+                        <h:panelGroup>
+                            <i class="bx bx-upload bx-sm"></i>
+                        </h:panelGroup>
+                        </h:commandLink>
                     </h:panelGrid>
                     <h:panelGrid rendered="#{not empty vendedorBean.vendedor.cedula}">
-                        <h:commandButton value="Cancelar" action="#{vendedorBean.cancelarEdicion()}" />
-                        <h:panelGroup>
-                            <i class='bx bxs-trash'></i>
-                        </h:panelGroup>
+                        <h:commandLink class="btn btn-secondary" action="#{vendedorBean.cancelarEdicion()}" >
+                            <h:panelGroup>
+                                <i class='bx bx-arrow-back bx-sm'></i>
+                            </h:panelGroup>
+                        </h:commandLink>
                     </h:panelGrid>
 
                     <h:panelGrid rendered="#{empty vendedorBean.vendedor.cedula}">
-                        <h:link value="Cancelar" outcome="ParaAdministrador" class="btn btn-secondary" />
+                        <h:link  outcome="ParaAdministrador" class="btn btn-danger" >
+                            <h:panelGroup>
+                                <i class='bx bxs-trash-alt bx-sm' ></i>
+                            </h:panelGroup>
+                        </h:link>
                     </h:panelGrid>
 
                 </div>

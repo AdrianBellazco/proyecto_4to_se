@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<f:view>
+   <div class="clientes">
+      <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form">
+         Añadir cliente  <i class="fa-solid fa-plus" />
+      </h:link>
+
+      <h1>Tabla clientes</h1>
+
+      <!-- Formulario de búsqueda -->
+      <h:form id="searchFormClientes">
+         <h:outputLabel for="buscarID" value="Buscar por ID: " />
+         <h:inputText id="buscarID" value="#{userBean.searchID}">
+            <f:ajax event="keyup" render="clientesTable" listener="#{userBean.filterUsers}"/>
+         </h:inputText>
+      </h:form>
+
+      <h:form id="clientesTable">
+         <table class="table table-striped">
+            <thead>
+            <tr>
+               <th />
+               <th scope="col">Código</th>
+               <th scope="col">Nombre</th>
+               <th scope="col">Correo</th>
+               <th scope="col">Teléfono</th>
+               <th scope="col">Teléfono opcional</th>
+               <th scope="col">Fecha de nacimiento</th>
+               <th scope="col">Nombre de contacto de emergencia</th>
+               <th scope="col">Teléfono de contacto de emergencia</th>
+               <th scope="col">Fecha de creación</th>
+               <th scope="col">Fecha de modificación</th>
+               <th scope="col">Creador</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="#{userBean.filteredUsers}" var="user">
+               <tr>
+                  <td>
+                     <h:commandLink action="#{userBean.userDetail(user.cedula)}" class="btn btn-outline-primary">
+                        <i class="fa-solid fa-pen-to-square" />
+                     </h:commandLink>
+                     <h:commandLink style="margin-left: 5px;" action="#{userBean.deleteUser(user.cedula)}" class="btn btn-outline-danger">
+                        <i class="fa-solid fa-trash" />
+                     </h:commandLink>
+                  </td>
+                  <td>${user.cedula}</td>
+                  <td>${user.nombre}</td>
+                  <td>${user.correo}</td>
+                  <td>${user.telefono1}</td>
+                  <td>${user.telefono2}</td>
+                  <td>${user.fechaNacimiento}</td>
+                  <td>${user.contactoEmergencia}</td>
+                  <td>${user.telefonoContactoEmergencia}</td>
+                  <td>${user.fechaCreacion}</td>
+                  <td>${user.fechaModificacion}</td>
+                  <td>${user.creador}</td>
+               </tr>
+            </c:forEach>
+            </tbody>
+         </table>
+      </h:form>
+   </div>
+</f:view>
+</html>

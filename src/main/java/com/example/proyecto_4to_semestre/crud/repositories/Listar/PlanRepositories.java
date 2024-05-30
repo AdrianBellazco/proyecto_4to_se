@@ -12,8 +12,8 @@ public interface PlanRepositories {
     List<PlanesTuristicos> list();
     List<Tarifa> listTarifas();
     List<Activity> listActivities();
-    boolean create(PlanesTuristicos touristPlan, List<Activity> selectedActivities, List<Tarifa> tariffs);
-    boolean update(PlanesTuristicos touristPlan, List<Activity> selectedActivities, List<Tarifa> tariffsToInsert, List<Tarifa> tariffsToUpdate, List<String> tariffsToDeleteId);
+    boolean create(PlanesTuristicos touristPlan, List<puntosVisitas> selectedActivities, List<Tarifa> tariffs);
+    boolean update(PlanesTuristicos touristPlan, List<puntosVisitas> selectedActivities, List<Tarifa> tariffsToInsert, List<Tarifa> tariffsToUpdate, List<String> tariffsToDeleteId);
     void delete(String titulo);
     PlanesTuristicos getplandById(String titulo);
 }

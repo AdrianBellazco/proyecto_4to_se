@@ -19,12 +19,13 @@
 
 <h:body id="body">
 
+
     <div class="l-navbar" id="navbar">
         <div class="nav">
             <div>
                 <a href="#" class="nav__logo">
-                    <i class='bx bxs-user-circle bx-sm nav__logo-icon' style='color:#ffffff' ></i>
-                    <span class="nav__logo-text">Vendedor</span>
+                    <i class='bx bxs-user-circle bx-sm nav__logo-icon' style='color:#ffffff'></i>
+                    <span class="nav__logo-text">Administrador</span>
                 </a>
 
                 <div class="nav__toggle" id="nav-toggle">
@@ -32,36 +33,36 @@
                 </div>
 
                 <ul class="nav__list">
-                    <li><a href="#" class="nav__link active">
-                        <i class='bx bxs-cart-alt tamIcons bx-sm'></i>
-                        <span class="nav__text">Carrito</span>
-                    </a>
-                        <a href="#" class="nav__link">
-                            <i class='bx bx-map-alt tamIcons bx-sm'  style='color:#ffffff'></i>
-                            <span class="nav__text">Planes turisticos</span>
+                    <li>
+                        <a href="#" class="nav__link active" id="plan_turistico">
+                            <i class='bx bx-map-alt tamIcons bx-sm' style='color:#ffffff'></i>
+                            <span class="nav__text">Planes Turisticos</span>
                         </a>
-                        <a href="#" class="nav__link">
-                            <i class='bx bxs-face tamIcons bx-sm' ></i>
+                        <a href="#" class="nav__link" id="puntos_visita">
+                            <i class='bx bx-street-view tamIcons bx-sm'></i>
+                            <span class="nav__text">Puntos de visita</span>
+                        </a>
+                        <a href="#" class="nav__link" id="vendedores">
+                            <i class='bx bxs-contact tamIcons bx-sm' style='color:#ffffff'></i>
+                            <span class="nav__text">Vendedores</span>
+                        </a>
+                        <a href="#" class="nav__link" id="clientes">
+                            <i class='bx bxs-face tamIcons bx-sm'></i>
                             <span class="nav__text">Clientes</span>
                         </a>
-                        <a href="#" class="nav__link">
-                            <i class='bx bx-clipboard nav__icon tamIcons bx-sm'></i>
+                        <a href="#" class="nav__link" id="estadisticas">
+                            <i class='bx bx-line-chart tamIcons bx-sm'></i>
+                            <span class="nav__text">Estadisticas</span>
+                        </a>
+                        <a href="#" class="nav__link" id="notas">
+                            <i class='bx bx-bookmark nav__icon'></i>
                             <span class="nav__text">Notas</span>
                         </a>
-                        <!--<a href="#" class="nav__link">
-                            <i class='bx bx-line-chart'></i>
-                            <span class="nav__text"></span>
-                        </a>
-                        <a href="#" class="nav__link">
-                            <i class='bx bx-bookmark nav__icon'></i>
-                            <span class="nav__text"></span>
-                        </a>-->
                     </li>
                 </ul>
             </div>
             <h:form>
-
-                <h:commandLink action="#{loginBean.close()}" styleClass="nav__link"  >
+                <h:commandLink action="#{loginBean.close()}" styleClass="nav__link">
                     <h:panelGroup>
                         <i class="bx bx-log-out-circle nav__icon"></i>
                         <h:outputText value="Salir"/>
@@ -70,16 +71,29 @@
             </h:form>
         </div>
     </div>
-    <h2>TURISMO S.A</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Atque optio odio officiis nostrum nesciunt quam libero.
-        Cumque impedit veritatis, quibusdam nulla accusantium illo.
-        In velit laboriosam obcaecati quaerat eaque beatae.</p>
 
-</h:body>
-<script type="text/javascript" src="js/main2.js"><![CDATA[
-     ]]></script>
+    <ul class="nav__list">
+        <li>
+            <div class="nav__div d-none" id="plan_turistico_content">
+               <ui:include src="Vendedores_planesTuristicos.xhtml"></ui:include>
+            </div>
+            <div class="nav__div d-none" id="puntos_visita_content">
+                <!--    <ui:include src="Tabla_puntosVisita.xhtml"></ui:include> -->
+               </div>
+               <div class="nav__div d-none" id="vendedores_content">
+                   <!--      <ui:include src="Tabla_vendedores.xhtml"></ui:include> -->
+                      </div>
+                      <div class="nav__div d-none" id="clientes_content">
+                          <ui:include src="Tabla_clientes.xhtml"></ui:include>
+                      </div>
+                      <div class="nav__div d-none" id="estadisticas_content"><h2>Estadisticas</h2></div>
+                      <div class="nav__div d-none" id="notas_content"><h2>Notas</h2></div>
+                  </li>
+              </ul>
+
+          </h:body>
+          <script type="text/javascript" src="js/main2.js"><![CDATA[
+               ]]></script>
 
 
-</html>
-
+          </html>

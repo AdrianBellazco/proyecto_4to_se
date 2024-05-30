@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <f:view>
 
     <h:body>
@@ -14,52 +15,55 @@
                 Añadir Punto de visita  <i class="fa-solid fa-plus" />
             </h:link>
 
+            <!-- Formulario de búsqueda -->
+            <h:form id="searchForm1">
+                <h:outputLabel for="buscarID" value="Buscar por ID: " />
+                <h:inputText id="buscarID" value="#{puntoBean.searchID}">
+                    <f:ajax event="keyup" render="puntoTable" listener="#{puntoBean.filterPuntos}"/>
+                </h:inputText>
+            </h:form>
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th />
-                    <th scope="col">Id Punto</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Departamento</th>
-                    <th scope="col">Ciudad</th>
-
-
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="#{puntoBean.listPuntos}" var="puntos">
+            <!-- Tabla de puntos de visita -->
+            <h:form id="puntoTable">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
-                        <td>
-                            <h:form>
+                        <th></th>
+                        <th scope="col">Id Punto</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Ciudad</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <ui:repeat value="#{puntoBean.filteredPuntos}" var="puntos">
+                        <tr>
+                            <td>
                                 <h:commandLink action="#{puntoBean.puntoDetail(puntos.idpunto)}" class="btn btn-outline-primary">
                                     <h:panelGroup>
                                         <i class='bx bx-show bx-sm'></i>
                                     </h:panelGroup>
                                 </h:commandLink>
-                                <h:commandLink style="margin-left: 10px;" action="#{puntoBean.deletepunto(puntos.idpunto)}" class="btn btn-outline-danger">
+                                <h:commandLink style="margin-left: 10px;" action="#{puntoBean.deletePunto(puntos.idpunto)}" class="btn btn-outline-danger">
+                                    <f:ajax render="@form" />
                                     <h:panelGroup>
-                                        <i class='bx bx-user-minus bx-sm '></i>
+                                        <i class='bx bx-user-minus bx-sm'></i>
                                     </h:panelGroup>
                                 </h:commandLink>
-                            </h:form>
-                        </td>
-                        <td>${puntos.idpunto}</td>
-                        <td>${puntos.nombre}</td>
-                        <td>${puntos.descripcion}</td>
-                        <td>${puntos.estado}</td>
-                        <td>${puntos.departamento}</td>
-                        <td>${puntos.ciudad}</td>
-                        <td>${puntos.fechaCreacion}</td>
-                        <td>${puntos.fechaModificacion}</td>
-
-
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                            </td>
+                            <td>#{puntos.idpunto}</td>
+                            <td>#{puntos.nombre}</td>
+                            <td>#{puntos.descripcion}</td>
+                            <td>#{puntos.estado}</td>
+                            <td>#{puntos.departamento}</td>
+                            <td>#{puntos.ciudad}</td>
+                        </tr>
+                    </ui:repeat>
+                    </tbody>
+                </table>
+            </h:form>
         </div>
     </h:body>
 </f:view>
