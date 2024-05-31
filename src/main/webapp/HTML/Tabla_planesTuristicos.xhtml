@@ -19,13 +19,15 @@
 <body>
 <f:view>
     <div class="container">
-        <h:link style="margin: 15px 15px 0 0; float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
+        <h:link style="margin: 0px 15px 0 0; float: right;" type="button" class="btn btn-outline-primary" outcome="form_planesTuristicos">
             Añadir plan turístico  <i class="fa-solid fa-plus"></i>
         </h:link>
         <div class="container grid text-center">
             <!-- Formulario de búsqueda -->
-            <h:form id="searchFormPlanes3">
-                <h:outputLabel for="buscarIDPlanes" value="Buscar por ID: " />
+            <h:form styleClass="caja-busqueda" id="searchFormPlanes3">
+                <h:outputLabel for="buscarIDPlanes" >
+                    <i class='bx bx-search-alt bx-sm' style="color:#007aff "></i>
+                </h:outputLabel>
                 <h:inputText id="buscarIDPlanes" value="#{planBean.searchID}">
                     <f:ajax event="keyup" render="planesTable" listener="#{planBean.filterPlanes}"/>
                 </h:inputText>

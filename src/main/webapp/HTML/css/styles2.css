@@ -232,6 +232,7 @@ a {
     border-radius: 1rem;
     margin: 0 auto;
     transition: .4s;
+    border: 1.5px solid darkblue;
 }
 
 img {
@@ -245,7 +246,15 @@ img {
 .card-title, card__data {
     font-size: var(--h2-font-size);
     color: black;
-    margin-bottom: .25rem;
-    padding: 0 1rem 0 .5rem;
+    margin-bottom: 20px;
+
+}
+
+.card-text{
+    border-bottom: 50px;
+}
+.caja-busqueda{
+    margin: 20px 0 0 0;
+    padding: 5px 0 0 0;
 }
 

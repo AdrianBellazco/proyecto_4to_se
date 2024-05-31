@@ -11,7 +11,7 @@
     <h:body>
 
         <div class="container">
-            <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_punto.xhtml">
+            <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-primary" outcome="form_punto.xhtml">
                 Añadir Punto de visita  <i class="fa-solid fa-plus" />
             </h:link>
 
@@ -46,7 +46,7 @@
                                         <i class='bx bx-show bx-sm'></i>
                                     </h:panelGroup>
                                 </h:commandLink>
-                                <h:commandLink style="margin-left: 10px;" action="#{puntoBean.deletepunto(puntos.idpunto)}" class="btn btn-outline-danger">
+                                <h:commandLink style="margin-top: 5px;" action="#{puntoBean.deletepunto(puntos.idpunto)}" class="btn btn-outline-danger">
                                     <f:ajax render="@form" />
                                     <h:panelGroup>
                                         <i class='bx bx-user-minus bx-sm'></i>
