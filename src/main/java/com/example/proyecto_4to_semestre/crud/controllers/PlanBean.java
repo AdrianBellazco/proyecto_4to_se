@@ -51,8 +51,7 @@ public class PlanBean implements Serializable {
     }
 
     public String createPlane() {
-        List<Tarifa> tariffs = new ArrayList<>();
-        planService.createPlan(plane, selectedActivities, tariffs);
+        planService.createPlan(plane, selectedActivities, listTarifas);
         this.setPlane(new PlanesTuristicos());
         this.setListPlanes(planService.getAllPlanes());
         this.filteredPlanes = new ArrayList<>(listPlanes); // Actualizar la lista filtrada
@@ -191,4 +190,7 @@ public class PlanBean implements Serializable {
     public void setSearchID(String searchID) {
         this.searchID = searchID;
     }
+
+
+
 }

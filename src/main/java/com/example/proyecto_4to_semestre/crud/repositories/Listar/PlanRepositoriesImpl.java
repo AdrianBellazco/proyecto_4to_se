@@ -111,8 +111,8 @@ public class PlanRepositoriesImpl implements PlanRepositories {
         tarifa.setId_planturistico(rs.getString("id_plan_turistico"));
         tarifa.setEstado(rs.getBoolean("estado"));
         tarifa.setPrecio(rs.getDouble("costo"));
-        tarifa.setIniciotemporada(rs.getString("inicio_temporada"));
-        tarifa.setFintemporada(rs.getString("fin_temporada"));
+        tarifa.setIniciotemporada(rs.getDate("inicio_temporada"));
+        tarifa.setFintemporada(rs.getDate("fin_temporada"));
         tarifa.setFechaCreacion(rs.getDate("fecha_creacion"));
         tarifa.setFechaModificacion(rs.getDate("fecha_modificacion"));
 
@@ -161,7 +161,7 @@ public class PlanRepositoriesImpl implements PlanRepositories {
             pst.close();
 
             PreparedStatement pst2 = conn.prepareStatement(
-                    "INSERT INTO planTiene_PuntosVisita (id_plan, idpunto) VALUES (?, ?)");
+                    "INSERT INTO planTiene_puntosVisita (id_plan, idpunto) VALUES (?, ?)");
             for (puntosVisitas activity : selectedActivities) {
                 pst2.setString(1, touristPlan.getID());
                 pst2.setString(2, activity.getIdpunto());
@@ -177,8 +177,8 @@ public class PlanRepositoriesImpl implements PlanRepositories {
                 pst3.setString(2, touristPlan.getID());
                 pst3.setDouble(3, tariff.getPrecio());
                 pst3.setBoolean(4, true);
-                pst3.setString(5, tariff.getIniciotemporada());
-                pst3.setString(6, tariff.getFintemporada());
+                pst3.setDate(5, new Date( tariff.getIniciotemporada().getTime()));
+                pst3.setDate(6, new Date(tariff.getFintemporada().getTime()));
                 pst3.setDate(7, Date.valueOf(String.valueOf(currentDate)));
                 pst3.setDate(8, Date.valueOf(String.valueOf(currentDate)));
 
@@ -259,8 +259,8 @@ public class PlanRepositoriesImpl implements PlanRepositories {
                     pst5.setString(2, touristPlan.getID());
                     pst5.setDouble(3, tariff.getPrecio());
                     pst5.setBoolean(4, true);
-                    pst5.setString(5, tariff.getIniciotemporada());
-                    pst5.setString(6, tariff.getFintemporada());
+                    pst5.setDate(5, new Date(tariff.getIniciotemporada().getTime()));
+                    pst5.setDate(6,  new Date( tariff.getFintemporada().getTime()));
                     pst5.setDate(7, new java.sql.Date(currentDate.getTime()));
                     pst5.setDate(8, new java.sql.Date(currentDate.getTime()));
                     pst5.addBatch();
@@ -275,8 +275,8 @@ public class PlanRepositoriesImpl implements PlanRepositories {
                 for (Tarifa tariff : tariffsToUpdate) {
                     pst6.setDouble(1, tariff.getPrecio());
                     pst6.setBoolean(2, tariff.isEstado());
-                    pst6.setString(3, tariff.getIniciotemporada());
-                    pst6.setString(4, tariff.getFintemporada());
+                    pst6.setDate(3, new Date( tariff.getIniciotemporada().getTime()));
+                    pst6.setDate(4, new Date(tariff.getFintemporada().getTime()));
                     pst6.setDate(5, new java.sql.Date(currentDate.getTime()));
                     pst6.setString(6, tariff.getTemporada());
                     pst6.setString(7, touristPlan.getID());

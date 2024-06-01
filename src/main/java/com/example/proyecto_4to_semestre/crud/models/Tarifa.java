@@ -8,15 +8,15 @@ public class Tarifa{
     private String temporada;
     private String id_planturistico;
     private boolean estado;
-    private String iniciotemporada;
-    private String fintemporada;
+    private Date iniciotemporada;
+    private Date fintemporada;
     private Date fechaCreacion;
     private Date fechaModificacion;
     private double precio;
 
     public Tarifa(){}
 
-    public Tarifa(String temporada, String id_planturistico, boolean estado, String iniciotemporada, String fintemporada, Date fechaCreacion, Date fechaModificacion, double precio) {
+    public Tarifa(String temporada, String id_planturistico, boolean estado, Date iniciotemporada, Date fintemporada, Date fechaCreacion, Date fechaModificacion, double precio) {
         this.temporada = temporada;
         this.id_planturistico = id_planturistico;
         this.estado = estado;
@@ -51,19 +51,19 @@ public class Tarifa{
         this.estado = estado;
     }
 
-    public String getIniciotemporada() {
+    public Date getIniciotemporada() {
         return iniciotemporada;
     }
 
-    public void setIniciotemporada(String iniciotemporada) {
+    public void setIniciotemporada(Date iniciotemporada) {
         this.iniciotemporada = iniciotemporada;
     }
 
-    public String getFintemporada() {
+    public Date getFintemporada() {
         return fintemporada;
     }
 
-    public void setFintemporada(String fintemporada) {
+    public void setFintemporada(Date fintemporada) {
         this.fintemporada = fintemporada;
     }
 
