@@ -179,8 +179,8 @@ public class PlanRepositoriesImpl implements PlanRepositories {
                 pst3.setBoolean(4, true);
                 pst3.setDate(5, new Date( tariff.getIniciotemporada().getTime()));
                 pst3.setDate(6, new Date(tariff.getFintemporada().getTime()));
-                pst3.setDate(7, Date.valueOf(String.valueOf(currentDate)));
-                pst3.setDate(8, Date.valueOf(String.valueOf(currentDate)));
+                pst3.setDate(7, new java.sql.Date(currentDate.getTime()));
+                pst3.setDate(8, new java.sql.Date(currentDate.getTime()));
 
                 pst3.addBatch();
             }

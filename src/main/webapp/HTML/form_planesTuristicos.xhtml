@@ -134,14 +134,16 @@
                         <label for="Costo" class="form-label">Costo:</label>
                         <h:inputText id="Costo" value="#{tarifa.precio}" type="number" class="form-control" />
                      </div>
-                     <div class="col-12">
-                        <label for="inicio" class="form-label">Inicio de temporada:</label>
-                        <h:inputText id="inicio" value="#{tarifa.iniciotemporada}" type="date" class="form-control" />
+                     <div class="col-12 field col-12 md:col-4">
+                        <p:outputLabel for="inicio" value="Basic" />
+                        <p:datePicker id="inicio" value="#{tarifa.iniciotemporada}" />
                      </div>
-                     <div class="col-12">
-                        <label for="fin" class="form-label">Fin de temporada:</label>
-                        <h:inputText id="fin" value="#{tarifa.fintemporada}" type="date" class="form-control" />
+
+                     <div class="col-12 field col-12 md:col-4">
+                        <p:outputLabel for="fin" value="Basic" />
+                        <p:datePicker id="fin" value="#{tarifa.fintemporada}" />
                      </div>
+
                      <h:commandLink style="margin-left: 5px;" action="#{planBean.removeTarifa(tarifa)}" class="btn btn-outline-danger">
                         <f:ajax render="tarifasPanel" />
                         <i class="fa-solid fa-trash"></i>
