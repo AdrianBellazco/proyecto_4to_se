@@ -51,3 +51,31 @@ function colorLink() {
 
 // Attach the event listener to each navigation link
 linkColor.forEach(l => l.addEventListener('click', colorLink));
+
+
+
+
+// Obtener el elemento <i> con el ID "login-btn"
+var loginBtn = document.getElementById('login-btn');
+
+// Agregar un evento de clic al elemento <i> con el ID "login-btn"
+loginBtn.addEventListener('click', function() {
+    // Obtener el elemento <div> con el ID "login"
+    var loginDiv = document.getElementById('login');
+
+    // Agregar la clase "show-login" al elemento <div> con el ID "login"
+    loginDiv.classList.add('show-login');
+});
+
+
+// Obtener el elemento <i> con el ID "login-close"
+var loginCloseBtn = document.getElementById('login-close');
+
+// Agregar un evento de clic al elemento <i> con el ID "login-close"
+loginCloseBtn.addEventListener('click', function() {
+    // Obtener el elemento <div> con el ID "login"
+    var loginDiv = document.getElementById('login');
+
+    // Eliminar la clase "show-login" del elemento <div> con el ID "login"
+    loginDiv.classList.remove('show-login');
+});

@@ -7,6 +7,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 <f:view>
+
+    <h:head>
+    </h:head>
+
    <div class="container">
       <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
          Añadir plan turistico  <i class="fa-solid fa-plus" />
@@ -34,15 +38,18 @@
                         <div class="card-body">
                            <h5 class="card-title card__data">#{cardplanes.titulo}</h5>
                            <p class="card-text">#{cardplanes.ID}</p>
-                           <h:commandLink action="#{planBean.planDetails(cardplanes.ID)}" class="btn btn-outline-primary">
+
+                           <i id="login-btn" class="ri-user-line nav__login btn btn-outline-primary">
                               <i class="fa-solid fa-pen-to-square"></i>
-                              <h:panelGroup>
-                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-                                 </svg>                              </h:panelGroup>
-                           </h:commandLink>
-                           <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(cardplanes.ID)}" class="btn btn-outline-success">
+                              <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+        </svg>
+    </span>
+                           </i>
+
+                           <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(cardplanes.ID)}" class=" btn btn-outline-success">
                               <f:ajax render="@form"/>
                               <h:panelGroup>
                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
@@ -56,6 +63,38 @@
                </div>
             </div>
          </h:form>
+
+
+         <!-- si -->
+         <div class="login ql-bg-blue" id="login">
+            <h:form action="" class="login__form">
+               <h2 class="login__title">Informacion del paquete</h2>
+
+               <div class="login__group">
+                  <div>
+                     <label for="email" class="login__label">Email</label>
+                     <input type="text"  id="email" class="login__input"/>
+                  </div>
+
+                  <div>
+                     <label for="password" class="login__label">Password</label>
+                     <input type="password"  id="password" class="login__input"/>
+                  </div>
+               </div>
+
+               <div>
+
+                  <button type="submit" class="login__button">Log In</button>
+               </div>
+            </h:form>
+<div class="container">
+            <i class="d-flex justify-content-center align-items-center  btn btn-outline-danger login__close" id="login-close"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+            </svg></i>
+</div>
+         </div>
+
+
       </div>
    </div>
 </f:view>
