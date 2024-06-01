@@ -24,13 +24,18 @@
         </h:link>
         <div class="container grid text-center">
             <!-- Formulario de búsqueda -->
+<!--
+-->
+
             <h:form styleClass="caja-busqueda" id="searchFormPlanes3">
+                <div class="input-group d-flex w-25">
                 <h:outputLabel for="buscarIDPlanes" >
-                    <i class='bx bx-search-alt bx-sm' style="color:#007aff "></i>
+                    <span class="input-group-text" id="addon-wrapping">  <i class='bx bx-search-alt bx-sm' style="color:#007aff "></i></span>
                 </h:outputLabel>
-                <h:inputText id="buscarIDPlanes" value="#{planBean.searchID}">
+                <h:inputText id="buscarIDPlanes" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" value="#{planBean.searchID}">
                     <f:ajax event="keyup" render="planesTable" listener="#{planBean.filterPlanes}"/>
                 </h:inputText>
+                </div>
             </h:form>
 
             <!-- Estructura de los planes turísticos -->

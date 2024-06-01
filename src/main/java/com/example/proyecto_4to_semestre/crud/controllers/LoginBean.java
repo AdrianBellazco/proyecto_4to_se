@@ -12,6 +12,7 @@ import jakarta.inject.Named;
 import jakarta.servlet.http.HttpSession;
 
 import java.sql.SQLOutput;
+import java.util.List;
 
 @Named("loginBean")
 @RequestScoped
@@ -19,7 +20,7 @@ public class LoginBean {
     private String username;
     private String password;
     private VendedorService vendedorService;
-
+    private List<Vendedor> vendedors;
     public LoginBean() {
         this.vendedorService = new VendedorServiceImpl();
     }
@@ -47,6 +48,17 @@ public class LoginBean {
         NavigationHandler handler = facesContext.getApplication().getNavigationHandler();
         handler.handleNavigation(facesContext, null, "/index.xhtml");
     }
+
+    public boolean esAdministrador() {
+        if (getUsername() == null) {
+            return false; // Si el nombre de usuario es nulo, no se puede determinar si es un administrador
+        }
+        return "admin".equals(getUsername()) && "123".equals(getPassword());
+    }
+
+
+
+
 
 
     // Getters y setters

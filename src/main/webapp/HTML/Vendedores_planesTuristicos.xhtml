@@ -13,32 +13,47 @@
       </h:link>
       <div class="container grid text-center">
          <!-- Formulario de búsqueda -->
-         <h:form id="searchFormPlanes3">
-            <h:outputLabel for="buscarIDPlanes" value="Buscar por ID: " />
-            <h:inputText id="buscarIDPlanes" value="#{planBean.searchID}">
-               <f:ajax event="keyup" render="planesTable" listener="#{planBean.filterPlanes}"/>
-            </h:inputText>
+         <h:form styleClass="caja-busqueda" id="searchFormPlanes3">
+            <div class="input-group d-flex w-25">
+               <h:outputLabel for="buscarIDPlanes" >
+                  <span class="input-group-text" id="addon-wrapping">  <i class='bx bx-search-alt bx-sm' style="color:#007aff "></i></span>
+               </h:outputLabel>
+               <h:inputText id="buscarIDPlanes" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" value="#{planBean.searchID}">
+                  <f:ajax event="keyup" render="planesTable" listener="#{planBean.filterPlanes}"/>
+               </h:inputText>
+            </div>
          </h:form>
 
          <!-- Estructura de los planes turísticos -->
          <h:form id="planesTable">
-            <div class="container grid g-col-4  text-center">
-               <ui:repeat value="#{planBean.filteredPlanes}" var="cardplanes">
-                  <div class="card" style="width: 18rem;">
-                     <img src="#{cardplanes.url}" class="card-img-top" alt="..."/>
-                     <div class="card-body">
-                        <h5 class="card-title">#{cardplanes.titulo}</h5>
-                        <p class="card-text">#{cardplanes.ID}</p>
-                        <h:commandLink value="ver informacion" action="#{planBean.planDetails(cardplanes.ID)}" class="btn btn-outline-primary">
-                           <i class="fa-solid fa-pen-to-square" />
-                        </h:commandLink>
-                        <h:commandLink value="Añadir carrito" style="margin-left: 5px;" action="#{planBean.deletePlane(cardplanes.ID)}" class="btn btn-outline-danger">
-                           <f:ajax render="@form" />
-                           <i class="fa-solid fa-trash" />
-                        </h:commandLink>
+            <div class="container">
+               <div class="grid-container">
+                  <ui:repeat value="#{planBean.filteredPlanes}" var="cardplanes">
+                     <div class="card" style="width: 18rem;">
+                        <img src="#{cardplanes.url}" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                           <h5 class="card-title card__data">#{cardplanes.titulo}</h5>
+                           <p class="card-text">#{cardplanes.ID}</p>
+                           <h:commandLink action="#{planBean.planDetails(cardplanes.ID)}" class="btn btn-outline-primary">
+                              <i class="fa-solid fa-pen-to-square"></i>
+                              <h:panelGroup>
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                 </svg>                              </h:panelGroup>
+                           </h:commandLink>
+                           <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(cardplanes.ID)}" class="btn btn-outline-success">
+                              <f:ajax render="@form"/>
+                              <h:panelGroup>
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"/>
+                                 </svg>
+                              </h:panelGroup>
+                           </h:commandLink>
+                        </div>
                      </div>
-                  </div>
-               </ui:repeat>
+                  </ui:repeat>
+               </div>
             </div>
          </h:form>
       </div>
