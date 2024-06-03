@@ -37,15 +37,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title card__data">#{cardplanes.titulo}</h5>
                                     <p class="card-text">#{cardplanes.ID}</p>
-                                    <i class="login-btn ri-user-line nav__login btn btn-outline-primary">
-                                        <i class="fa-solid fa-pen-to-square"></i><span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-        </svg>
-    </span></i>
-
-                                    <h:commandLink style="margin-left: 5px;" action="#{planBean.deletePlane(cardplanes.ID)}" class=" btn btn-outline-success">
+                                    <h:commandLink style="margin-left: 5px;"   class=" btn btn-outline-success"> <!--Aqui falta agregarle el action="#{planBean.planDetails(cardplanes.ID)}"-->
                                         <f:ajax render="@form"/>
                                         <h:panelGroup>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
@@ -59,9 +51,11 @@
                     </div>
                 </div>
             </h:form>
+
+
             <!-- si -->
             <div class="login ql-bg-blue" id="login">
-                <h:form action="" class="login__form">
+                <h:form action="" class="login__form ">
                     <h2 class="login__title">Informacion del paquete</h2>
                     <div>
                         <button type="submit" class="login__button">compradaaa</button>

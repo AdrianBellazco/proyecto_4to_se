@@ -1,5 +1,6 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -14,31 +15,25 @@
             <div>
                 <div class="login__inputs">
 
-
-
-
                     <h:form>
-
-                    <div class="login__box" >
-                        <h:outputLabel  for="username"   class="login__label" value = "usuario"/>
-                        <h:inputText id="username" required="true" class="login__input" var="si" value="#{loginBean.username}" />
-                    </div>
-
-
+                        <div class="login__box">
+                            <h:outputLabel for="username" class="login__label" value="Usuario:" />
+                            <h:inputText id="username" required="true" class="login__input" value="#{loginBean.username}" />
+                        </div>
 
                         <div class="login__box">
                             <h:outputLabel for="password" class="login__label" value="Contraseña:" />
                             <h:inputSecret id="password" required="true" class="login__input" value="#{loginBean.password}" />
                         </div>
+
                         <div class="login__buttons">
-
-                    <h:commandButton value="Iniciar sesión" class="login__button" action="#{loginBean.login}" />
-                    <h:messages />
-
+                            <h:commandButton value="Iniciar sesión" class="login__button" action="#{loginBean.login}">
+                                <f:ajax execute="@form" render="@form" />
+                            </h:commandButton>
+                            <h:messages errorClass="section__title" />
                         </div>
-
-
                     </h:form>
+
 
                 </div>
 

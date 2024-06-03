@@ -17,24 +17,26 @@
             </h2>
 
             <div class="popular__container grid swiper">
+
                 <div class="swiper-wrapper">
+                    <ui:repeat value="#{planBean.filteredPlanes}" var="cardplanes">
                     <article class="popular__card swiper-slide">
-                        <img src="https://media.staticontent.com/media/pictures/9495889e-54f9-40d2-939d-b04bf30b47c7" alt="" class="popular__img"/>
+                        <img src="#{cardplanes.url}" alt="" class="popular__img"/>
 
                         <div class="popular__data">
-                            <h2 class="popular__price">
-                                <span>$</span>500.000
+                            <h2 class="popular__price"> Id:
+                                #{cardplanes.ID}
                             </h2>
                             <h3 class="popular__title">
-                                Cartagena de Indias
+                                #{cardplanes.titulo}
                             </h3>
                             <p class="popular__description">
-                                Recorre las murallas de la ciudad vieja, déjate cautivar por la arquitectura colonial y disfruta del ambiente vibrante de esta ciudad costera.
+                                #{cardplanes.descripcion}
                             </p>
                         </div>
                     </article>
-
-                    <article class="popular__card swiper-slide">
+                    </ui:repeat>
+       <!--             <article class="popular__card swiper-slide">
                         <img src="https://radionacional-v3.s3.amazonaws.com/s3fs-public/styles/portadas_relaciona_4_3/public/node/article/field_image/Imagen1_0.jpg?h=2b317c2d&amp;itok=ozQBqVTh" alt="" class="popular__img"/>
 
                         <div class="popular__data">
@@ -96,15 +98,17 @@
                                 Recorre sus barrios modernos, disfruta de su cultura cafetera, explora sus museos y parques, y déjate contagiar por la energía de esta pujante ciudad.
                             </p>
                         </div>
-                    </article>
+                    </article>  -->
                 </div>
 
                 <div class="swiper-button-next">
                     <i class='bx bx-chevron-right' ></i>
                 </div>
+
                 <div class="swiper-button-prev">
                     <i class='bx bx-chevron-left'></i>
                 </div>
+
             </div>
         </div>
     </section>
