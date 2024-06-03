@@ -413,15 +413,7 @@ img {
 
 /* For large devices */
 @media screen and (min-width: 1023px) {
-
-
-    .nav__toggle {
-        display: none;
-    }
-
-
-
-    .login__form {
+ .login__form {
         padding: 3rem 2rem 3.5rem;
     }
 }

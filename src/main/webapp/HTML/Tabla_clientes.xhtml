@@ -8,6 +8,11 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 <f:view>
 
+   <h:body>
+
+   <div class="container">
+
+
    <div class="clientes">
       <h:link rendered="#{!loginBean.esAdministrador()}"
               style="margin: 15px 15px 0 0; float: right;"
@@ -36,12 +41,7 @@
                <th scope="col">Nombre</th>
                <th scope="col">Correo</th>
                <th scope="col">Teléfono</th>
-               <th scope="col">Teléfono opcional</th>
-               <th scope="col">Fecha de nacimiento</th>
-               <th scope="col">Nombre de contacto de emergencia</th>
-               <th scope="col">Teléfono de contacto de emergencia</th>
-               <th scope="col">Fecha de creación</th>
-               <th scope="col">Fecha de modificación</th>
+               <th scope="col">Contacto de emergencia</th>
                <th scope="col">Creador</th>
             </tr>
             </thead>
@@ -60,12 +60,7 @@
                   <td>${user.nombre}</td>
                   <td>${user.correo}</td>
                   <td>${user.telefono1}</td>
-                  <td>${user.telefono2}</td>
-                  <td>${user.fechaNacimiento}</td>
                   <td>${user.contactoEmergencia}</td>
-                  <td>${user.telefonoContactoEmergencia}</td>
-                  <td>${user.fechaCreacion}</td>
-                  <td>${user.fechaModificacion}</td>
                   <td>${user.creador}</td>
                </tr>
             </c:forEach>
@@ -73,5 +68,8 @@
          </table>
       </h:form>
    </div>
+   </div>
+   </h:body>
 </f:view>
+
 </html>
