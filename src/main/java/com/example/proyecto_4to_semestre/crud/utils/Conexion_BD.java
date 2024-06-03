@@ -18,7 +18,7 @@ public class Conexion_BD {
             e.printStackTrace();
         }
         try {
-            return DriverManager.getConnection(url, username, "3187140146");
+            return DriverManager.getConnection(url, username, "Katherin2512");
         }catch (SQLException e){
             e.printStackTrace();
         }
