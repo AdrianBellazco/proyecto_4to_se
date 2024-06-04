@@ -32,6 +32,9 @@ public class PlanBean implements Serializable {
     private Tarifa tarifa;
     private String searchID; // Nueva propiedad para el ID de búsqueda
 
+    private PlanesTuristicos selectedPlan;
+
+
     public PlanBean() {
         this.puntoService = new PuntoServiceImpl();
         this.planService = new PlanServiceImpl();
@@ -79,6 +82,19 @@ public class PlanBean implements Serializable {
     public String planDetails(String Titulo) {
         plane = planService.getPlanById(Titulo);
         return "form_planesTuristicos?faces-redirect=true";
+    }
+
+
+    public void planDetails2(String id) {
+        selectedPlan = planService.getPlanById(id);
+    }
+
+    public PlanesTuristicos getSelectedPlan() {
+        return selectedPlan;
+    }
+
+    public void setSelectedPlan(PlanesTuristicos selectedPlan) {
+        this.selectedPlan = selectedPlan;
     }
 
     public void addTarifa() {

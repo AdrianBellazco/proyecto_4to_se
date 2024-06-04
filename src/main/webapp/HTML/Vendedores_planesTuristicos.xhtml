@@ -10,64 +10,95 @@
     <h:head>
     </h:head>
 
-    <div class="container">
-        <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
-            Añadir plan turistico  <i class="fa-solid fa-plus" />
-        </h:link>
-        <div class="container grid text-center">
-            <!-- Formulario de búsqueda -->
-            <h:form styleClass="caja-busqueda" id="searchFormPlanes3">
-                <div class="input-group d-flex w-25">
-                    <h:outputLabel for="buscarIDPlanes" >
-                        <span class="input-group-text" id="addon-wrapping">  <i class='bx bx-search-alt bx-sm' style="color:#007aff "></i></span>
-                    </h:outputLabel>
-                    <h:inputText id="buscarIDPlanes" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" value="#{planBean.searchID}">
-                        <f:ajax event="keyup" render="planesTable" listener="#{planBean.filterPlanes}"/>
-                    </h:inputText>
-                </div>
-            </h:form>
-
-            <!-- Estructura de los planes turísticos -->
-            <h:form id="planesTable">
-                <div class="container">
-                    <div class="grid-container">
-                        <ui:repeat value="#{planBean.filteredPlanes}" var="cardplanes">
-                            <div class="card" style="width: 18rem;">
-                                <img src="#{cardplanes.url}" class="card-img-top" alt="..."/>
-                                <div class="card-body">
-                                    <h5 class="card-title card__data">#{cardplanes.titulo}</h5>
-                                    <p class="card-text">#{cardplanes.ID}</p>
-                                    <h:commandLink style="margin-left: 5px;"   class=" btn btn-outline-success"> <!--Aqui falta agregarle el action="#{planBean.planDetails(cardplanes.ID)}"-->
-                                        <f:ajax render="@form"/>
-                                        <h:panelGroup>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
-                                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"/>
-                                            </svg>
-                                        </h:panelGroup>
-                                    </h:commandLink>
-                                </div>
-                            </div>
-                        </ui:repeat>
-                    </div>
-                </div>
-            </h:form>
-
-
-            <!-- si -->
-            <div class="login ql-bg-blue" id="login">
-                <h:form action="" class="login__form ">
-                    <h2 class="login__title">Informacion del paquete</h2>
-                    <div>
-                        <button type="submit" class="login__button">compradaaa</button>
+    <h:body>
+        <div class="container">
+            <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
+                Añadir plan turistico  <i class="fa-solid fa-plus" />
+            </h:link>
+            <div class="container grid text-center">
+                <!-- Formulario de búsqueda -->
+                <h:form styleClass="caja-busqueda" id="searchFormPlanes3">
+                    <div class="input-group d-flex w-25">
+                        <h:outputLabel for="buscarIDPlanes" >
+                            <span class="input-group-text" id="addon-wrapping">  <i class='bx bx-search-alt bx-sm' style="color:#007aff "></i></span>
+                        </h:outputLabel>
+                        <h:inputText id="buscarIDPlanes" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" value="#{planBean.searchID}">
+                            <f:ajax event="keyup" render="planesTable" listener="#{planBean.filterPlanes}"/>
+                        </h:inputText>
                     </div>
                 </h:form>
-                <div class="container">
-                    <i class="d-flex justify-content-center align-items-center  btn btn-outline-danger login-close"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L7.293 8z"/>
-                    </svg>
-                    </i>
+
+                <!-- Estructura de los planes turísticos -->
+                <h:form id="planesTable">
+                    <div class="container">
+                        <div class="grid-container">
+                            <ui:repeat value="#{planBean.filteredPlanes}" var="cardplanes">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="#{cardplanes.url}" class="card-img-top" alt="..."/>
+                                    <div class="card-body">
+                                        <h5 class="card-title card__data">#{cardplanes.titulo}</h5>
+                                        <p class="card-text">#{cardplanes.ID}</p>
+                                        <h:commandLink style="margin-left: 5px;" action="#{planBean.planDetails2(cardplanes.ID)}" id="login-btn" class="btn btn-outline-success">
+                                            <f:ajax render="loginForm" onevent="showLogin()"/>
+                                            <h:panelGroup>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                                </svg>
+                                            </h:panelGroup>
+                                        </h:commandLink>
+                                    </div>
+                                </div>
+                            </ui:repeat>
+                        </div>
+                    </div>
+                </h:form>
+
+                <!-- Ventana emergente -->
+                <div class="login" id="login">
+                    <h:form id="loginForm" class="login__form">
+
+                        <div class="popular__card swiper-slide">
+                            <img src="#{planBean.selectedPlan.url}" alt="" class="popular__img"/>
+
+                        <h2 class="popular__price">#{planBean.selectedPlan.titulo}</h2>
+                            <h2 class="login__title "> Id del plan:
+                                #{cardplanes.ID}
+                            </h2>
+                            <p class="popular__description">
+                              Descripcion del plan: #{cardplanes.descripcion}
+                            </p>
+                            <h2 class="login__title ">Estado del plan:
+                                #{cardplanes.estado}
+                            </h2>
+                            <h3 class="login__title ">Dias de duracion:
+                                #{cardplanes.duracionDias}   Incluye Desayuno: #{cardplanes.incluyeDesayuno}   Incluye Almuerzo: #{cardplanes.incluyeAlmuerzo}
+                            </h3>
+                        <div>
+                            <button type="submit" class="login__button">compradaaa</button>
+                        </div>
+                        </div>
+
+                    </h:form>
+                    <div class="container mt-3">
+                        <i class="btn btn-outline-danger login-close" onclick="closeLogin()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                        </svg>
+                        </i>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <script type="text/javascript">
+            function showLogin() {
+                document.getElementById('login').classList.add('show-login');
+            }
+            function closeLogin() {
+                document.getElementById('login').classList.remove('show-login');
+            }
+        </script>
+    </h:body>
 </f:view>
 </html>
+

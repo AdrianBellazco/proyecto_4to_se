@@ -60,6 +60,8 @@ public class UserBean implements Serializable {
         return "form?faces-redirect=true";
     }
 
+
+
     public void filterUsers() {
         if (searchID == null || searchID.isEmpty()) {
             filteredUsers = new ArrayList<>(listUsers);
