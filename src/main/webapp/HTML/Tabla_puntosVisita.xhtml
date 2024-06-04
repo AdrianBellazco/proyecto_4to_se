@@ -16,11 +16,16 @@
             </h:link>
 
             <!-- Formulario de búsqueda -->
-            <h:form id="searchForm1">
-                <h:outputLabel for="buscarID" value="Buscar por ID: " />
-                <h:inputText id="buscarID" value="#{puntoBean.searchID}">
-                    <f:ajax event="keyup" render="puntoTable" listener="#{puntoBean.filterPuntos}"/>
-                </h:inputText>
+
+            <h:form styleClass="caja-busqueda" id="searchForm1">
+                <div class="input-group d-flex w-25">
+                    <h:outputLabel for="buscarID">
+                        <span class="input-group-text" id="addon-wrapping">  <i class='bx bx-search-alt bx-sm' style="color:#007aff "></i></span>
+                    </h:outputLabel>
+                    <h:inputText id="buscarID" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" value="#{puntoBean.searchID}">
+                        <f:ajax event="keyup" render="puntoTable" listener="#{puntoBean.filterPuntos}"/>
+                    </h:inputText>
+                </div>
             </h:form>
 
             <!-- Tabla de puntos de visita -->

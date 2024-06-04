@@ -16,15 +16,19 @@
             </h:link>
 
             <!-- Formulario de búsqueda -->
-            <h:form id="searchForm">
-                <h:outputLabel for="searchCedula" value="Buscar por cédula: " />
-                <h:inputText id="searchCedula" value="#{vendedorBean.searchCedula}">
-                    <f:ajax event="keyup" render="vendedorTable" listener="#{vendedorBean.filterVendedores}"/>
-                </h:inputText>
+            <h:form styleClass="caja-busqueda" id="searchFormPlanes4">
+                <div class="input-group d-flex w-25">
+                    <h:outputLabel for="buscarIDPlanes">
+                        <span class="input-group-text" id="addon-wrapping">  <i class='bx bx-search-alt bx-sm' style="color:#007aff "></i></span>
+                    </h:outputLabel>
+                    <h:inputText id="buscarIDPlanes" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" value="#{vendedorBean.searchCedula}">
+                        <f:ajax event="keyup" render="vendedorTable4" listener="#{vendedorBean.filterVendedores}"/>
+                    </h:inputText>
+                </div>
             </h:form>
 
             <!-- Tabla de vendedores -->
-            <h:form id="vendedorTable">
+            <h:form id="vendedorTable4">
                 <table class="table table-striped">
                     <thead>
                     <tr>

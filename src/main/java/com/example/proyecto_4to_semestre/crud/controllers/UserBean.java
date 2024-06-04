@@ -1,5 +1,6 @@
 package com.example.proyecto_4to_semestre.crud.controllers;
 
+import com.example.proyecto_4to_semestre.crud.models.PlanesTuristicos;
 import com.example.proyecto_4to_semestre.crud.models.User;
 import com.example.proyecto_4to_semestre.crud.services.UserService;
 import com.example.proyecto_4to_semestre.crud.services.UserServiceImlp;
@@ -20,6 +21,9 @@ public class UserBean implements Serializable {
     private String searchID; // Nueva propiedad para el ID de búsqueda
     private User user;
 
+    private User selectedPlan;
+
+
     public UserBean() {
         this.setUser(new User());
         this.userService = new UserServiceImlp();
@@ -38,6 +42,18 @@ public class UserBean implements Serializable {
     public String cancelarEdicion() {
         this.user = new User();
         return "ParaVendedor?faces-redirect=true";
+    }
+
+    public void planDetails2(String id) {
+        selectedPlan = userService.getUserById(id);
+    }
+
+    public User getSelectedPlan() {
+        return selectedPlan;
+    }
+
+    public void setSelectedPlan(User selectedPlan) {
+        this.selectedPlan = selectedPlan;
     }
 
     public String updateUser() {

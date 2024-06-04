@@ -49,15 +49,15 @@
                         <a href="#" class="nav__link" id="clientes">
                             <i class='bx bxs-face tamIcons bx-sm'></i>
                             <span class="nav__text">Clientes</span>
-                        </a>
-                        <a href="#" class="nav__link" id="estadisticas">
-                            <i class='bx bx-line-chart tamIcons bx-sm'></i>
-                            <span class="nav__text">Estadisticas</span>
-                        </a>
-                        <a href="#" class="nav__link" id="notas">
-                            <i class='bx bx-bookmark nav__icon'></i>
-                            <span class="nav__text">Notas</span>
-                        </a>
+                      </a>
+                        <!--      <a href="#" class="nav__link" id="estadisticas">
+                                <i class='bx bx-line-chart tamIcons bx-sm'></i>
+                                <span class="nav__text">Estadisticas</span>
+                            </a>
+                            <a href="#" class="nav__link" id="notas">
+                                <i class='bx bx-bookmark nav__icon'></i>
+                                <span class="nav__text">Notas</span>
+                            </a>-->
                     </li>
                 </ul>
             </div>
@@ -83,7 +83,8 @@
             <div class="nav__div d-none" id="vendedores_content">
                 <ui:include src="Tabla_vendedores.xhtml"></ui:include>
             </div>
-            <div class="nav__div d-none" id="clientes_content">                          <ui:include src="Tabla_clientes.xhtml"></ui:include>
+            <div class="nav__div d-none" id="clientes_content">
+                <ui:include src="Administradores_clientes.xhtml"></ui:include>
             </div>
             <div class="nav__div d-none" id="estadisticas_content"><h2>Estadisticas</h2></div>
             <div class="nav__div d-none" id="notas_content"><h2>Notas</h2></div>

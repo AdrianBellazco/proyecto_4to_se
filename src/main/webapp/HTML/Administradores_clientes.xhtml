@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<f:view>
+
+    <h:head>
+    </h:head>
+
+    <h:body>
+        <div class="container">
+            <div class="container grid text-center">
+                <!-- Formulario de búsqueda -->
+                <h:form styleClass="caja-busqueda" id="searchFormPlanes2">
+                    <div class="input-group d-flex w-25">
+                        <h:outputLabel for="buscarIDPlanes">
+                            <span class="input-group-text" id="addon-wrapping">  <i class='bx bx-search-alt bx-sm' style="color:#007aff "></i></span>
+                        </h:outputLabel>
+                        <h:inputText id="buscarIDPlanes" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"  value="#{userBean.searchID}">
+                            <f:ajax event="keyup" render="planesTable1" listener="#{userBean.filterUsers}"/>
+                        </h:inputText>
+                    </div>
+                </h:form>
+
+                <!-- Estructura de los planes turísticos -->
+                <h:form id="planesTable1">
+                    <div class="container">
+                        <div class="grid-container">
+                            <ui:repeat value="#{userBean.filteredUsers}" var="user">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="https://icons.veryicon.com/png/o/miscellaneous/two-color-icon-library/user-286.png" class="card-img-top" alt="..."/>
+                                    <div class="card-body">
+                                        <h5 class="card-title card__data">#{user.nombre}</h5>
+                                        <p class="card-text">#{user.cedula}</p>
+                                        <h:commandLink onclick="showLogin()" style="margin-left: 5px;" action="#{userBean.planDetails2(user.cedula)}" id="login-btn" class="btn btn-outline-success">
+                                            <f:ajax render="loginForm1" onerror="showLogin()"/>
+                                            <h:panelGroup>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                                </svg>
+                                            </h:panelGroup>
+                                        </h:commandLink>
+                                    </div>
+                                </div>
+                            </ui:repeat>
+                        </div>
+                    </div>
+                </h:form>
+
+                <!-- Ventana emergente -->
+                <div class="login" id="login">
+                    <h:form id="loginForm1" class="login__form">
+                        <div class="popular__card swiper-slide">
+                            <img src="https://icons.veryicon.com/png/o/miscellaneous/two-color-icon-library/user-286.png" alt="" class="popular__img"/>
+                            <h2 class="popular__price">#{userBean.selectedPlan.nombre}</h2>
+                            <h2 class="login__title "> Cedula:
+                                #{userBean.selectedPlan.cedula}
+                            </h2>
+                            <p class="popular__description">
+                               Telefono: #{userBean.selectedPlan.telefono1}
+                            </p>
+                            <h2 class="login__title ">Correo:
+                                #{userBean.selectedPlan.correo}
+                            </h2>
+                            <h3 class="login__title ">
+                                <br/>  fecha de nacimiento: #{userBean.selectedPlan.fechaNacimiento} <br/> Fecha de creacion: #{userBean.selectedPlan.fechaCreacion} <br/> fecha de modificacion: #{userBean.selectedPlan.fechaModificacion} <br/><br/><br/>
+                            </h3>
+                            <h3 class="login__title ">
+                                <br/> contacto de emergencia: #{userBean.selectedPlan.contactoEmergencia} <br/> Numero contacto de emergencia: #{userBean.selectedPlan.telefonoContactoEmergencia} <br/><br/><br/>
+                            </h3>
+
+                        </div>
+
+
+
+                        <div class="container mt-3" >
+                            <i class="btn btn-outline-danger login-close" onclick="closeLogin()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                            </svg>
+                            </i>
+                        </div>
+
+
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function showLogin() {
+                var loginElement = document.getElementById('login');
+                loginElement.classList.add('show-login');
+                loginElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            function closeLogin() {
+                document.getElementById('login').classList.remove('show-login');
+            }
+        </script>
+    </h:body>
+</f:view>
+</html>
+
