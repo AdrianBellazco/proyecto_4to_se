@@ -12,14 +12,11 @@
 
     <h:body>
         <div class="container">
-            <h:link style="margin: 15px 15px 0 0;float: right;" type="button" class="btn btn-outline-success" outcome="form_planesTuristicos">
-                Añadir plan turistico  <i class="fa-solid fa-plus" />
-            </h:link>
             <div class="container grid text-center">
                 <!-- Formulario de búsqueda -->
                 <h:form styleClass="caja-busqueda" id="searchFormPlanes3">
                     <div class="input-group d-flex w-25">
-                        <h:outputLabel for="buscarIDPlanes" >
+                        <h:outputLabel for="buscarIDPlanes">
                             <span class="input-group-text" id="addon-wrapping">  <i class='bx bx-search-alt bx-sm' style="color:#007aff "></i></span>
                         </h:outputLabel>
                         <h:inputText id="buscarIDPlanes" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" value="#{planBean.searchID}">
@@ -39,7 +36,7 @@
                                         <h5 class="card-title card__data">#{cardplanes.titulo}</h5>
                                         <p class="card-text">#{cardplanes.ID}</p>
                                         <h:commandLink onclick="showLogin()" style="margin-left: 5px;" action="#{planBean.planDetails2(cardplanes.ID)}" id="login-btn" class="btn btn-outline-success">
-                                            <f:ajax render="loginForm" onevent="showLogin()"/>
+                                            <f:ajax render="loginForm" onerror="showLogin()"/>
                                             <h:panelGroup>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                                     <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
@@ -57,43 +54,55 @@
                 <!-- Ventana emergente -->
                 <div class="login" id="login">
                     <h:form id="loginForm" class="login__form">
-
                         <div class="popular__card swiper-slide">
                             <img src="#{planBean.selectedPlan.url}" alt="" class="popular__img"/>
-
-                        <h2 class="popular__price">#{planBean.selectedPlan.titulo}</h2>
+                            <h2 class="popular__price">#{planBean.selectedPlan.titulo}</h2>
                             <h2 class="login__title "> Id del plan:
-                                #{cardplanes.ID}
+                                #{planBean.selectedPlan.ID}
                             </h2>
                             <p class="popular__description">
-                              Descripcion del plan: #{cardplanes.descripcion}
+                                #{planBean.selectedPlan.descripcion}
                             </p>
                             <h2 class="login__title ">Estado del plan:
-                                #{cardplanes.estado}
+                                #{planBean.selectedPlan.estado}
                             </h2>
-                            <h3 class="login__title ">Dias de duracion:
-                                #{cardplanes.duracionDias}   Incluye Desayuno: #{cardplanes.incluyeDesayuno}   Incluye Almuerzo: #{cardplanes.incluyeAlmuerzo}
+                            <h3 class="login__title ">
+                                <br/>  Dias de duracion: #{planBean.selectedPlan.duracionDias} <br/> Incluye Desayuno: #{planBean.selectedPlan.incluyeDesayuno} <br/> Incluye Almuerzo: #{planBean.selectedPlan.incluyeAlmuerzo} <br/><br/><br/>
                             </h3>
-                        <div>
-                            <button type="submit" class="login__button">compradaaa</button>
+                            <h3 class="login__title ">
+                                <br/>  Fecha de inicio: #{planBean.selectedPlan.fechaCreacion} <br/> Fecha de fin: #{planBean.selectedPlan.fechaModificacion} <br/><br/><br/>
+                            </h3>
+
                         </div>
+
+
+
+                        <div class="container mt-3" >
+                            <i class="btn btn-outline-danger login-close" onclick="closeLogin()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                            </svg>
+                            </i>
+                        </div>
+                        <div class="container mt-3">
+                        <i class="btn btn-outline-success login-close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+                            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708"/>
+                        </svg>
+                        </i>
                         </div>
 
                     </h:form>
-                    <div class="container mt-3">
-                        <i class="btn btn-outline-danger login-close" onclick="closeLogin()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
-                        </svg>
-                        </i>
-                    </div>
+
                 </div>
             </div>
         </div>
 
         <script type="text/javascript">
             function showLogin() {
-                document.getElementById('login').classList.add('show-login');
+                var loginElement = document.getElementById('login');
+                loginElement.classList.add('show-login');
+                loginElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+
             function closeLogin() {
                 document.getElementById('login').classList.remove('show-login');
             }
