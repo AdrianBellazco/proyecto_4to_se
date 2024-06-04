@@ -38,7 +38,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title card__data">#{cardplanes.titulo}</h5>
                                         <p class="card-text">#{cardplanes.ID}</p>
-                                        <h:commandLink style="margin-left: 5px;" action="#{planBean.planDetails2(cardplanes.ID)}" id="login-btn" class="btn btn-outline-success">
+                                        <h:commandLink onclick="showLogin()" style="margin-left: 5px;" action="#{planBean.planDetails2(cardplanes.ID)}" id="login-btn" class="btn btn-outline-success">
                                             <f:ajax render="loginForm" onevent="showLogin()"/>
                                             <h:panelGroup>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
